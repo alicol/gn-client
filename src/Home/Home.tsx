@@ -1,11 +1,15 @@
-import * as React from 'react';
+import React from 'react';
+import Auth from '../Auth/Auth';
+
 
 export interface HomeProps {
     
 }
  
 const Home: React.SFC<HomeProps> = () => {
-    return ( <div>Home</div> );
+    return ( <div>
+        <Auth/>
+    </div> );
 }
  
 export default Home;
