@@ -1,6 +1,7 @@
 import React from 'react';
 export interface UserLoginProps {
 
+
 }
 
 export interface UserLoginState {
@@ -52,4 +53,11 @@ export interface LoginResponse {
     message: string;
     userName: string;
     sessionToken: string;
+
+    
+} 
+ 
+const UserLogin: React.SFC<UserLoginProps> = () => {
+    return ( <div>UserLogin</div> );
+
 }
