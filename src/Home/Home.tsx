@@ -1,5 +1,9 @@
-import React from 'react';
+
+import * as React from 'react';
+import Sidebar from './Sidebar';
+import {BrowserRouter as Router} from 'react-router-dom';
 import Auth from '../Auth/Auth';
+
 
 
 export interface HomeProps {
@@ -7,9 +11,13 @@ export interface HomeProps {
 }
  
 const Home: React.SFC<HomeProps> = () => {
+
+    
     return ( <div>
-        <Auth/>
-    </div> );
+        <Router>
+        <Sidebar />
+        </Router> );
+        
 }
  
 export default Home;
