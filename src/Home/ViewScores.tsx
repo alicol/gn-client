@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { tokenToString } from 'typescript';
+// import { tokenToString } from 'typescript';
 
 export interface ViewScoresProps {
 
@@ -22,7 +22,7 @@ const getMyScores = () => {
     .then((logData) => {
         setMyScores(logData);
     })
-    return (<div><p>{myScores}</p><p>Hello</p></div>);
+    return (<div><p>Hello</p></div>);
     console.log(myScores);
 };
 

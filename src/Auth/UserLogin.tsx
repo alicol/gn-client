@@ -38,7 +38,7 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
     }
 }
 
-export default UserLogin;
+
 
 export interface User {
     userName: string;
@@ -57,7 +57,8 @@ export interface LoginResponse {
     
 } 
  
-const UserLogin: React.SFC<UserLoginProps> = () => {
-    return ( <div>UserLogin</div> );
+// const UserLogin: React.SFC<UserLoginProps> = () => {
+//     return ( <div>UserLogin</div> );
 
-}
+// }
+export default UserLogin;

@@ -16,7 +16,8 @@ const Home: React.SFC<HomeProps> = () => {
     return ( <div>
         <Router>
         <Sidebar />
-        </Router> );
+        </Router> 
+        </div> );
         
 }
  
