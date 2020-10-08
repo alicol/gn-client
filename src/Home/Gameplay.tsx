@@ -114,7 +114,7 @@ const GamePlay: React.SFC<GamePlayProps> = () => {
                     <p>{`B: ${questionResults[currentQuestionNumber].incorrect_answers[1]}`}</p>
                     <p>{`C: ${questionResults[currentQuestionNumber].correct_answer}`}</p>
                     <p>{`D: ${questionResults[currentQuestionNumber].incorrect_answers[2]}`}</p>
-                    <button onClick={() => answerQuestionFunction()}>Correct Answer</button>
+                    <button onClick={() => answerQuestionFunction()}>Show Answer</button>
                     <button onClick={() => setQuestionEditor("On")}>Edit Questions</button>
                     
                 </div>

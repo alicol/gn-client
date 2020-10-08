@@ -50,7 +50,7 @@ const NewGameSetup: React.FC<NewGameSetupProps> = (props) => {
     
     // const [playerDataId, setPlayerDataId] = useState(0);
     const URL = "http://localhost:3000";
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjAyMDIwNzgwLCJleHAiOjE2MDIxMDcxODB9.WedVSyGUAevuA_BkWa1q9EzLaqmpROSxLKcReL81IG8";
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjAyMTkzNTE0LCJleHAiOjE2MDIyNzk5MTR9.i_aD16zLPYrNnqfjGz3Ey-1TXdRjC_0r1hYNPj-ncR8";
     const [numberOfQuestions, setNumberOfQuestions] = useState(50);
     const [difficulty, setDifficulty] = useState();
 
