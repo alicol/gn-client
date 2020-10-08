@@ -1,11 +1,18 @@
-import * as React from 'react';
+import React from 'react';
+import UserSignup from './UserSignup';
+import UserLogin from './UserLogin'
+
+
 
 export interface AuthProps {
-    
+
 }
- 
+
 const Auth: React.SFC<AuthProps> = () => {
-    return ( <div>Auth</div> );
+    return (<div className="auth-container">
+       <UserLogin/>
+       <UserSignup/>
+    </div>);
 }
- 
+
 export default Auth;
