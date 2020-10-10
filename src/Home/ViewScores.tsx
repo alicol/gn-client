@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 // import { tokenToString } from 'typescript';
 
 export interface ViewScoresProps {
@@ -6,11 +6,33 @@ export interface ViewScoresProps {
 }
  
 const ViewScores: React.FC<ViewScoresProps> = () => {
-    const [myScores, setMyScores] = useState();
+    const [player1, setPlayer1] = useState('');
+    const [player2, setPlayer2] = useState('');
+    const [player3, setPlayer3] = useState('');
+    const [player4, setPlayer4] = useState('');
+    const [player5, setPlayer5] = useState('');
+    const [player6, setPlayer6] = useState('');
+    const [player7, setPlayer7] = useState('');
+    const [player8, setPlayer8] = useState('');
+    const [player9, setPlayer9] = useState('');
+    const [score1, setScore1] = useState(0);
+    const [score2, setScore2] = useState(0);
+    const [score3, setScore3] = useState(0);
+    const [score4, setScore4] = useState(0);
+    const [score5, setScore5] = useState(0);
+    const [score6, setScore6] = useState(0);
+    const [score7, setScore7] = useState(0);
+    const [score8, setScore8] = useState(0);
+    const [score9, setScore9] = useState(0);
+    const [myScores, setMyScores] = useState<any>([]);
+    const [viewDetails, setViewDetails] = useState<any>("off");
+    const [playerData, setPlayerData] = useState<any>({});
     const URL = "http://localhost:3000";
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjAxOTA4MDc2LCJleHAiOjE2MDE5OTQ0NzZ9.DJ38vhCZGhCoGpL9X_SQ0Irq0SW8NGKsny7_jC5If14";
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjAyMzM1Njg4LCJleHAiOjE2MDI0MjIwODh9.43z_8nYWp33ylFhmxQMgsQ0kGaCZQYj6Rvj9GQBrw8g";
+    
 
 const getMyScores = () => {
+
     fetch(`${URL}/user-history/get/mygames`, {
         method: "GET",
         headers: new Headers({
@@ -21,16 +43,260 @@ const getMyScores = () => {
     .then((res) => res.json())
     .then((logData) => {
         setMyScores(logData);
+        console.log(logData[0]);
+    
     })
-    return (<div><p>Hello</p></div>);
-    console.log(myScores);
+   
 };
+
+const getMyPlayerScores = (gameId: any) => {
+
+    fetch(`${URL}/player-scores/seegame/${gameId}`, {
+        method: "GET",
+        headers: new Headers({
+            "Content-Type": "application/json",
+            Authorization: token,
+        }),
+    })
+    .then((res) => res.json())
+    .then((logData) => {
+        setPlayerData(logData[0]);
+        console.log(logData);
+        setViewDetails("on");
+    }) 
+    
+}
+
+useEffect(() => {
+    getMyScores();
+}, []);
+
+// useEffect(() => {
+//     getMyPlayerScores();
+// }, []);
+
+useEffect(() => {
+    detailedView();
+}, []);
+
+
+const detailedView = () => {
+    if (viewDetails === "on" && playerData !== {}){ 
+    console.log(playerData);
+    const correctPlayerScores = () => {
+       
+        if (playerData.player2 == ""){
+            return (<div>
+                <ul>
+                    <li>{`${playerData.player1}: ${playerData.score1}`}</li>
+                </ul>
+            </div>)
+        } else if (playerData.player3 == ""){
+            return (<div>
+                <ul>
+                    <li>{`${playerData.player1}: ${playerData.score1}`}</li>
+                    <li>{`${playerData.player2}: ${playerData.score2}`}</li>
+                </ul>
+            </div>)
+        } else if (playerData.player4 == ""){
+            return (<div>
+                <ul>
+                    <li>{`${playerData.player1}: ${playerData.score1}`}</li>
+                    <li>{`${playerData.player2}: ${playerData.score2}`}</li>
+                    <li>{`${playerData.player3}: ${playerData.score3}`}</li>
+                </ul>
+            </div>)
+        } else if (playerData.player5 == ""){
+            return (<div>
+                <ul>
+                    <li>{`${playerData.player1}: ${playerData.score1}`}</li>
+                    <li>{`${playerData.player2}: ${playerData.score2}`}</li>
+                    <li>{`${playerData.player3}: ${playerData.score3}`}</li>   <li>{`${playerData.player4}: ${playerData.score4}`}</li>
+                    <li>{`${playerData.player4}: ${playerData.score4}`}</li>
+                </ul>
+            </div>)
+        } else if (playerData.player6 == ""){
+            return (<div>
+                <ul>
+                    <li>{`${playerData.player1}: ${playerData.score1}`}</li>
+                    <li>{`${playerData.player2}: ${playerData.score2}`}</li>
+                    <li>{`${playerData.player3}: ${playerData.score3}`}</li>
+                    <li>{`${playerData.player4}: ${playerData.score4}`}</li>
+                    <li>{`${playerData.player5}: ${playerData.score5}`}</li>
+                </ul>
+            </div>)
+        } else if (playerData.player7 == ""){
+            return (<div>
+                <ul>
+                    <li>{`${playerData.player1}: ${playerData.score1}`}</li>
+                    <li>{`${playerData.player2}: ${playerData.score2}`}</li>
+                    <li>{`${playerData.player3}: ${playerData.score3}`}</li>
+                    <li>{`${playerData.player4}: ${playerData.score4}`}</li>
+                    <li>{`${playerData.player5}: ${playerData.score5}`}</li>
+                    <li>{`${playerData.player6}: ${playerData.score6}`}</li>
+                </ul>
+            </div>)
+        } else if (playerData.player8 == ""){
+            return (<div>
+                <ul>
+                    <li>{`${playerData.player1}: ${playerData.score1}`}</li>
+                    <li>{`${playerData.player2}: ${playerData.score2}`}</li>
+                    <li>{`${playerData.player3}: ${playerData.score3}`}</li>
+                    <li>{`${playerData.player4}: ${playerData.score4}`}</li>
+                    <li>{`${playerData.player5}: ${playerData.score5}`}</li>
+                    <li>{`${playerData.player6}: ${playerData.score6}`}</li>
+                    <li>{`${playerData.player7}: ${playerData.score7}`}</li>
+                </ul>
+            </div>)
+        } else if (playerData.player9 == ""){
+            return (<div>
+                <ul>
+                    <li>{`${playerData.player1}: ${playerData.score1}`}</li>
+                    <li>{`${playerData.player2}: ${playerData.score2}`}</li>
+                    <li>{`${playerData.player3}: ${playerData.score3}`}</li>
+                    <li>{`${playerData.player4}: ${playerData.score4}`}</li>
+                    <li>{`${playerData.player5}: ${playerData.score5}`}</li>
+                    <li>{`${playerData.player6}: ${playerData.score6}`}</li>
+                    <li>{`${playerData.player7}: ${playerData.score7}`}</li>
+                    <li>{`${playerData.player8}: ${playerData.score8}`}</li>
+                </ul>
+            </div>)
+        } else {
+            return (<div>
+                <ul>
+                    <li>{`${playerData.player1}: ${playerData.score1}`}</li>
+                    <li>{`${playerData.player2}: ${playerData.score2}`}</li>
+                    <li>{`${playerData.player3}: ${playerData.score3}`}</li>
+                    <li>{`${playerData.player4}: ${playerData.score4}`}</li>
+                    <li>{`${playerData.player5}: ${playerData.score5}`}</li>
+                    <li>{`${playerData.player6}: ${playerData.score6}`}</li>
+                    <li>{`${playerData.player7}: ${playerData.score7}`}</li>
+                    <li>{`${playerData.player8}: ${playerData.score8}`}</li>
+                    <li>{`${playerData.player9}: ${playerData.score9}`}</li>
+                </ul>
+            </div>)
+        }
+    }
+
+    
+        return (<div>
+         <h3>Player Scores</h3>
+       {correctPlayerScores()}
+            <button onClick={(e) => setViewDetails("off")}>Close Details</button>
+        </div>)
+    } else if (viewDetails === "on") {return (<div>Loading Results</div>)}
+    else {return (<></>)}
+}
+
+
+
+const displayScores = () => {
+ if (myScores !==[]){
+    return myScores.map((score: any) => {
+        const id = score.id;
+        const owner = score.owner;
+        const difficulty = score.difficulty;
+        const gameNotes = score.gameNotes;
+        const topic = score.triviaTopic;
+        const winner = score.winner;
+        const gameId = score.gameId;
+        
+   
+        const specificMonth = (score: any) => {
+           
+            const string = score.createdAt;
+            let month = string.substr(5,2);
+  
+            switch (month) {
+              case "01":
+                return "January";
+                break;
+              case "02": 
+                return "February";
+                break;
+              case "03":
+                return "March";
+                break;
+              case "04":
+                return "April";
+                break;
+              case "05":
+                return "May";
+                break;
+              case "06":
+                return "June";
+                break;
+              case "07":
+                return "July";
+                break;
+              case "08":
+                return "August";
+                break;
+              case "09":
+                return "September";
+                break;
+              case "10":
+                return "October";
+                break;
+              case "11":
+                return "November";
+                break;
+              case "12":
+                return "December";
+                break; 
+              default: 
+                 return "default month"
+                 break;
+            } 
+          }
+  
+          const specificDay = (score: any) => {
+            const string = score.createdAt;
+            let day = string.substr(8,2);
+            if (day.substr(0,1) == 0){
+              return day.substr(1,1)
+            } else {
+              return day;
+            }
+          }
+  
+          const specificYear = (score: any) => {
+            const string = score.createdAt;
+            let year = string.substr(0,4)
+            return year;
+          }
+          
+         
+           
+           
+          
+        return (
+            <div>
+                <h3>{`${winner} won this game on ${specificMonth(score)} ${specificDay(score)}, ${specificYear(score)}`}</h3>
+                <ul>
+                    <li>{`Category: ${topic}`}</li>
+                    <li>{`Difficulty: ${difficulty}`}</li>
+                    <li>{`Game Notes: ${gameNotes}`}</li>
+                </ul>
+
+                <button onClick={(e)=>{getMyPlayerScores(gameId)}}>View Player Scores</button>
+                
+            </div>
+        )
+    })
+
+ } else {
+     return (<div> No Scores to display</div>)
+ }
+}
 
   
 
     return ( <div>
         <p>My Past Games:</p>
-        {getMyScores()}
+        {/* Turn detailedView (below) into a Modal!! */}
+        {detailedView()} 
+        {displayScores()}
     </div> );
 };
  
