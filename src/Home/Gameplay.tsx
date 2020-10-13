@@ -2,8 +2,8 @@ import { S_IFSOCK } from 'constants';
 import React, {useEffect, useState} from 'react';
 
 export interface GamePlayProps {
-    setPostTriviaTopic: {},
-    setPostDifficulty: {}
+    setPostTriviaTopic: any,
+    setPostDifficulty: any
 }
 
  
