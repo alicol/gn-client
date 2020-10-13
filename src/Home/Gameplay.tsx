@@ -2,10 +2,12 @@ import { S_IFSOCK } from 'constants';
 import React, {useEffect, useState} from 'react';
 
 export interface GamePlayProps {
-    
+    setPostTriviaTopic: {},
+    setPostDifficulty: {}
 }
+
  
-const GamePlay: React.SFC<GamePlayProps> = () => {
+const GamePlay: React.SFC<GamePlayProps> = ({setPostTriviaTopic, setPostDifficulty}: GamePlayProps) => {
     const [questionResults, setQuestionResults] = useState<any>([]);
     const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
     const [numberOfQuestions, setNumberOfQuestions] = useState(50);
@@ -47,13 +49,13 @@ const GamePlay: React.SFC<GamePlayProps> = () => {
         <br />
         <label>50</label><input type="radio" name="numberqs" onChange={(e) => setNumberOfQuestions(50)} />
         <p>Difficulty</p>
-        <label>Easy</label><input type="radio" name="diff" onChange={(e) => setDifficulty("easy")} />
+        <label>Easy</label><input type="radio" name="diff" onChange={(e) => {setDifficulty("easy"); setPostDifficulty("Easy") }}/>
         <br />
-        <label>Medium</label><input type="radio" name="diff" onChange={(e) => setDifficulty("medium")} />
+        <label>Medium</label><input type="radio" name="diff" onChange={(e) => {setDifficulty("medium"); setPostDifficulty("Medium")}} />
         <br />
-        <label>Hard</label><input type="radio" name="diff" onChange={(e) => setDifficulty("hard")} />
+        <label>Hard</label><input type="radio" name="diff" onChange={(e) => {setDifficulty("hard"); setPostDifficulty("Hard")}} />
             <p>Category</p>
-        <label>Sports</label><input type="radio" name="cat" onChange={(e) => setCategory(21)} />
+        <label>Sports</label><input type="radio" name="cat" onChange={(e) => {setCategory(21); setPostTriviaTopic('Sports')}} />
         <br />
         <label>Television</label><input type="radio" name="cat" onChange={(e) => setCategory(14)} />
         <br />

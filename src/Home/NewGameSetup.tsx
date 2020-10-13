@@ -3,24 +3,7 @@ import {Redirect, Link, useHistory} from 'react-router-dom';
 import Gameplay from './Gameplay';
 
 export interface NewGameSetupProps {
-    // player1: string,
-    // player2: string,
-    // player3: string,
-    // player4: string,
-    // player5: string,
-    // player6: string,
-    // player7: string,
-    // player8: string,
-    // player9: string,
-    // score1: number,
-    // score2: number,
-    // score3: number,
-    // score4: number,
-    // score5: number,
-    // score6: number,
-    // score7: number,
-    // score8: number,
-    // score9: number,
+ 
     optionalProp?: any
 }
  
@@ -43,6 +26,8 @@ const NewGameSetup: React.FC<NewGameSetupProps> = (props) => {
     const [score7, setScore7] = useState(0);
     const [score8, setScore8] = useState(0);
     const [score9, setScore9] = useState(0);
+    const [currentWinner, setCurrentWinner] = useState("");
+    const [postTriviaTopic, setPostTriviaTopic] = useState("");
     const [gameNotes, setGameNotes] = useState("");
     const [showGameplay, setShowGameplay] = useState(false);
     const [currentGame, setCurrentGame] = useState(0);
@@ -50,9 +35,9 @@ const NewGameSetup: React.FC<NewGameSetupProps> = (props) => {
     
     // const [playerDataId, setPlayerDataId] = useState(0);
     const URL = "http://localhost:3000";
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjAyMzM1Njg4LCJleHAiOjE2MDI0MjIwODh9.43z_8nYWp33ylFhmxQMgsQ0kGaCZQYj6Rvj9GQBrw8g";
-    const [numberOfQuestions, setNumberOfQuestions] = useState(50);
-    const [difficulty, setDifficulty] = useState();
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjAyNTQ2MDc3LCJleHAiOjE2MDI2MzI0Nzd9.-Nt3QoFCS57OJXwFsQ5FKatDtiA-hqXmAnsuiWIqDFo";
+    // const [numberOfQuestions, setNumberOfQuestions] = useState(50);
+    const [postDifficulty, setPostDifficulty] = useState();
 
     const addPoint = (score: any, setScore: any) => {
         setScore(score + 1)
@@ -127,6 +112,7 @@ const NewGameSetup: React.FC<NewGameSetupProps> = (props) => {
                 max = k
             }
         }
+    setCurrentWinner(max);
        return max;
     }
 
@@ -373,30 +359,14 @@ const NewGameSetup: React.FC<NewGameSetupProps> = (props) => {
 
    const gameplayCreator = () => {
        if (showGameplay){
-        //    const addPoint = (score: any, setScore: any) => {
-        //         setScore(score + 1)
-        //    }
 
-        //    const minusPoint = (score: any, setScore: any) => {
-        //        setScore(score - 1)
-        //    }
            return( 
            <div>
                 <h1>This is your gameplay</h1>
-                <Gameplay/>
-                {/* <ul> */}
+                <Gameplay setPostTriviaTopic={setPostTriviaTopic} setPostDifficulty={setPostDifficulty} />
+              
                     {playerCreator()}
-                {/* <li><h2>{`${player1}: ${score1} points`}</h2><button onClick={() => addPoint(score1, setScore1)}>+1 Point</button><button onClick={() => minusPoint(score1, setScore1)}>-1 Point</button></li>
-           
-                <li><h2>{`${player2}: ${score2} points`}</h2><button onClick={() => addPoint(score2, setScore2)}>+1 Point</button><button onClick={() => minusPoint(score2, setScore2)}>-1 Point</button></li>
-                <li><h2>{`${player3}: ${score3} points`}</h2><button onClick={() => addPoint(score3, setScore3)}>+1 Point</button><button onClick={() => minusPoint(score3, setScore3)}>-1 Point</button></li>
-                <li><h2>{`${player4}: ${score4} points`}</h2><button onClick={() => addPoint(score4, setScore4)}>+1 Point</button><button onClick={() => minusPoint(score4, setScore4)}>-1 Point</button></li>
-                <li><h2>{`${player5}: ${score5} points`}</h2><button onClick={() => addPoint(score5, setScore5)}>+1 Point</button><button onClick={() => minusPoint(score5, setScore5)}>-1 Point</button></li>
-                <li><h2>{`${player6}: ${score6} points`}</h2><button onClick={() => addPoint(score6, setScore6)}>+1 Point</button><button onClick={() => minusPoint(score6, setScore6)}>-1 Point</button></li>
-                <li><h2>{`${player7}: ${score7} points`}</h2><button onClick={() => addPoint(score7, setScore7)}>+1 Point</button><button onClick={() => minusPoint(score7, setScore7)}>-1 Point</button></li>
-                <li><h2>{`${player8}: ${score8} points`}</h2><button onClick={() => addPoint(score8, setScore8)}>+1 Point</button><button onClick={() => minusPoint(score8, setScore8)}>-1 Point</button></li>
-                <li><h2>{`${player9}: ${score9} points`}</h2><button onClick={() => addPoint(score9, setScore9)}>+1 Point</button><button onClick={() => minusPoint(score9, setScore9)}>-1 Point</button></li> */}
-                {/* </ul> */}
+       
                 <textarea placeholder="Enter game notes here..." onChange={(e) => setGameNotes(e.target.value)} />
                 <button onClick={handlePutSubmit}>Record Final Scores</button>
             </div>
@@ -427,18 +397,6 @@ const NewGameSetup: React.FC<NewGameSetupProps> = (props) => {
                 {/* <input type="radio" onChange={(e) => setNumberOfPlayers(2)}>2</input> */}
             </form>
             {formCreator()}
-            {/* <form onSubmit={handleSubmit}>
-                <input placeholder="Name of player 1..." onChange={(e) => setPlayer1(e.target.value)}></input>
-                <input placeholder="Name of player 2..." onChange={(e) => setPlayer2(e.target.value)}></input>
-                <input placeholder="Name of player 3..." onChange={(e) => setPlayer3(e.target.value)}></input>
-                <input placeholder="Name of player 4..." onChange={(e) => setPlayer4(e.target.value)}></input>
-                <input placeholder="Name of player 5..." onChange={(e) => setPlayer5(e.target.value)}></input>
-                <input placeholder="Name of player 6..." onChange={(e) => setPlayer6(e.target.value)}></input>
-                <input placeholder="Name of player 7..." onChange={(e) => setPlayer7(e.target.value)}></input>
-                <input placeholder="Name of player 8..." onChange={(e) => setPlayer8(e.target.value)}></input>
-                <input placeholder="Name of player 9..." onChange={(e) => setPlayer9(e.target.value)}></input>
-                <button type="submit">Start New Game</button>
-            </form> */}
             </div>
            )
        }
@@ -539,10 +497,10 @@ const NewGameSetup: React.FC<NewGameSetupProps> = (props) => {
             method: 'POST',
             body: JSON.stringify({
                 userHistory: {
-                    datePlayed: "june 10th",
-                    triviaTopic: "animals",
-                    difficulty: "easy",
-                    winner: "Ali",
+                 
+                    triviaTopic: postTriviaTopic,
+                    difficulty: postDifficulty,
+                    winner: currentWinner,
                     gameNotes: gameNotes,
                     gameId: currentGame,
                     

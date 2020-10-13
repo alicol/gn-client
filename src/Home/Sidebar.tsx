@@ -7,10 +7,13 @@ import Gameplay from './Gameplay';
 
 
 
-// export interface SidebarProps {
-//     redirectGameplay: boolean,
-//     setRedirectGameplay: any
-// }
+ export interface SidebarProps {
+    //  redirectGameplay: boolean,
+    //  setRedirectGameplay: any,
+    //  setPostTriviaTopic: any,
+    //  postTriviaTopic: string
+ }
+
  
 const Sidebar = () => {
 

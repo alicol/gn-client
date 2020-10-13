@@ -28,7 +28,7 @@ const ViewScores: React.FC<ViewScoresProps> = () => {
     const [viewDetails, setViewDetails] = useState<any>("off");
     const [playerData, setPlayerData] = useState<any>({});
     const URL = "http://localhost:3000";
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjAyMzM1Njg4LCJleHAiOjE2MDI0MjIwODh9.43z_8nYWp33ylFhmxQMgsQ0kGaCZQYj6Rvj9GQBrw8g";
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjAyNTQ2MDc3LCJleHAiOjE2MDI2MzI0Nzd9.-Nt3QoFCS57OJXwFsQ5FKatDtiA-hqXmAnsuiWIqDFo";
     
 
 const getMyScores = () => {
