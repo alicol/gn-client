@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 // import { tokenToString } from 'typescript';
+import './sidebar.css'
+import './NewGameSetup.css'
 
 export interface ViewScoresProps {
 
@@ -26,7 +28,6 @@ const getMyScores = () => {
     console.log(myScores);
 };
 
-  
 
     return ( <div>
         <p>My Past Games:</p>

@@ -23,17 +23,22 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
 
         fetch(url, requestOptions)
             .then(response => response.json())
-            .then((json: LoginResponse) => {
-                console.log(json.sessionToken)
+            .then((data: LoginResponse) => {
+                //console.log(data.sessionToken)
+                localStorage.setItem("permission", data.permission)
             })
-    }
+        }         
+    
     render() {
         return (
             <div>
                 <input onChange={(e) => this.setState({ username: e.target.value })} type="text" name="username" placeholder="Username" id="username" />
                 <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="Password" />
                 <button onClick={this.handleClick}>Login</button>
+
             </div>
+
+            
         );
     }
 }
@@ -53,6 +58,7 @@ export interface LoginResponse {
     message: string;
     userName: string;
     sessionToken: string;
+    permission: string;
 
     
 } 

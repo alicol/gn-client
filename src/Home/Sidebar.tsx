@@ -4,16 +4,16 @@ import Home from './Home';
 import NewGameSetup from './NewGameSetup';
 import ViewScores from './ViewScores';
 import Gameplay from './Gameplay';
-
+import './sidebar.css'
 
 
 // export interface SidebarProps {
 //     redirectGameplay: boolean,
 //     setRedirectGameplay: any
 // }
- 
-const Sidebar = () => {
 
+
+const Sidebar = () => {
 
     return ( 
         <div>
@@ -21,8 +21,9 @@ const Sidebar = () => {
            
         <div>
            {/* <li><Link to="/">Home</Link></li>  */}
-           <button><Link to="/NewGameSetup">Start New Game</Link></button>
-           <button><Link to="/ViewScores">View Past Games</Link></button>
+           <button className="startButton startButtonCircle"><Link to="/NewGameSetup" className="link">Start New Game</Link></button>
+           
+           <button className="startButton startButtonCircle"><Link to="/ViewScores" className="link">View Past Games</Link></button>
         </div>
         <div className="sidebar-route">
             <Switch>
