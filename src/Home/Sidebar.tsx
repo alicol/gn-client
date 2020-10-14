@@ -3,14 +3,17 @@ import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import Home from './Home';
 import NewGameSetup from './NewGameSetup';
 import ViewScores from './ViewScores';
-import Gameplay from './Gameplay';
+import GamePlay from './Gameplay';
 
 
 
-// export interface SidebarProps {
-//     redirectGameplay: boolean,
-//     setRedirectGameplay: any
-// }
+ export interface SidebarProps {
+    //  redirectGameplay: boolean,
+    //  setRedirectGameplay: any,
+    //  setPostTriviaTopic: any,
+    //  postTriviaTopic: string
+ }
+
  
 const Sidebar = () => {
 
@@ -29,7 +32,7 @@ const Sidebar = () => {
                 {/* <Route exact path='/'><Home /></Route> */}
                 <Route exact path='/NewGameSetup'><NewGameSetup /></Route>
                 <Route exact path='/ViewScores'><ViewScores /></Route>
-                <Route exact path='/Gameplay'><Gameplay /></Route>
+                {/* <Route exact path='/Gameplay'><GamePlay /></Route> */}
             </Switch>
         </div>
        
