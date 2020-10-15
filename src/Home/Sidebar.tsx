@@ -17,6 +17,7 @@ import GamePlay from './Gameplay';
  
 const Sidebar = () => {
 
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNjAyNzIyODcyLCJleHAiOjE2MDI4MDkyNzJ9.u2HkM1xSSQDY4YbvLB3OuqAMe5wJB4f1ldPLFtIMqMA";
 
     return ( 
         <div>
@@ -30,8 +31,8 @@ const Sidebar = () => {
         <div className="sidebar-route">
             <Switch>
                 {/* <Route exact path='/'><Home /></Route> */}
-                <Route exact path='/NewGameSetup'><NewGameSetup /></Route>
-                <Route exact path='/ViewScores'><ViewScores /></Route>
+                <Route exact path='/NewGameSetup'><NewGameSetup token={token}/></Route>
+                <Route exact path='/ViewScores'><ViewScores token={token}/></Route>
                 {/* <Route exact path='/Gameplay'><GamePlay /></Route> */}
             </Switch>
         </div>
