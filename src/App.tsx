@@ -1,9 +1,10 @@
-import React from 'react';
-import Home from './Home/Home'
+import React, {useEffect, useState} from 'react';
+//import Home from './Home/Home'
 import './App.css';
+import Auth from './Auth/Auth';
+import Sidebar from './Home/Sidebar';
 import {createMuiTheme, MuiThemeProvider, responsiveFontSizes} from '@material-ui/core/styles'
 import lime from '@material-ui/core/colors/lime'
-
 
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
@@ -35,12 +36,35 @@ let theme = createMuiTheme({
 
 function App() {
 
+  const [sessionToken, setSessionToken] = useState('');
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token != null) {
+      setSessionToken(token);
+    }
+  }, [])
+
+//LOG IN
+const updateToken = (newToken:string) => {
+  localStorage.setItem('token', newToken);
+  setSessionToken(newToken);
+}
+
+//LOG OUT
+const clearToken = () => {
+  localStorage.clear();
+  setSessionToken('');
+}
+
+const protectedViews = () => {return (sessionToken === localStorage.getItem('token')) ? <Sidebar token={sessionToken} updateToken={updateToken} clearToken={clearToken} /> : <Auth updateToken={updateToken} token={sessionToken} />}
+
 
 
   return (
     <MuiThemeProvider theme={theme}>
     <div className="App">
-      <Home />
+      {protectedViews()}
     </div>
     </MuiThemeProvider>
   );

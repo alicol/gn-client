@@ -1,6 +1,6 @@
 import React from 'react';
 export interface UserLoginProps {
-
+updateToken: any
 
 }
 
@@ -24,7 +24,7 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
         fetch(url, requestOptions)
             .then(response => response.json())
             .then((data: LoginResponse) => {
-                //console.log(data.sessionToken)
+                console.log(data.sessionToken)
                 localStorage.setItem("permission", data.permission)
             })
         }         

@@ -7,21 +7,29 @@ import {
 } from 'react-router-dom';
 import UserLogin from './UserLogin';
 import UserSignup from './UserSignup';
+import './auth.css';
+import { Button } from '@material-ui/core';
+import lime from '@material-ui/core/colors';
+
 export interface AuthProps {
+    token: string,
+    updateToken: any
 }
-const Auth: React.SFC<AuthProps> = () => {
+const Auth: React.SFC<AuthProps> = (props: AuthProps) => {
     return (
         <div className="NavLinks">
-            <h6>The String Section Presents</h6>
-            <h1>Triva Night!</h1>
+            <h3>∫ The String Section ∫</h3>
+            <p className="presents">PROUDLY PRESENTS</p>
+            <h1>Trivia Night</h1>
             <Router>
                 <div>
-                    <button><Link to="/UserLogin">Login!</Link></button>
-                    <button><Link to="/UserSignup">Sign Up!</Link></button>
+                    <Button variant="contained" color="primary"><Link to="/UserSignup">Sign Up!</Link></Button>
+                    <Button variant="contained" color="secondary"><Link to="/UserLogin">Login!</Link></Button>
+                    
                     <hr />
                     <Switch>
-                        <Route exact path='/UserLogin' component={UserLogin} />
-                        <Route exact path='/UserSignup' component={UserSignup}/>
+                        <Route exact path='/UserLogin'><UserLogin updateToken={props.updateToken}/></Route> 
+                        <Route exact path='/UserSignup'><UserSignup updateToken={props.updateToken}/></Route>
                     </Switch>
                 </div>
             </Router>

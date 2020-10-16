@@ -1,19 +1,20 @@
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
-import Home from './Home';
+//import Home from './Home';
 import NewGameSetup from './NewGameSetup';
 import ViewScores from './ViewScores';
 import Gameplay from './Gameplay';
 import './sidebar.css'
 
 
-// export interface SidebarProps {
-//     redirectGameplay: boolean,
-//     setRedirectGameplay: any
-// }
+export interface SidebarProps {
+    token: any,
+    clearToken: any,
+    updateToken: any
+}
 
 
-const Sidebar = () => {
+const Sidebar = (props:SidebarProps) => {
 
     return ( 
         <div>

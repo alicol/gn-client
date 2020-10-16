@@ -8,8 +8,9 @@ body {
 h1 {
     font-family: 'Permanent Marker', 'Arial';
     color: white;
-    font-size: 125pt;
+    font-size: 140pt;
     letter-spacing: .05em;
+    margin-top: 0;
 }
 
 .startButton {
