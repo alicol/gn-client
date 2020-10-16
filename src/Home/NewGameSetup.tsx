@@ -4,7 +4,11 @@ import { TypeVariable } from 'typescript';
 import Gameplay from './Gameplay';
 
 export interface NewGameSetupProps {
-    
+    token: string,
+    postTriviaTopic: string,
+    postDifficulty: string,
+    setPostTriviaTopic: any,
+    setPostDifficulty: any
 }
  
 export interface NewGameSetupState {
@@ -29,30 +33,35 @@ export interface NewGameSetupState {
     score9: number,
     numberOfPlayers: number,
     currentGame: number,
-    gameNotes: string | null
+    gameNotes: string | null,
+    currentWinner: any | null,
+  
 }
  
 class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState> {
     constructor(props: NewGameSetupProps) {
         super(props);
-        this.state = { showGameplay: false, player1: null, player2: null, player3: null, player4: null, player5: null, player6: null, player7: null, player8: null, player9: null, score1: 0, score2: 0, score3: 0, score4: 0, score5: 0, score6: 0, score7: 0, score8: 0, score9: 0, numberOfPlayers: 1, currentGame: 0, gameNotes: null};
+        this.state = { showGameplay: false, player1: null, player2: null, player3: null, player4: null, player5: null, player6: null, player7: null, player8: null, player9: null, score1: 0, score2: 0, score3: 0, score4: 0, score5: 0, score6: 0, score7: 0, score8: 0, score9: 0, numberOfPlayers: 1, currentGame: 0, gameNotes: null, currentWinner: null};
     }
     URL = "http://localhost:3000";
-    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjAyNjM2OTE1LCJleHAiOjE2MDI3MjMzMTV9.6G0-QwC0DWzsAtI6STDpOuvqgVB37XWgO4JFK2yhzAk";
+    token = this.props.token;
 
     // addPoint = (score: any) => {
     //     this.setState({})
     // }
 
     //function that either pops up with option to select & enter # of players OR shows players & points functionality
+    componentDidMount = () => {
+        this.displayWinner();
+    }
     gameplayCreator = () => {
         if (this.state.showGameplay){
  
             return( 
             <div>
                  <h1>This is your gameplay</h1>
-                 <Gameplay />
-               
+                 <Gameplay setPostDifficulty={this.props.setPostDifficulty} setPostTriviaTopic={this.props.setPostTriviaTopic} />
+                   
                      {this.playerCreator()}
         
                  <textarea placeholder="Enter game notes here..." onChange={(e) => this.setState({gameNotes: e.target.value})} />
@@ -308,9 +317,9 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
             body: JSON.stringify({
                 userHistory: {
                  
-                    triviaTopic: "math",
-                    difficulty: "medium",
-                    winner: "Linda",
+                    triviaTopic: this.props.postTriviaTopic,
+                    difficulty: this.props.postDifficulty,
+                    winner: "Still working on this function",
                     gameNotes: this.state.gameNotes,
                     gameId: this.state.currentGame,
                     
@@ -449,8 +458,80 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
        }
    }
 
+
+
+displayWinner = () => {
+    let scoreboard = {
+        p1: this.state.score1,
+        p2: this.state.score2,
+        p3: this.state.score3, 
+        p4: this.state.score4,
+        p5: this.state.score5,
+        p6: this.state.score6,
+        p7: this.state.score7,
+        p8: this.state.score8,
+        p9: this.state.score9
+        
+    }
+    let winnerKey = this.findWinner(scoreboard);
+    if (winnerKey == "p1" && this.state.player1 !=="" && this.state.score1 !== 0){
+        return(
+            <div><h5>{`Currently in head place is ${this.state.player1} with ${this.state.score1} points!`}</h5></div>
+        )
+    } else if (winnerKey == "p2" && this.state.player2 !=="" && this.state.score2 !== 0){
+        return(
+            <div><h5>{`Currently in head place is ${this.state.player2} with ${this.state.score2} points!`}</h5></div>
+        )
+    } else if (winnerKey == "p3" && this.state.player3 !==""  && this.state.score3 !== 0){
+        return(
+            <div><h5>{`Currently in head place is ${this.state.player3} with ${this.state.score3} points!`}</h5></div>
+        )
+    } else if (winnerKey == "p4" && this.state.player4 !==""  && this.state.score4 !== 0){
+        return(
+            <div><h5>{`Currently in head place is ${this.state.player4} with ${this.state.score4} points!`}</h5></div>
+        )
+    } else if (winnerKey == "p5" && this.state.player5 !==""  && this.state.score5 !== 0){
+        return(
+            <div><h5>{`Currently in head place is ${this.state.player5} with ${this.state.score5} points!`}</h5></div>
+        )
+    } else if (winnerKey == "p6" && this.state.player6 !==""  && this.state.score6 !== 0){
+        return(
+            <div><h5>{`Currently in head place is ${this.state.player6} with ${this.state.score6} points!`}</h5></div>
+        )
+    } else if (winnerKey == "p7" && this.state.player7 !==""  && this.state.score7 !== 0){
+        return(
+            <div><h5>{`Currently in head place is ${this.state.player7} with ${this.state.score7} points!`}</h5></div>
+        )
+    } else if (winnerKey == "p8" && this.state.player8 !==""  && this.state.score8 !== 0){
+        return(
+            <div><h5>{`Currently in head place is ${this.state.player8} with ${this.state.score8} points!`}</h5></div>
+        )
+    } else if (winnerKey == "p9" && this.state.player9 !==""  && this.state.score9 !== 0){
+        return(
+            <div><h5>{`Currently in head place is ${this.state.player9} with ${this.state.score9} points!`}</h5></div>
+        )
+    } 
+
+
+}
+
+//function that computes the highest score out of the "scoreboard" variable
+findWinner = (obj: any) => {
+   var keys = Object.keys(obj);
+    var max = keys[0];
+    for (var i=1, n=keys.length; i < n; ++i){
+        var k=keys[i];
+        if(obj[k] > obj[max]){
+            max = k
+        }
+    }
+  
+   return max;
+}
+
     render() { 
         return ( <div>
+             {this.displayWinner()}
             {this.gameplayCreator()}
             
         </div> );

@@ -16,6 +16,14 @@ import GamePlay from './Gameplay';
 
  
 const Sidebar = () => {
+    const [postTriviaTopic, setPostTriviaTopic] = useState("");
+    const [postDifficulty, setPostDifficulty] = useState("Medium");
+
+
+  
+
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTYwMjgxMTAwOCwiZXhwIjoxNjAyODk3NDA4fQ.wnsTd8AJOl6Xgc55D07jfNS6p0Ax_vDhP1hQotXtP_k";
+
 
 
     return ( 
@@ -30,8 +38,8 @@ const Sidebar = () => {
         <div className="sidebar-route">
             <Switch>
                 {/* <Route exact path='/'><Home /></Route> */}
-                <Route exact path='/NewGameSetup'><NewGameSetup /></Route>
-                <Route exact path='/ViewScores'><ViewScores /></Route>
+                <Route exact path='/NewGameSetup'><NewGameSetup token={token} postDifficulty={postDifficulty} postTriviaTopic={postTriviaTopic} setPostDifficulty={setPostDifficulty} setPostTriviaTopic={setPostTriviaTopic} /></Route>
+                <Route exact path='/ViewScores'><ViewScores token={token}/></Route>
                 {/* <Route exact path='/Gameplay'><GamePlay /></Route> */}
             </Switch>
         </div>
@@ -41,3 +49,4 @@ const Sidebar = () => {
 }
  
 export default Sidebar;
+

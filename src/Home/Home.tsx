@@ -3,6 +3,7 @@ import * as React from 'react';
 // import Sidebar from './Sidebar';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Auth from '../Auth/Auth';
+import Sidebar from '../Home/Sidebar';
 
 
 
@@ -15,8 +16,8 @@ const Home: React.SFC<HomeProps> = () => {
 
     return (<div>
         <Router>
-            {/* <Sidebar /> */}
-            <Auth />
+            <Sidebar />
+            {/* <Auth /> */}
         </Router>
     </div>);
 

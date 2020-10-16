@@ -1,9 +1,13 @@
+import { stringify } from 'querystring';
 // import { S_IFSOCK } from 'constants';
 // import { readFileSync } from 'fs';
 import React, {useEffect, useState} from 'react';
 
 export interface GameplayProps {
-    
+    // postDifficulty: string,
+    // postTriviaTopic: string,
+    setPostTriviaTopic: any,
+    setPostDifficulty: any
 }
  
 export interface GameplayState {
@@ -13,7 +17,9 @@ export interface GameplayState {
     questionEditor: string,
     category: number,
     difficulty: string, 
-    winner: any
+    winner: any,
+
+
 }
  
 class Gameplay extends React.Component<GameplayProps, GameplayState> {
@@ -91,31 +97,31 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         <br />
         <label>50</label><input type="radio" name="numberqs" onChange={(e) => this.setState({numberOfQuestions: 50})} />
         <p>Difficulty</p>
-        <label>Easy</label><input type="radio" name="diff" onChange={(e) => this.setState({difficulty: "easy"})}/>
+        <label>Easy</label><input type="radio" name="diff" onChange={(e) => {this.setState({difficulty: "easy"}); this.props.setPostDifficulty("Easy")}}/>
         <br />
-        <label>Medium</label><input type="radio" name="diff" onChange={(e) => this.setState({difficulty: "medium"})} />
+        <label>Medium</label><input type="radio" name="diff" onChange={(e) => {this.setState({difficulty: "medium"}); this.props.setPostDifficulty("Medium")}} />
         <br />
-        <label>Hard</label><input type="radio" name="diff" onChange={(e) => this.setState({difficulty: "hard"})} />
+        <label>Hard</label><input type="radio" name="diff" onChange={(e) => {this.setState({difficulty: "hard"}); this.props.setPostDifficulty("Hard")}} />
             <p>Category</p>
-        <label>Sports</label><input type="radio" name="cat" onChange={(e) => this.setState({category: 21})} />
+        <label>Sports</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 21}); this.props.setPostTriviaTopic("Sports")}} />
         <br />
-        <label>Television</label><input type="radio" name="cat" onChange={(e) => this.setState({category: 14})} />
+        <label>Television</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 14}); this.props.setPostTriviaTopic("Television")}} />
         <br />
-        <label>Politics</label><input type="radio" name="cat" onChange={(e) => this.setState({category: 24})} />
+        <label>Politics</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 24}); this.props.setPostTriviaTopic("Politics")}} />
         <br />
-        <label>History</label><input type="radio" name="cat" onChange={(e) => this.setState({category: 23})} />
+        <label>History</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 23}); this.props.setPostTriviaTopic("History")}} />
         <br />
-        <label>Movies</label><input type="radio" name="cat" onChange={(e) => this.setState({category: 11})} />
+        <label>Movies</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 11}); this.props.setPostTriviaTopic("Movies")}} />
         <br />
-        <label>Geography</label><input type="radio" name="cat" onChange={(e) => this.setState({category: 22})} />
+        <label>Geography</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 22}); this.props.setPostTriviaTopic("Geography")}} />
         <br />
-        <label>Celebrities</label><input type="radio" name="cat" onChange={(e) => this.setState({category: 26})} />
+        <label>Celebrities</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 26}); this.props.setPostTriviaTopic("Celebrities")}} />
         <br />
-        <label>Music</label><input type="radio" name="cat" onChange={(e) => this.setState({category: 12})} />
+        <label>Music</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 12}); this.props.setPostTriviaTopic("Music")}} />
         <br />
-        <label>Natural Science</label><input type="radio" name="cat" onChange={(e) => this.setState({category: 17})} />
+        <label>Natural Science</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 17}); this.props.setPostTriviaTopic("Natural Science")}} />
         <br />
-        <label>Animals</label><input type="radio" name="cat" onChange={(e) => this.setState({category: 27})} />
+        <label>Animals</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 27}); this.props.setPostTriviaTopic("Animals")}} />
         
         </form>
         <button onClick={(e) => this.fetchQuestions()}>Apply Changes</button>
