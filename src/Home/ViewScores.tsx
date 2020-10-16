@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 // import { tokenToString } from 'typescript';
+import './sidebar.css'
+import './NewGameSetup.css'
 
 
 
@@ -596,14 +598,6 @@ export default ViewScores;
 //  }
 // }
 
-  
 
-//     return ( <div>
-//         <p>My Past Games:</p>
-//         {/* Turn detailedView (below) into a Modal!! */}
-//         {detailedView()} 
-//         {displayScores()}
-//     </div> );
-// };
- 
+
 // export default ViewScores;

@@ -1,14 +1,15 @@
 
 import * as React from 'react';
-// import Sidebar from './Sidebar';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Auth from '../Auth/Auth';
-import Sidebar from '../Home/Sidebar';
+import {BrowserRouter as Router} from 'react-router-dom';
+//import Auth from '../Auth/Auth';
+//import Sidebar from './Sidebar';
+
 
 
 
 export interface HomeProps {
-
+    token: string,
+    updateToken: any
 }
 
 const Home: React.SFC<HomeProps> = () => {
@@ -16,10 +17,10 @@ const Home: React.SFC<HomeProps> = () => {
 
     return (<div>
         <Router>
-            <Sidebar />
             {/* <Auth /> */}
+        {/* <Sidebar /> */}
         </Router>
-    </div>);
+        </div> );
 
 }
 

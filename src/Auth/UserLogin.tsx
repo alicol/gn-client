@@ -1,6 +1,6 @@
 import React from 'react';
 export interface UserLoginProps {
-
+updateToken: any
 
 }
 
@@ -25,26 +25,21 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
         fetch(url, requestOptions)
             .then(response => response.json())
             .then((data: LoginResponse) => {
+                console.log(data.sessionToken)
+                localStorage.setItem("permission", data.permission)
+            })
+        }         
+    
+
                 // set the token
                 //store it in local storage
                 // store permission in local storage
 
-                localStorage.setItem("permission", data.permission)
-            })
+
         // .then((json: LoginResponse) => {
         //     console.log(json.sessionToken)
         // })
 
-
-    }
-        displayMoreInfo() {
-
-        if (localStorage.getItem("permission") === 'basic') {
-            return <div>I'm Basic</div>
-        } else{
-            return <div>I'm  Admin</div>
-        }
-    }
     render() {
         return (
             <div>
@@ -54,8 +49,9 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
                 <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="Password" />
                 <button onClick={this.handleClick}>Login</button>
 
-                {this.displayMoreInfo()}
             </div>
+
+            
         );
     }
 }

@@ -1,30 +1,23 @@
 import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
-import Home from './Home';
+//import Home from './Home';
 import NewGameSetup from './NewGameSetup';
 import ViewScores from './ViewScores';
-import GamePlay from './Gameplay';
+import Gameplay from './Gameplay';
+import './sidebar.css'
 
 
 
- export interface SidebarProps {
-    //  redirectGameplay: boolean,
-    //  setRedirectGameplay: any,
-    //  setPostTriviaTopic: any,
-    //  postTriviaTopic: string
- }
+export interface SidebarProps {
+    token: any,
+    clearToken: any,
+    updateToken: any
+}
 
- 
-const Sidebar = () => {
+const Sidebar = (props:SidebarProps) => {
+  
     const [postTriviaTopic, setPostTriviaTopic] = useState("");
     const [postDifficulty, setPostDifficulty] = useState("Medium");
-
-
-  
-
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTYwMjgxMTAwOCwiZXhwIjoxNjAyODk3NDA4fQ.wnsTd8AJOl6Xgc55D07jfNS6p0Ax_vDhP1hQotXtP_k";
-
-
 
     return ( 
         <div>
@@ -32,8 +25,9 @@ const Sidebar = () => {
            
         <div>
            {/* <li><Link to="/">Home</Link></li>  */}
-           <button><Link to="/NewGameSetup">Start New Game</Link></button>
-           <button><Link to="/ViewScores">View Past Games</Link></button>
+           <button className="startButton startButtonCircle"><Link to="/NewGameSetup" className="link">Start New Game</Link></button>
+           
+           <button className="startButton startButtonCircle"><Link to="/ViewScores" className="link">View Past Games</Link></button>
         </div>
         <div className="sidebar-route">
             <Switch>
