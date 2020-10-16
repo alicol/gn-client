@@ -22,8 +22,9 @@ const Sidebar = (props:SidebarProps) => {
     return ( 
         <div>
             <h1>Trivia Night</h1>
-           
+      <Router>    
         <div>
+            
            {/* <li><Link to="/">Home</Link></li>  */}
            <button className="startButton startButtonCircle"><Link to="/NewGameSetup" className="link">Start New Game</Link></button>
            
@@ -32,13 +33,15 @@ const Sidebar = (props:SidebarProps) => {
         <div className="sidebar-route">
             <Switch>
                 {/* <Route exact path='/'><Home /></Route> */}
-                <Route exact path='/NewGameSetup'><NewGameSetup token={token} postDifficulty={postDifficulty} postTriviaTopic={postTriviaTopic} setPostDifficulty={setPostDifficulty} setPostTriviaTopic={setPostTriviaTopic} /></Route>
-                <Route exact path='/ViewScores'><ViewScores token={token}/></Route>
+                <Route exact path='/NewGameSetup'><NewGameSetup token={props.token} postDifficulty={postDifficulty} postTriviaTopic={postTriviaTopic} setPostDifficulty={setPostDifficulty} setPostTriviaTopic={setPostTriviaTopic} /></Route>
+                <Route exact path='/ViewScores'><ViewScores token={props.token}/></Route>
                 {/* <Route exact path='/Gameplay'><GamePlay /></Route> */}
             </Switch>
+        
         </div>
-       
-        </div>
+        </Router> 
+       </div>
+        
      );
 }
  
