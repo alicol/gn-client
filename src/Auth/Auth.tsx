@@ -7,14 +7,17 @@ import {
 } from 'react-router-dom';
 import UserLogin from './UserLogin';
 import UserSignup from './UserSignup';
+
 import './auth.css';
 import { Button } from '@material-ui/core';
 import lime from '@material-ui/core/colors';
+
 
 export interface AuthProps {
     token: string,
     updateToken: any
 }
+
 const Auth: React.SFC<AuthProps> = (props: AuthProps) => {
     return (
         <div className="NavLinks">
@@ -30,6 +33,7 @@ const Auth: React.SFC<AuthProps> = (props: AuthProps) => {
                     <Switch>
                         <Route exact path='/UserLogin'><UserLogin updateToken={props.updateToken}/></Route> 
                         <Route exact path='/UserSignup'><UserSignup updateToken={props.updateToken}/></Route>
+
                     </Switch>
                 </div>
             </Router>

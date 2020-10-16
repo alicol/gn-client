@@ -29,6 +29,8 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
     }
     render() {
         return (<div>
+            
+            <h1>Welcome!</h1>
             <input onChange={(e) => this.setState({ username: e.target.value })} type="text" name="username" placeholder="Username" id="username" />
             <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="Password" />
             <button onClick={this.handleClick}>Sign Up</button>

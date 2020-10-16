@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 //import Home from './Home/Home'
-import './App.css';
-import Auth from './Auth/Auth';
 import Sidebar from './Home/Sidebar';
+import Auth from './Auth/Auth';
+import Router from 'react-router-dom';
+import './App.css';
+
 import {createMuiTheme, MuiThemeProvider, responsiveFontSizes} from '@material-ui/core/styles'
 import lime from '@material-ui/core/colors/lime'
 
@@ -64,7 +66,9 @@ const protectedViews = () => {return (sessionToken === localStorage.getItem('tok
   return (
     <MuiThemeProvider theme={theme}>
     <div className="App">
+
       {protectedViews()}
+
     </div>
     </MuiThemeProvider>
   );

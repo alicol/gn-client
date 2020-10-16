@@ -7,14 +7,17 @@ import Gameplay from './Gameplay';
 import './sidebar.css'
 
 
+
 export interface SidebarProps {
     token: any,
     clearToken: any,
     updateToken: any
 }
 
-
 const Sidebar = (props:SidebarProps) => {
+  
+    const [postTriviaTopic, setPostTriviaTopic] = useState("");
+    const [postDifficulty, setPostDifficulty] = useState("Medium");
 
     return ( 
         <div>
@@ -29,9 +32,9 @@ const Sidebar = (props:SidebarProps) => {
         <div className="sidebar-route">
             <Switch>
                 {/* <Route exact path='/'><Home /></Route> */}
-                <Route exact path='/NewGameSetup'><NewGameSetup /></Route>
-                <Route exact path='/ViewScores'><ViewScores /></Route>
-                <Route exact path='/Gameplay'><Gameplay /></Route>
+                <Route exact path='/NewGameSetup'><NewGameSetup token={token} postDifficulty={postDifficulty} postTriviaTopic={postTriviaTopic} setPostDifficulty={setPostDifficulty} setPostTriviaTopic={setPostTriviaTopic} /></Route>
+                <Route exact path='/ViewScores'><ViewScores token={token}/></Route>
+                {/* <Route exact path='/Gameplay'><GamePlay /></Route> */}
             </Switch>
         </div>
        
@@ -40,3 +43,4 @@ const Sidebar = (props:SidebarProps) => {
 }
  
 export default Sidebar;
+

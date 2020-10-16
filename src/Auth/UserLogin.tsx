@@ -6,7 +6,8 @@ updateToken: any
 
 export interface UserLoginState {
     username: string,
-    password: string
+    password: string,
+    // token: string
 }
 
 class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
@@ -29,9 +30,21 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
             })
         }         
     
+
+                // set the token
+                //store it in local storage
+                // store permission in local storage
+
+
+        // .then((json: LoginResponse) => {
+        //     console.log(json.sessionToken)
+        // })
+
     render() {
         return (
             <div>
+
+                <h1>Welcome Back!</h1>
                 <input onChange={(e) => this.setState({ username: e.target.value })} type="text" name="username" placeholder="Username" id="username" />
                 <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="Password" />
                 <button onClick={this.handleClick}>Login</button>
@@ -60,11 +73,8 @@ export interface LoginResponse {
     sessionToken: string;
     permission: string;
 
-    
-} 
- 
-// const UserLogin: React.SFC<UserLoginProps> = () => {
-//     return ( <div>UserLogin</div> );
 
-// }
+}
+
 export default UserLogin;
+
