@@ -1,4 +1,6 @@
 import * as React from 'react';
+import './auth.css'
+
 export interface UserSignupProps {
 updateToken: any
 }
@@ -9,10 +11,11 @@ export interface UserSignupState {
 }
 
 class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
+
     constructor(props: UserSignupProps) {
         super(props);
         this.state = { username: "", password: "" };
-    }
+    } 
 
     handleClick = () => {
         const url = 'http://localhost:3000/user/signup'
@@ -28,13 +31,19 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
             })
     }
     render() {
-        return (<div>
-            
-            <h1>Welcome!</h1>
-            <input onChange={(e) => this.setState({ username: e.target.value })} type="text" name="username" placeholder="Username" id="username" />
-            <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="Password" />
-            <button onClick={this.handleClick}>Sign Up</button>
-        </div>);
+        return (
+            <div>            
+                <form>
+                <h4>Welcome!</h4>
+                <br />
+                <input onChange={(e) => this.setState({ username: e.target.value })} type="text" name="username" placeholder="EMAIL ADDRESS" id="username" />
+                <br />
+                <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="PASSWORD" />
+                <br />
+                <button onClick={this.handleClick} className="submitSignUp">SIGN UP!</button>
+                </form>
+            </div>
+        );
     }
 }
 
