@@ -23,19 +23,18 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
         headers.append("Content-Type", "application/json")
         const body: SignUpRequest = { user: { userName: this.state.username, password: this.state.password } }
         const requestOptions = { method: "POST", headers: headers, body: JSON.stringify(body) }
-
         fetch(url, requestOptions)
             .then(response => response.json())
             .then((data: SignUpResponse) => {
                 console.log(data.sessionToken)
                 this.props.updateToken(data.sessionToken)
-                localStorage.setItem("permission", data.permission)
+                localStorage.setItem("permission", "basic")
             })
     }
     render() {
         return (
             <div>            
-                <form>
+                {/* <form> */}
                 <h4>Welcome!</h4>
                 <br />
                 <input onChange={(e) => this.setState({ username: e.target.value })} type="text" name="username" placeholder="EMAIL ADDRESS" id="username" />
@@ -43,7 +42,7 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
                 <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="PASSWORD" />
                 <br />
                 <button onClick={this.handleClick} className="submitSignUp">SIGN UP!</button>
-                </form>
+                {/* </form> */}
             </div>
         );
     }
