@@ -29,6 +29,9 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
                 this.props.updateToken(data.sessionToken)
                 localStorage.setItem("permission", data.permission)
             })
+            .catch(err => {
+                console.log(err, "login not working")
+            })
         }         
     
 
@@ -44,7 +47,7 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
     render() {
         return (
             <div>
-                <form>
+                {/* <form> */}
                 <h4>Welcome Back!</h4>
                 <br />
                 <input onChange={(e) => this.setState({ username: e.target.value })} type="text" name="username" placeholder="EMAIL ADDRESS" id="username" />
@@ -52,7 +55,7 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
                 <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="PASSWORD" />
                 <br />
                 <button onClick={this.handleClick} className="submitLogIn">LOG IN!</button>
-                </form>
+                {/* </form> */}
             </div>            
         );
     }
