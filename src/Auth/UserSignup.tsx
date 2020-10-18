@@ -26,8 +26,10 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
 
         fetch(url, requestOptions)
             .then(response => response.json())
-            .then((json: SignUpResponse) => {
-                console.log(json.sessionToken)
+            .then((data: SignUpResponse) => {
+                console.log(data.sessionToken)
+                this.props.updateToken(data.sessionToken)
+                localStorage.setItem("permission", data.permission)
             })
     }
     render() {
@@ -62,4 +64,5 @@ export interface SignUpResponse {
     user: string;
     message: string;
     sessionToken: string;
+    permission: string;
 }
