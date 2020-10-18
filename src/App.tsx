@@ -59,7 +59,7 @@ const clearToken = () => {
   setSessionToken('');
 }
 
-const protectedViews = () => {return (sessionToken === localStorage.getItem('token')) ? <Sidebar token={sessionToken} updateToken={updateToken} clearToken={clearToken} /> : <Auth updateToken={updateToken} token={sessionToken} />}
+// const protectedViews = () => {return (sessionToken === localStorage.getItem('token')) ? <Sidebar token={sessionToken} updateToken={updateToken} clearToken={clearToken} /> : <Auth updateToken={updateToken} token={sessionToken} />}
 
 
 
@@ -67,7 +67,9 @@ const protectedViews = () => {return (sessionToken === localStorage.getItem('tok
     <MuiThemeProvider theme={theme}>
     <div className="App">
 
-      {protectedViews()}
+      
+    <Sidebar updateToken={updateToken} token={sessionToken} clearToken={clearToken}/>
+      {/* {protectedViews()} */}
 
     </div>
     </MuiThemeProvider>
