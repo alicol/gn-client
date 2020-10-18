@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 // import { tokenToString } from 'typescript';
 import './sidebar.css'
 import './NewGameSetup.css'
+import UserTable from '../Admin/UserTable';
 
 
 
@@ -288,7 +289,12 @@ displayScores = () => {
  }
 }
 
+adminView = () => {
+    if (localStorage.getItem("permission") == "admin") {
+        return (<div><p>Admin View</p><UserTable token={this.props.token}/></div>)
+    }
 
+}
 
 
     render() { 
@@ -296,7 +302,7 @@ displayScores = () => {
             <div>
                 {this.detailedView()}
                 {this.displayScores()}
-                
+                {this.adminView()}
             </div>
          );
     }
