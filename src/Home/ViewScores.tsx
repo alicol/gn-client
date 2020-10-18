@@ -289,20 +289,12 @@ displayScores = () => {
  }
 }
 
-adminView = () => {
-    if (localStorage.getItem("permission") == "admin") {
-        return (<div><p>Admin View</p><UserTable token={this.props.token}/></div>)
-    }
-
-}
-
-
     render() { 
         return ( 
             <div>
                 {this.detailedView()}
                 {this.displayScores()}
-                {this.adminView()}
+
             </div>
          );
     }
