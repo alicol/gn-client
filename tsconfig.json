@@ -20,6 +20,6 @@
     "jsx": "react"
   },
   "include": [
-    "src"
+    "src", "../../extras/UserEdit.tsx"
   ]
 }

@@ -39,6 +39,7 @@ const Auth: React.SFC<AuthProps> = (props: AuthProps) => {
 
     return (
         <div className="NavLinks">
+            
             <h3>∫ The String Section ∫</h3>
             <p className="presents">PROUDLY PRESENTS</p>
             <h1>Trivia Night</h1>

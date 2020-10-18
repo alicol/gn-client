@@ -66,7 +66,7 @@ const protectedViews = () => {return (sessionToken === localStorage.getItem('tok
   return (
     <MuiThemeProvider theme={theme}>
     <div className="App">
-
+    
       {protectedViews()}
 
     </div>
