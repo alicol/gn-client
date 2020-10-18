@@ -45,8 +45,8 @@ const Auth: React.SFC<AuthProps> = (props: AuthProps) => {
             <Router>
                 <div>
                     <hr />
-                    <Link to="/UserSignup" style={{ textDecoration: 'none' }}><Button variant="contained" color="primary" size="large" className={classes.root}>Sign Up</Button></Link>
-                    <Link to="/UserLogin" style={{ textDecoration: 'none' }}><Button variant="contained" color="secondary" size="large" className={classes.root}>Log In</Button></Link>
+                   <Link to="/UserSignup" style={{ textDecoration: 'none' }}> <Button variant="contained" color="primary" size="large" className={classes.root}>Sign Up </Button></Link>
+                   <Link to="/UserLogin" style={{ textDecoration: 'none' }}><Button variant="contained" color="secondary" size="large" className={classes.root}>Log In</Button></Link>
                     
                     <hr />
                     <Switch>

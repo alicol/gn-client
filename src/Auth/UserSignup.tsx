@@ -1,6 +1,4 @@
 import * as React from 'react';
-import './auth.css'
-
 export interface UserSignupProps {
 updateToken: any
 }
@@ -11,11 +9,10 @@ export interface UserSignupState {
 }
 
 class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
-
     constructor(props: UserSignupProps) {
         super(props);
         this.state = { username: "", password: "" };
-    } 
+    }
 
     handleClick = () => {
         const url = 'http://localhost:3000/user/signup'
@@ -26,27 +23,20 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
 
         fetch(url, requestOptions)
             .then(response => response.json())
-            .then((data: SignUpResponse) => {
-                console.log(data.sessionToken)
-                this.props.updateToken(data.sessionToken)
-                localStorage.setItem("permission", data.permission)
-
+            .then((json: SignUpResponse) => {
+                console.log(json.sessionToken);
+                this.props.updateToken(json.sessionToken);
+                localStorage.setItem("permission", "basic")
             })
     }
     render() {
-        return (
-            <div>            
-                <form>
-                <h4>Welcome!</h4>
-                <br />
-                <input onChange={(e) => this.setState({ username: e.target.value })} type="text" name="username" placeholder="EMAIL ADDRESS" id="username" />
-                <br />
-                <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="PASSWORD" />
-                <br />
-                <button onClick={this.handleClick} className="submitSignUp">SIGN UP!</button>
-                </form>
-            </div>
-        );
+        return (<div>
+            
+            <h1>Welcome!</h1>
+            <input onChange={(e) => this.setState({ username: e.target.value })} type="text" name="username" placeholder="Username" id="username" />
+            <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="Password" />
+            <button onClick={this.handleClick}>Sign Up</button>
+        </div>);
     }
 }
 
@@ -65,5 +55,5 @@ export interface SignUpResponse {
     user: string;
     message: string;
     sessionToken: string;
-    permission: string;
+    permission: string
 }
