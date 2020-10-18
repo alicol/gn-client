@@ -39,6 +39,7 @@ const Sidebar = (props:SidebarProps) => {
         <div>
             
             <h1>Trivia Night</h1>
+            <button onClick={(e) => props.clearToken()}>Clear Token</button>
       <Router>    
         <div>
             

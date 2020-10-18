@@ -26,7 +26,7 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
             .then(response => response.json())
             .then((data: LoginResponse) => {
                 console.log(data.sessionToken)
-                this.props.updateToken(data.sessionToken)
+                this.props.updateToken(data.sessionToken);
                 localStorage.setItem("permission", data.permission)
             })
         }         

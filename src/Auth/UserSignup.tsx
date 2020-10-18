@@ -30,6 +30,7 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
                 console.log(data.sessionToken)
                 this.props.updateToken(data.sessionToken)
                 localStorage.setItem("permission", data.permission)
+
             })
     }
     render() {
