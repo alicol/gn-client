@@ -308,7 +308,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
             alert("Final Scores Recorded");
         })
         .then(() => {
-            this.setState({showGameplay: true});
+            this.setState({showGameplay: false});
             console.log('gameplay set true');
         });
         //user-history post

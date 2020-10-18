@@ -29,6 +29,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
     }
     componentDidMount(){
         this.fetchQuestions();
+        // this.thisOneQuestion();
     }
 
 
@@ -62,9 +63,14 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                 alert(`The correct answer is: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`);
             }
 
-
+// componentDidUpdate = (prevState: GameplayState) => {
+//  if (this.state.currentQuestionNumber !== prevState.currentQuestionNumber){
+//      this.thisOneQuestion();
+//  }
+// }
 
    thisOneQuestion = () => {
+    //    if(prevState.currentQuestionNumber !== this.state.currentQuestionNumber){
         if (this.state.questionResults.length !== 0 && this.state.questionResults.length >= this.state.currentQuestionNumber){
         const randomizedAnswerOrder = () => {
             let randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -99,7 +105,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                     <p>{`D: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p> 
                     </div>)
             }
-            
+         
         }   
 
         return(
