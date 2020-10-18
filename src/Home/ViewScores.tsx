@@ -270,9 +270,7 @@ displayScores = () => {
               } else {
                   return ("N/A")
               }
-          }
-            
-          
+          }  
         return (
             <div>
                 <h3>{`${winner} won this game on ${specificMonth(score)} ${specificDay(score)}, ${specificYear(score)}`}</h3>
