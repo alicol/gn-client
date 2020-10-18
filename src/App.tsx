@@ -67,8 +67,6 @@ const protectedViews = () => {return (sessionToken === localStorage.getItem('tok
     <MuiThemeProvider theme={theme}>
     <div className="App">
 
-      
-    {/* <Sidebar updateToken={updateToken} token={sessionToken} clearToken={clearToken}/> */}
       {protectedViews()}
 
     </div>
