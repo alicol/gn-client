@@ -7,18 +7,36 @@ import {
 } from 'react-router-dom';
 import UserLogin from './UserLogin';
 import UserSignup from './UserSignup';
-
 import './auth.css';
-import { Button } from '@material-ui/core';
-import lime from '@material-ui/core/colors';
-
+import { Button, makeStyles, createStyles, Theme } from '@material-ui/core'; 
 
 export interface AuthProps {
     token: string,
-    updateToken: any
+    updateToken: any,
 }
 
+const useStyles = makeStyles((theme: Theme) => createStyles({
+    root: {
+        fontSize: '3vw',
+        marginLeft: '6vw',
+        marginRight: '6vw',
+        marginBottom: '1vw',
+        marginTop: '1vw',
+        color: 'black',
+        fontWeight: 'bold',
+        border: '3px solid white',
+        borderRadius: '.2em',
+        fontFamily: 'Roboto',
+        width: '20vw',
+        height: '5vw',
+        textDecoration: 'none',
+     }
+ }))
+
+
 const Auth: React.SFC<AuthProps> = (props: AuthProps) => {
+    const classes = useStyles();
+
     return (
         <div className="NavLinks">
             
@@ -27,8 +45,9 @@ const Auth: React.SFC<AuthProps> = (props: AuthProps) => {
             <h1>Trivia Night</h1>
             <Router>
                 <div>
-                    <Button variant="contained" color="primary"><Link to="/UserSignup">Sign Up!</Link></Button>
-                    <Button variant="contained" color="secondary"><Link to="/UserLogin">Login!</Link></Button>
+                    <hr />
+                   <Link to="/UserSignup" style={{ textDecoration: 'none' }}> <Button variant="contained" color="primary" size="large" className={classes.root}>Sign Up </Button></Link>
+                   <Link to="/UserLogin" style={{ textDecoration: 'none' }}><Button variant="contained" color="secondary" size="large" className={classes.root}>Log In</Button></Link>
                     
                     <hr />
                     <Switch>
@@ -38,6 +57,7 @@ const Auth: React.SFC<AuthProps> = (props: AuthProps) => {
                     </Switch>
                 </div>
             </Router>
+            <p className="copyright">2020 © <i>The String Section</i>: Alison Colglazier, Adam Martin, Jamie Coakley</p>
         </div>);
 }
 export default Auth;

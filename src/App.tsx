@@ -38,14 +38,14 @@ let theme = createMuiTheme({
 
 function App() {
 
-  const [sessionToken, setSessionToken] = useState('');
+  const [sessionToken, setSessionToken] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
     if (token != null) {
       setSessionToken(token);
     }
-  }, [])
+  }, []);
 
 //LOG IN
 const updateToken = (newToken:string) => {
@@ -59,7 +59,7 @@ const clearToken = () => {
   setSessionToken('');
 }
 
-const protectedViews = () => {return (sessionToken === localStorage.getItem('token')) ? <Sidebar token={sessionToken} updateToken={updateToken} clearToken={clearToken} /> : <Auth updateToken={updateToken} token={sessionToken} />}
+const protectedViews = () => {return (sessionToken === localStorage.getItem('token')) ? (<Sidebar token={sessionToken} updateToken={updateToken} clearToken={clearToken} />) : (<Auth updateToken={updateToken} token={sessionToken} />)}
 
 
 

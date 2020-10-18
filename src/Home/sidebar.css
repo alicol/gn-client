@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montez&family=Roboto&display=swap');;
 body {
     background: black;
     color: white;
@@ -8,9 +8,12 @@ body {
 h1 {
     font-family: 'Permanent Marker', 'Arial';
     color: white;
-    font-size: 140pt;
+    font-size: 13vw;
     letter-spacing: .05em;
     margin-top: 0;
+    margin-bottom: 0;
+    margin-left: .5vw;
+    margin-right: 1vw;
 }
 
 .startButton {
@@ -85,4 +88,18 @@ h1 {
       text-decoration: none;
       color: black;
       padding-bottom: 3rem; 
+  }
+
+  .copyright {
+    font-family: 'Roboto';
+    font-size: 6pt; 
+    margin-top: 5vw;
+    margin-bottom: 1vw;
+    margin-left: 1vw;
+  }
+
+  .copyAndLogOut {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
   }
