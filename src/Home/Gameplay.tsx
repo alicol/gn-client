@@ -62,18 +62,52 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                 alert(`The correct answer is: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`);
             }
 
+
+
    thisOneQuestion = () => {
         if (this.state.questionResults.length !== 0 && this.state.questionResults.length >= this.state.currentQuestionNumber){
-           
+        const randomizedAnswerOrder = () => {
+            let randomNumber = Math.floor(Math.random() * 4) + 1;
+            if (randomNumber == 1){
+                return (<div>     
+                <p>{`A: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p>               
+                <p>{`B: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p>
+                <p>{`C: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1]}`}</p>
+                <p>{`D: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>
+                </div>)
+            } else if (randomNumber == 2){
+                return (<div>     
+                    <p>{`A: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p>
+                    <p>{`B: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p>  
+                    <p>{`C: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1]}`}</p>
+                    <p>{`D: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>
+                    </div>)
+            } else if (randomNumber == 3){
+                return (
+                    <div>
+                    <p>{`A: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p>
+                    <p>{`B: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1]}`}</p>
+                    <p>{`C: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p>
+                    <p>{`D: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>
+                    </div>
+                )
+            } else if (randomNumber == 4){
+                return (<div>     
+                    <p>{`A: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p> 
+                    <p>{`B: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1]}`}</p>
+                    <p>{`C: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>
+                    <p>{`D: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p> 
+                    </div>)
+            }
+            
+        }   
+
         return(
                 <div>
                     <h5>{`Question #${this.state.currentQuestionNumber + 1}`}</h5>
                     <p>{`${this.state.questionResults[this.state.currentQuestionNumber].question}`}</p>
                     <p>Choose from the following:</p>
-                    <p>{`A: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p>
-                    <p>{`B: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1]}`}</p>
-                    <p>{`C: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p>
-                    <p>{`D: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>
+                    {randomizedAnswerOrder()}
                     <button onClick={() => this.answerQuestionFunction()}>Show Answer</button>
                     <button onClick={() => this.setState({questionEditor: "On"})}>Edit Questions</button>
                     

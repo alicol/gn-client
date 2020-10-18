@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState, useEffect} from 'react';
+import React from 'react';
 import {Redirect, Link, useHistory} from 'react-router-dom';
 import { TypeVariable } from 'typescript';
 import Gameplay from './Gameplay';
@@ -319,7 +319,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                  
                     triviaTopic: this.props.postTriviaTopic,
                     difficulty: this.props.postDifficulty,
-                    winner: "Still working on this function",
+                    winner: this.submitWinner(),
                     gameNotes: this.state.gameNotes,
                     gameId: this.state.currentGame,
                     
@@ -458,6 +458,41 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
        }
    }
 
+submitWinner = () => {
+    let scoreboard = {
+        p1: this.state.score1,
+        p2: this.state.score2,
+        p3: this.state.score3, 
+        p4: this.state.score4,
+        p5: this.state.score5,
+        p6: this.state.score6,
+        p7: this.state.score7,
+        p8: this.state.score8,
+        p9: this.state.score9
+        
+    }
+    let winnerKey = this.findWinner(scoreboard);
+    if (winnerKey == "p1" && this.state.player1 !=="" && this.state.score1 !== 0){
+        return(this.state.player1)
+    } else if (winnerKey == "p2" && this.state.player2 !=="" && this.state.score2 !== 0){ return(this.state.player2)
+    } else if (winnerKey == "p3" && this.state.player3 !==""  && this.state.score3 !== 0){
+        return(this.state.player3)
+    } else if (winnerKey == "p4" && this.state.player4 !==""  && this.state.score4 !== 0){
+        return(this.state.player4)
+    } else if (winnerKey == "p5" && this.state.player5 !==""  && this.state.score5 !== 0){
+        return(this.state.player5)
+    } else if (winnerKey == "p6" && this.state.player6 !==""  && this.state.score6 !== 0){
+        return(this.state.player6)
+    } else if (winnerKey == "p7" && this.state.player7 !==""  && this.state.score7 !== 0){
+        return(this.state.player7)
+    } else if (winnerKey == "p8" && this.state.player8 !==""  && this.state.score8 !== 0){
+        return(this.state.player8)
+    } else if (winnerKey == "p9" && this.state.player9 !==""  && this.state.score9 !== 0){
+        return(this.state.player9)
+    } 
+
+
+}
 
 
 displayWinner = () => {

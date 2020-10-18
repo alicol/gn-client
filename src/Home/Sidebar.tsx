@@ -31,7 +31,7 @@ export interface SidebarProps {
 
 const Sidebar = (props:SidebarProps) => {
   
-    const [postTriviaTopic, setPostTriviaTopic] = useState("");
+    const [postTriviaTopic, setPostTriviaTopic] = useState("Movies");
     const [postDifficulty, setPostDifficulty] = useState("Medium");
     const classes = useStyles();
 
