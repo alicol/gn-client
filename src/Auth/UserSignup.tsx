@@ -28,7 +28,8 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
             .then((data: SignUpResponse) => {
                 console.log(data.sessionToken)
                 this.props.updateToken(data.sessionToken)
-                localStorage.setItem("permission", "basic")
+                localStorage.setItem("permission", data.permission)
+
             })
     }
     render() {
