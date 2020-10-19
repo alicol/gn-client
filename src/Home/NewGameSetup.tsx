@@ -59,12 +59,14 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
  
             return( 
             <div>
-                 <h1>This is your gameplay</h1>
+                
                  <Gameplay setPostDifficulty={this.props.setPostDifficulty} setPostTriviaTopic={this.props.setPostTriviaTopic} />
                    
                      {this.playerCreator()}
+                     <br />
         
                  <textarea placeholder="Enter game notes here..." onChange={(e) => this.setState({gameNotes: e.target.value})} />
+                 <br />
                  <button onClick={this.handlePutSubmit}>Record Final Scores</button>
              </div>
             )
