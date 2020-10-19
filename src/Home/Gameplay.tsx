@@ -25,7 +25,7 @@ export interface GameplayState {
 class Gameplay extends React.Component<GameplayProps, GameplayState> {
     constructor(props: GameplayProps) {
         super(props);
-        this.state = { questionResults: [], currentQuestionNumber: 0, numberOfQuestions: 50, questionEditor: "Off", category: 11, difficulty: "medium", winner: null };
+        this.state = { questionResults: [], currentQuestionNumber: 0, numberOfQuestions: 50, questionEditor: "On", category: 11, difficulty: "medium", winner: null };
     }
     componentDidMount(){
         this.fetchQuestions();
@@ -46,6 +46,19 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
             )
         }
     }
+    backButton = () => {
+        if (this.state.questionResults.length !== 0 && this.state.currentQuestionNumber > 0){
+            return (<div>
+                <button onClick={() => this.setState({currentQuestionNumber: this.state.currentQuestionNumber - 1})}>Back</button>
+            </div>)
+        }
+    }
+    neutralize = (str: string) => {
+        let updated = str.replace(/&quot;/g, `"`).replace(/&#039;/g, `'`).replace(/&ldquo;/g, `"`).replace(/&rdquo;/g, `"`).replace(/&hellip;/g, `...`).replace(/&amp;/g, `&`);
+        console.log(updated);
+        return (updated);
+        
+    }
 
     fetchQuestions = () => {
         fetch(`https://opentdb.com/api.php?amount=${this.state.numberOfQuestions}&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple`, {
@@ -60,7 +73,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
 
     answerQuestionFunction = () => {
                 //ADD WHATEVER VISUAL AFFECT THE CORRECT ANSWER PROVIDES!
-                alert(`The correct answer is: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`);
+                alert(`The correct answer is: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`);
             }
 
 // componentDidUpdate = (prevState: GameplayState) => {
@@ -76,33 +89,33 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
             let randomNumber = Math.floor(Math.random() * 4) + 1;
             if (randomNumber == 1){
                 return (<div>     
-                <p>{`A: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p>               
-                <p>{`B: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p>
-                <p>{`C: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1]}`}</p>
-                <p>{`D: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>
+                <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>               
+                <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
+                <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
                 </div>)
             } else if (randomNumber == 2){
                 return (<div>     
-                    <p>{`A: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p>
-                    <p>{`B: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p>  
-                    <p>{`C: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1]}`}</p>
-                    <p>{`D: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>
+                    <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
+                    <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>  
+                    <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                    <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
                     </div>)
             } else if (randomNumber == 3){
                 return (
                     <div>
-                    <p>{`A: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p>
-                    <p>{`B: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1]}`}</p>
-                    <p>{`C: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p>
-                    <p>{`D: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>
+                    <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
+                    <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                    <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>
+                    <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
                     </div>
                 )
             } else if (randomNumber == 4){
                 return (<div>     
-                    <p>{`A: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p> 
-                    <p>{`B: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1]}`}</p>
-                    <p>{`C: ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>
-                    <p>{`D: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p> 
+                    <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p> 
+                    <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                    <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
+                    <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p> 
                     </div>)
             }
          
@@ -111,7 +124,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         return(
                 <div>
                     <h5>{`Question #${this.state.currentQuestionNumber + 1}`}</h5>
-                    <p>{`${this.state.questionResults[this.state.currentQuestionNumber].question}`}</p>
+                    <p>{this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].question)}</p>
                     <p>Choose from the following:</p>
                     {randomizedAnswerOrder()}
                     <button onClick={() => this.answerQuestionFunction()}>Show Answer</button>
@@ -147,24 +160,24 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         <br />
         <label>Television</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 14}); this.props.setPostTriviaTopic("Television")}} />
         <br />
-        <label>Politics</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 24}); this.props.setPostTriviaTopic("Politics")}} />
-        <br />
+        {/* <label>Politics</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 24}); this.props.setPostTriviaTopic("Politics")}} /> //NOT WORKING
+        <br /> */}
         <label>History</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 23}); this.props.setPostTriviaTopic("History")}} />
         <br />
         <label>Movies</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 11}); this.props.setPostTriviaTopic("Movies")}} />
         <br />
         <label>Geography</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 22}); this.props.setPostTriviaTopic("Geography")}} />
         <br />
-        <label>Celebrities</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 26}); this.props.setPostTriviaTopic("Celebrities")}} />
-        <br />
+        {/* <label>Celebrities</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 26}); this.props.setPostTriviaTopic("Celebrities")}} /> //NOT WORKING
+        <br /> */}
         <label>Music</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 12}); this.props.setPostTriviaTopic("Music")}} />
         <br />
         <label>Natural Science</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 17}); this.props.setPostTriviaTopic("Natural Science")}} />
         <br />
-        <label>Animals</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 27}); this.props.setPostTriviaTopic("Animals")}} />
+        {/* <label>Animals</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 27}); this.props.setPostTriviaTopic("Animals")}} /> //NOT WORKING */}
         
         </form>
-        <button onClick={(e) => this.fetchQuestions()}>Apply Changes</button>
+        <button onClick={(e) => {this.fetchQuestions(); this.setState({questionEditor: "Off"})}}>Apply Criteria</button>
         <button onClick={(e) => this.setState({questionEditor: "Off"})}>Exit Editor</button>
         </div>
         )
@@ -174,9 +187,9 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
 
     render() { 
         return ( <div>
-            Gameplay
         {this.triviaSelector()}
         {this.thisOneQuestion()}
+        {this.backButton()}
        {this.nextButton()}
         </div> );
     }
