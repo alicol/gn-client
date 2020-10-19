@@ -122,11 +122,15 @@ h1 {
 .numberPlayers {
   margin-top: 0;
   display: flex;
+  border: none;
 }
 
 .radioLabel {
   font-family: 'Roboto';
   font-weight: bold;
+  font-size: 1.5vw;
+  margin-left: 3vw;
+  margin-bottom: 0;
 }
 
 /* __________Player Names____________ */
@@ -140,6 +144,7 @@ h1 {
 
 .playerNameForm {
   margin-top: 0;
+  border: none;
 }
 
 .playerInputs {
@@ -150,4 +155,52 @@ h1 {
 /* ________________Questions____________________ */
 .gameplayHeading {
   font-size: 8vw;
+}
+
+.questionNumberHeading {
+  font-family: 'Roboto';
+  font-size: 2.5vw;
+  margin: 0;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Roboto';
+  font-size: 2vw;
+}
+
+
+/* _________________Change Questions____________ */
+.editQuestionsHeading {
+  font-size: 4vw;
+  font-family: 'Roboto';
+  margin-bottom: 0;
+  margin-top: 2vw;
+}
+
+.gameOptionForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choose {
+  font-family: 'Roboto';
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+.gameOption {
+  font-family: 'Roboto';
+  font-size: 2vw;
+
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 3vw;
 }
