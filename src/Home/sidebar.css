@@ -1,56 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montez&family=Roboto&display=swap');;
 body {
-    background: black;
-    color: white;
+  background: black;
+  color: white;
 }
 
 h1 {
-    font-family: 'Permanent Marker', 'Arial';
-    color: white;
-    font-size: 13vw;
-    letter-spacing: .05em;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: .5vw;
-    margin-right: 1vw;
+  font-family: 'Permanent Marker', 'Arial';
+  color: white;
+  font-size: 13vw;
+  letter-spacing: .05em;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: .5vw;
+  margin-right: 1vw;
 }
 
 .startButton {
-    font-size: 50pt;
-    text-decoration: none;
-    -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
-    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
-    background-color: #eeeeee;
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fbfbfb), color-stop(100%, #e1e1e1));
-    background: -webkit-linear-gradient(top, #fbfbfb, #e1e1e1);
-    background: -moz-linear-gradient(top, #fbfbfb, #e1e1e1);
-    background: -o-linear-gradient(top, #fbfbfb, #e1e1e1);
-    background: linear-gradient(top, #fbfbfb, #e1e1e1);
-    display: -moz-inline-stack;
-    display: inline-block;
-    vertical-align: middle;
-    *vertical-align: auto;
-    zoom: 1;
-    *display: inline;
-    /* border: 1rem solid #d4d4d4; */
-    height: 25rem;
-    line-height: 25rem;
-    /* padding: 5rem; */
-    /* font-weight: 300; */
-    font-family: "Permanent Marker", "Lucida Grande", sans-serif;
-    color: black;
-    text-shadow: 0 1px 1px white;
-    margin-right: 3rem;
-    margin-left: 3rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    outline: 0;
-  }
+  font-size: 50pt;
+  text-decoration: none;
+  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
+  background-color: #eeeeee;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fbfbfb), color-stop(100%, #e1e1e1));
+  background: -webkit-linear-gradient(top, #fbfbfb, #e1e1e1);
+  background: -moz-linear-gradient(top, #fbfbfb, #e1e1e1);
+  background: -o-linear-gradient(top, #fbfbfb, #e1e1e1);
+  background: linear-gradient(top, #fbfbfb, #e1e1e1);
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  /* border: 1rem solid #d4d4d4; */
+  height: 25rem;
+  line-height: 25rem;
+  /* padding: 5rem; */
+  /* font-weight: 300; */
+  font-family: "Permanent Marker", "Lucida Grande", sans-serif;
+  color: black;
+  text-shadow: 0 1px 1px white;
+  margin-right: 3rem;
+  margin-left: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  outline: 0;
+}
 
 .startButtonCircle {
-    -webkit-border-radius: 50rem;
+  -webkit-border-radius: 50rem;
   -moz-border-radius: 50rem;
   -ms-border-radius: 50rem;
   -o-border-radius: 50rem;
@@ -67,39 +67,87 @@ h1 {
 }
 
 .startButton:hover {
-    background-color: #eeeeee;
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #dcdcdc));
-    background: -webkit-linear-gradient(top, #ffffff, #dcdcdc);
-    background: -moz-linear-gradient(top, #ffffff, #dcdcdc);
-    background: -o-linear-gradient(top, #ffffff, #dcdcdc);
-    background: linear-gradient(top, #ffffff, #dcdcdc);
-  }
-  
-  .startButton:active {
-    -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 0px white;
-    -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 0px white;
-    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 0px white;
-    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4);
-    background: #eeeeee;
-    color: #bbbbbb;
-  }
+  background-color: #eeeeee;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #dcdcdc));
+  background: -webkit-linear-gradient(top, #ffffff, #dcdcdc);
+  background: -moz-linear-gradient(top, #ffffff, #dcdcdc);
+  background: -o-linear-gradient(top, #ffffff, #dcdcdc);
+  background: linear-gradient(top, #ffffff, #dcdcdc);
+}
 
-  .link {
-      text-decoration: none;
-      color: black;
-      padding-bottom: 3rem; 
-  }
+.startButton:active {
+  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 0px white;
+  -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 0px white;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 0px white;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4);
+  background: #eeeeee;
+  color: #bbbbbb;
+}
 
-  .copyright {
-    font-family: 'Roboto';
-    font-size: 6pt; 
-    margin-top: 5vw;
-    margin-bottom: 1vw;
-    margin-left: 1vw;
-  }
+.link {
+  text-decoration: none;
+  color: black;
+  padding-bottom: 3rem; 
+}
 
-  .copyAndLogOut {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
+.copyright {
+  font-family: 'Roboto';
+  font-size: 6pt; 
+  margin-top: 5vw;
+  margin-bottom: 1vw;
+  margin-left: 1vw;
+}
+
+.copyAndLogOut {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+
+/* _______________Number of Players_______________ */
+.createFormHeading {
+  font-family: "Permanent Marker", sans-serif;
+  font-size: 5vw;
+  margin-top: 0;
+  margin-bottom: 1vw;
+}
+
+.selectDirection {
+  font-family: 'Roboto';
+  font-size: 2vw;
+  margin-bottom: 1vw;
+}
+
+.numberPlayers {
+  margin-top: 0;
+  display: flex;
+}
+
+.radioLabel {
+  font-family: 'Roboto';
+  font-weight: bold;
+}
+
+/* __________Player Names____________ */
+
+.nameDirection {
+  font-family: 'Roboto';
+  font-size: 2vw;
+  margin-bottom: 1vw;
+  font-weight: lighter;
+}
+
+.playerNameForm {
+  margin-top: 0;
+}
+
+.playerInputs {
+  font-family: "Roboto";
+  font-size: 1.5vw;
+}
+
+/* ________________Questions____________________ */
+.gameplayHeading {
+  font-size: 8vw;
+}

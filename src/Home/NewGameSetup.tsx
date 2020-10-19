@@ -2,6 +2,8 @@ import React, {FunctionComponent, useState, useEffect} from 'react';
 import {Redirect, Link, useHistory} from 'react-router-dom';
 import { TypeVariable } from 'typescript';
 import Gameplay from './Gameplay';
+import {Button} from '@material-ui/core'
+
 
 export interface NewGameSetupProps {
     token: string,
@@ -37,7 +39,7 @@ export interface NewGameSetupState {
     currentWinner: any | null,
   
 }
- 
+
 class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState> {
     constructor(props: NewGameSetupProps) {
         super(props);
@@ -59,7 +61,8 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
  
             return( 
             <div>
-                 <h1>This is your gameplay</h1>
+                <hr />
+                 <h1 className="gameplayHeading">GAMEPLAY</h1>
                  <Gameplay setPostDifficulty={this.props.setPostDifficulty} setPostTriviaTopic={this.props.setPostTriviaTopic} />
                    
                      {this.playerCreator()}
@@ -71,26 +74,37 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
         } else {
             return (
                 <div>
-             <h5>Create a New Game</h5>
-             <p>Select # of players:</p>
-             <form>
-                 <label>1</label><input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 1})} />
+                    <hr />
+            <h5 className="createFormHeading">Create a New Game</h5>
+            <p className="selectDirection">Select # of players:</p>
+             <form className="numberPlayers">
+
+                 <label className="radioLabel">1</label>
+                 <input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 1})} className="numberRadio"/>
                  <br />
-                 <label>2</label><input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 2})} />
+                 <label className="radioLabel">2</label>
+                 <input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 2})} className="numberRadio"/>
                  <br />
-                 <label>3</label><input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 3})} />
+                 <label className="radioLabel">3</label>
+                 <input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 3})} className="numberRadio"/>
                  <br />
-                 <label>4</label><input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 4})} />
+                 <label className="radioLabel">4</label>
+                 <input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 4})} className="numberRadio"/>
                  <br />
-                 <label>5</label><input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 5})} />
+                 <label className="radioLabel">5</label>
+                 <input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 5})} className="numberRadio"/>
                  <br />
-                 <label>6</label><input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 6})} />
+                 <label className="radioLabel">6</label>
+                 <input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 6})} className="numberRadio"/>
                  <br />
-                 <label>7</label><input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 7})} />
+                 <label className="radioLabel">7</label>
+                 <input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 7})} className="numberRadio"/>
                  <br />
-                 <label>8</label><input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 8})} />
+                 <label className="radioLabel">8</label>
+                 <input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 8})} className="numberRadio"/>
                  <br />
-                 <label>9</label><input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 9})} />
+                 <label className="radioLabel"> 9</label>
+                 <input type="radio" name="playercount" onChange={(e) => this.setState({numberOfPlayers: 9})} className="numberRadio"/>
                 
              </form>
              {this.formCreator()}
@@ -349,109 +363,113 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
        switch (this.state.numberOfPlayers){
            case 1: 
                 return (
-                    <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Name of player 1..." onChange={(e) => this.setState({player1: e.target.value})}></input>
-                        <button type="submit">Start New Game</button>
+                    <>
+                    <h5 className="nameDirection">Input player names:</h5>
+                    <form onSubmit={this.handleSubmit} className="playerNameForm">
+                    <input placeholder="PLAYER 1" onChange={(e) => this.setState({player1: e.target.value})} className="playerInputs"></input>
+                    <br />
+                        <Button type="submit" className="nextButton" variant="contained" color="primary"> NEXT 🢂</Button>
                     </form> 
+                    </>
                     );
                 break;
             case 2: 
                 return (
                     <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Name of player 1..." onChange={(e) => this.setState({player1: e.target.value})}></input>
-                    <input placeholder="Name of player 2..." onChange={(e) => this.setState({player2: e.target.value})}></input>
-                         <button type="submit">Start New Game</button>
+                    <input placeholder="PLAYER 1" onChange={(e) => this.setState({player1: e.target.value})}></input>
+                    <input placeholder="PLAYER 2" onChange={(e) => this.setState({player2: e.target.value})}></input>
+                         <button type="submit">NEXT 🢂</button>
                     </form> 
                 );
                 break;
             case 3: 
                 return (
                     <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Name of player 1..." onChange={(e) => this.setState({player1: e.target.value})}></input>
-                    <input placeholder="Name of player 2..." onChange={(e) => this.setState({player2: e.target.value})}></input>
-                    <input placeholder="Name of player 3..." onChange={(e) => this.setState({player3: e.target.value})}></input>
-                         <button type="submit">Start New Game</button>
+                    <input placeholder="PLAYER 1" onChange={(e) => this.setState({player1: e.target.value})}></input>
+                    <input placeholder="PLAYER 2" onChange={(e) => this.setState({player2: e.target.value})}></input>
+                    <input placeholder="PLAYER 3" onChange={(e) => this.setState({player3: e.target.value})}></input>
+                         <button type="submit">NEXT 🢂</button>
                     </form> 
                 );
                 break;
             case 4: 
                 return (
                     <form onSubmit={this.handleSubmit}>
-                        <input placeholder="Name of player 1..." onChange={(e) => this.setState({player1: e.target.value})}></input>
-                        <input placeholder="Name of player 2..." onChange={(e) => this.setState({player2: e.target.value})}></input>
-                        <input placeholder="Name of player 3..." onChange={(e) => this.setState({player3: e.target.value})}></input>
-                        <input placeholder="Name of player 4..." onChange={(e) => this.setState({player4: e.target.value})}></input>
-                         <button type="submit">Start New Game</button>
+                        <input placeholder="PLAYER 1" onChange={(e) => this.setState({player1: e.target.value})}></input>
+                        <input placeholder="PLAYER 2" onChange={(e) => this.setState({player2: e.target.value})}></input>
+                        <input placeholder="PLAYER 3" onChange={(e) => this.setState({player3: e.target.value})}></input>
+                        <input placeholder="PLAYER 4" onChange={(e) => this.setState({player4: e.target.value})}></input>
+                         <button type="submit">NEXT 🢂</button>
                     </form> 
                 );
                 break;
             case 5: 
                 return (
                     <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Name of player 1..." onChange={(e) => this.setState({player1: e.target.value})}></input>
-                    <input placeholder="Name of player 2..." onChange={(e) => this.setState({player2: e.target.value})}></input>
-                    <input placeholder="Name of player 3..." onChange={(e) => this.setState({player3: e.target.value})}></input>
-                    <input placeholder="Name of player 4..." onChange={(e) => this.setState({player4: e.target.value})}></input>
-                    <input placeholder="Name of player 5..." onChange={(e) => this.setState({player5: e.target.value})}></input>
-                         <button type="submit">Start New Game</button>
+                    <input placeholder="PLAYER 1" onChange={(e) => this.setState({player1: e.target.value})}></input>
+                    <input placeholder="PLAYER 2" onChange={(e) => this.setState({player2: e.target.value})}></input>
+                    <input placeholder="PLAYER 3" onChange={(e) => this.setState({player3: e.target.value})}></input>
+                    <input placeholder="PLAYER 4" onChange={(e) => this.setState({player4: e.target.value})}></input>
+                    <input placeholder="PLAYER 5" onChange={(e) => this.setState({player5: e.target.value})}></input>
+                         <button type="submit">NEXT 🢂</button>
                     </form> 
                 );
                 break;
             case 6: 
                 return (
                     <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Name of player 1..." onChange={(e) => this.setState({player1: e.target.value})}></input>
-                    <input placeholder="Name of player 2..." onChange={(e) => this.setState({player2: e.target.value})}></input>
-                    <input placeholder="Name of player 3..." onChange={(e) => this.setState({player3: e.target.value})}></input>
-                    <input placeholder="Name of player 4..." onChange={(e) => this.setState({player4: e.target.value})}></input>
-                    <input placeholder="Name of player 5..." onChange={(e) => this.setState({player5: e.target.value})}></input>
-                    <input placeholder="Name of player 6..." onChange={(e) => this.setState({player6: e.target.value})}></input>
-                         <button type="submit">Start New Game</button>
+                    <input placeholder="PLAYER 1" onChange={(e) => this.setState({player1: e.target.value})}></input>
+                    <input placeholder="PLAYER 2" onChange={(e) => this.setState({player2: e.target.value})}></input>
+                    <input placeholder="PLAYER 3" onChange={(e) => this.setState({player3: e.target.value})}></input>
+                    <input placeholder="PLAYER 4" onChange={(e) => this.setState({player4: e.target.value})}></input>
+                    <input placeholder="PLAYER 5" onChange={(e) => this.setState({player5: e.target.value})}></input>
+                    <input placeholder="PLAYER 6" onChange={(e) => this.setState({player6: e.target.value})}></input>
+                         <button type="submit">NEXT 🢂</button>
                     </form> 
                 );
                 break;
             case 7: 
                 return (
                     <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Name of player 1..." onChange={(e) => this.setState({player1: e.target.value})}></input>
-                    <input placeholder="Name of player 2..." onChange={(e) => this.setState({player2: e.target.value})}></input>
-                    <input placeholder="Name of player 3..." onChange={(e) => this.setState({player3: e.target.value})}></input>
-                    <input placeholder="Name of player 4..." onChange={(e) => this.setState({player4: e.target.value})}></input>
-                    <input placeholder="Name of player 5..." onChange={(e) => this.setState({player5: e.target.value})}></input>
-                    <input placeholder="Name of player 6..." onChange={(e) => this.setState({player6: e.target.value})}></input>
-                    <input placeholder="Name of player 7..." onChange={(e) => this.setState({player7: e.target.value})}></input>
-                         <button type="submit">Start New Game</button>
+                    <input placeholder="PLAYER 1" onChange={(e) => this.setState({player1: e.target.value})}></input>
+                    <input placeholder="PLAYER 2" onChange={(e) => this.setState({player2: e.target.value})}></input>
+                    <input placeholder="PLAYER 3" onChange={(e) => this.setState({player3: e.target.value})}></input>
+                    <input placeholder="PLAYER 4" onChange={(e) => this.setState({player4: e.target.value})}></input>
+                    <input placeholder="PLAYER 5" onChange={(e) => this.setState({player5: e.target.value})}></input>
+                    <input placeholder="PLAYER 6" onChange={(e) => this.setState({player6: e.target.value})}></input>
+                    <input placeholder="PLAYER 7" onChange={(e) => this.setState({player7: e.target.value})}></input>
+                         <button type="submit">NEXT 🢂</button>
                     </form> 
                 );
                 break;
             case 8: 
                 return (
                     <form onSubmit={this.handleSubmit}>
-                        <input placeholder="Name of player 1..." onChange={(e) => this.setState({player1: e.target.value})}></input>
-                        <input placeholder="Name of player 2..." onChange={(e) => this.setState({player2: e.target.value})}></input>
-                        <input placeholder="Name of player 3..." onChange={(e) => this.setState({player3: e.target.value})}></input>
-                        <input placeholder="Name of player 4..." onChange={(e) => this.setState({player4: e.target.value})}></input>
-                        <input placeholder="Name of player 5..." onChange={(e) => this.setState({player5: e.target.value})}></input>
-                        <input placeholder="Name of player 6..." onChange={(e) => this.setState({player6: e.target.value})}></input>
-                        <input placeholder="Name of player 7..." onChange={(e) => this.setState({player7: e.target.value})}></input>
-                        <input placeholder="Name of player 8..." onChange={(e) => this.setState({player8: e.target.value})}></input>
-                        <button type="submit">Start New Game</button>
+                        <input placeholder="PLAYER 1" onChange={(e) => this.setState({player1: e.target.value})}></input>
+                        <input placeholder="PLAYER 2" onChange={(e) => this.setState({player2: e.target.value})}></input>
+                        <input placeholder="PLAYER 3" onChange={(e) => this.setState({player3: e.target.value})}></input>
+                        <input placeholder="PLAYER 4" onChange={(e) => this.setState({player4: e.target.value})}></input>
+                        <input placeholder="PLAYER 5" onChange={(e) => this.setState({player5: e.target.value})}></input>
+                        <input placeholder="PLAYER 6" onChange={(e) => this.setState({player6: e.target.value})}></input>
+                        <input placeholder="PLAYER 7" onChange={(e) => this.setState({player7: e.target.value})}></input>
+                        <input placeholder="PLAYER 8" onChange={(e) => this.setState({player8: e.target.value})}></input>
+                        <button type="submit">NEXT 🢂</button>
                     </form> 
                 );
                 break;
             case 9: 
                 return (
                     <form onSubmit={this.handleSubmit}>
-                        <input placeholder="Name of player 1..." onChange={(e) => this.setState({player1: e.target.value})}></input>
-                        <input placeholder="Name of player 2..." onChange={(e) => this.setState({player2: e.target.value})}></input>
-                        <input placeholder="Name of player 3..." onChange={(e) => this.setState({player3: e.target.value})}></input>
-                        <input placeholder="Name of player 4..." onChange={(e) => this.setState({player4: e.target.value})}></input>
-                        <input placeholder="Name of player 5..." onChange={(e) => this.setState({player5: e.target.value})}></input>
-                        <input placeholder="Name of player 6..." onChange={(e) => this.setState({player6: e.target.value})}></input>
-                        <input placeholder="Name of player 7..." onChange={(e) => this.setState({player7: e.target.value})}></input>
-                        <input placeholder="Name of player 8..." onChange={(e) => this.setState({player8: e.target.value})}></input>
-                        <input placeholder="Name of player 9..." onChange={(e) => this.setState({player9: e.target.value})}></input>
-                         <button type="submit">Start New Game</button>
+                        <input placeholder="PLAYER 1" onChange={(e) => this.setState({player1: e.target.value})}></input>
+                        <input placeholder="PLAYER 2" onChange={(e) => this.setState({player2: e.target.value})}></input>
+                        <input placeholder="PLAYER 3" onChange={(e) => this.setState({player3: e.target.value})}></input>
+                        <input placeholder="PLAYER 4" onChange={(e) => this.setState({player4: e.target.value})}></input>
+                        <input placeholder="PLAYER 5" onChange={(e) => this.setState({player5: e.target.value})}></input>
+                        <input placeholder="PLAYER 6" onChange={(e) => this.setState({player6: e.target.value})}></input>
+                        <input placeholder="PLAYER 7" onChange={(e) => this.setState({player7: e.target.value})}></input>
+                        <input placeholder="PLAYER 8" onChange={(e) => this.setState({player8: e.target.value})}></input>
+                        <input placeholder="PLAYER 9" onChange={(e) => this.setState({player9: e.target.value})}></input>
+                         <button type="submit">NEXT 🢂</button>
                     </form> 
                 );
                 break;

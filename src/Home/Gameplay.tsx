@@ -134,7 +134,6 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
 
     render() { 
         return ( <div>
-            Gameplay
         {this.triviaSelector()}
         {this.thisOneQuestion()}
        {this.nextButton()}
