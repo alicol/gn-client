@@ -29,9 +29,9 @@ export interface SidebarProps {
     updateToken: any
 }
 
-const Sidebar = (props: SidebarProps) => {
-
-    const [postTriviaTopic, setPostTriviaTopic] = useState("");
+const Sidebar = (props:SidebarProps) => {
+  
+    const [postTriviaTopic, setPostTriviaTopic] = useState("Movies");
     const [postDifficulty, setPostDifficulty] = useState("Medium");
     const [permission, setPermission] =useState<any>("");
     const classes = useStyles();
