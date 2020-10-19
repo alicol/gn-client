@@ -7,6 +7,7 @@ import Gameplay from './Gameplay';
 import './sidebar.css'
 import { Button, makeStyles, Theme, createStyles } from '@material-ui/core';
 import UserTable from '../Admin/UserTable';
+import GameEdit from '../Admin/GameEdit';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
@@ -38,7 +39,8 @@ const Sidebar = (props:SidebarProps) => {
     const adminView = () => {
         console.log(localStorage.getItem("permission"));
         if (localStorage.getItem("permission") == "admin") {
-            return (<div><p>Admin View</p> <button className="startButton startButtonCircle"><Link to="/UserTable" className="link">Edit Users</Link></button></div>)
+            return (<div><p>Admin View</p> <button className="startButton startButtonCircle"><Link to="/UserTable" className="link">Edit Users</Link></button>
+              <button className="startButton startButtonCircle"><Link to="/GameEdit" className="link">Edit Games</Link></button></div>)
         }
 
     }
@@ -69,6 +71,7 @@ const Sidebar = (props:SidebarProps) => {
                         <Route exact path='/ViewScores'><ViewScores token={props.token} /></Route>
                         {/* <Route exact path='/Gameplay'><GamePlay /></Route> */}
                         <Route exact path='/UserTable'><UserTable token={props.token} /></Route>
+                        <Route exact path='/GameEdit'><GameEdit token={props.token} /></Route>
                     </Switch>
 
                 </div>
