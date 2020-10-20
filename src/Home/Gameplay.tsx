@@ -179,8 +179,8 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         
         <label className="gameOption">Television</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 14}); this.props.setPostTriviaTopic("Television")}} />
 
-        
-        <label className="gameOption">Politics</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 24}); this.props.setPostTriviaTopic("Politics")}} />
+{/*         
+        <label className="gameOption">Politics</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 24}); this.props.setPostTriviaTopic("Politics")}} /> */} //NOT WORKING
         
         <label className="gameOption">History</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 23}); this.props.setPostTriviaTopic("History")}} />
         
@@ -188,16 +188,16 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         
         <label className="gameOption">Geography</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 22}); this.props.setPostTriviaTopic("Geography")}} />
         
-        <label className="gameOption">Celebrities</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 26}); this.props.setPostTriviaTopic("Celebrities")}} />
+        {/* <label className="gameOption">Celebrities</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 26}); this.props.setPostTriviaTopic("Celebrities")}} /> */} //NOT WORKING
         
         <label className="gameOption">Music</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 12}); this.props.setPostTriviaTopic("Music")}} />
         
         <label className="gameOption">Natural Science</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 17}); this.props.setPostTriviaTopic("Natural Science")}} />
         
-        <label className="gameOption">Animals</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 27}); this.props.setPostTriviaTopic("Animals")}} />
+        {/* <label className="gameOption">Animals</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 27}); this.props.setPostTriviaTopic("Animals")}} /> */} //NOT WORKING
         
         <div className="editorButtons">
-        <Button className={this.classes.applyChanges} variant="contained" onClick={(e) => this.fetchQuestions()}>Apply Changes</Button>
+        <Button className={this.classes.applyChanges} variant="contained" onClick={(e) => {this.fetchQuestions(); this.setState({questionEditor: "Off"})}}>Apply Changes</Button>
         <Button className={this.classes.exitEditor} variant="contained" onClick={(e) => this.setState({questionEditor: "Off"})}>Exit Editor</Button>
         </div>
 

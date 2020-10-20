@@ -39,7 +39,7 @@ const Sidebar = (props:SidebarProps) => {
     const adminView = () => {
         console.log(localStorage.getItem("permission"));
         if (localStorage.getItem("permission") == "admin") {
-            return (<div><p>Admin View</p> <button className="startButton startButtonCircle"><Link to="/UserTable" className="link">Edit Users</Link></button>
+            return (<div><button className="startButton startButtonCircle"><Link to="/UserTable" className="link">Edit Users</Link></button>
               <button className="startButton startButtonCircle"><Link to="/GameEdit" className="link">Edit Games</Link></button></div>)
         }
 
