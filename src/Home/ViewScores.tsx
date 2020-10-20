@@ -46,7 +46,7 @@ class ViewScores extends React.Component<ViewScoresProps, ViewScoresState> {
 
     componentDidMount = () => {
         this.getMyScores();
-        this.detailedView();
+        // detailedView();
     }
 
     getMyScores = () => {
@@ -177,18 +177,18 @@ correctPlayerScores = () => {
         </div>)
     }
 }
-//view of game details
-detailedView = () => {
-    if (this.state.viewDetails === true && this.state.playerData !== {}){ 
-    console.log(this.state.playerData);
-        return (<div>
-         <h3>Player Scores</h3>
-       {this.correctPlayerScores()}
-            <button onClick={(e) => this.setState({viewDetails: false})}>Close Details</button>
-        </div>)
-    } else if (this.state.viewDetails === true) {return (<div>Loading Results</div>)}
-    else {return (<></>)}
-}
+// //view of game details
+// detailedView = () => {
+//     if (this.state.viewDetails === true && this.state.playerData !== {} && ){ 
+//     console.log(this.state.playerData);
+//         return (<div>
+//          <h3>Player Scores</h3>
+//        {this.correctPlayerScores()}
+//             <button onClick={(e) => this.setState({viewDetails: false})}>Close Details</button>
+//         </div>)
+//     } else if (this.state.viewDetails === true) {return (<div>Loading Results</div>)}
+//     else {return (<></>)}
+// }
   
 displayScores = () => {
  if (this.state.scores !==[]){
@@ -200,6 +200,17 @@ displayScores = () => {
         const topic = score.triviaTopic;
         const winner = score.winner;
         const gameId = score.gameId;
+
+      const detailedView = () => {
+            if (this.state.viewDetails === true && this.state.playerData !== {} && gameId == this.state.gameId){ 
+            console.log(this.state.playerData);
+                return (<div>
+                 <h3>Player Scores</h3>
+               {this.correctPlayerScores()}
+                    <button onClick={(e) => this.setState({viewDetails: false})}>Close Details</button>
+                </div>)
+            } else {return (<></>)}
+        }
         
    
         const specificMonth = (score: any) => {
@@ -281,7 +292,9 @@ displayScores = () => {
                     <p>{`Difficulty: ${difficulty}`}</p>
                     <p>{`Game Notes: ${ifGameNotes()}`}</p>
                 </div>
-                <Button variant="contained" color="primary" onClick={(e)=>{this.getMyPlayerScores(gameId)}}>View Player Scores</Button>
+                <Button variant="contained" color="primary" onClick={(e)=>{this.getMyPlayerScores(gameId); this.setState({gameId: gameId})}}>View Player Scores</Button>
+
+                {detailedView()}
             </div>
         )
     })
@@ -293,7 +306,6 @@ displayScores = () => {
     render() { 
         return ( 
             <div>
-                {this.detailedView()}
                 {this.displayScores()}
 
             </div>
