@@ -163,27 +163,53 @@ h1 {
   margin: 0;
 }
 
+b {
+  color:gray;
+}
+
 .options {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   font-family: 'Roboto';
   font-size: 2vw;
 }
 
+.namePointsUL {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-right: 3vw;
+}
+
+.namePoints {
+  display: flex;
+  align-items: center;
+  border: 2px solid white;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-bottom: 1vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+.gameNotes {
+  font-weight: bold;
+  font-size: 3vw;
+}
 
 /* _________________Change Questions____________ */
-.editQuestionsHeading {
+/* .editQuestionsHeading {
   font-size: 4vw;
   font-family: 'Roboto';
   margin-bottom: 0;
   margin-top: 2vw;
-}
+} */
 
 .gameOptionForm {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 1vw;
 }
 
 .choose {
@@ -198,9 +224,16 @@ h1 {
 
 }
 
-ul {
-  list-style-type: none;
+.editorButtons {
   display: flex;
-  justify-content: space-evenly;
-  margin-right: 3vw;
 }
+
+/* ____________PAST GAMES_____________ */
+.pastGames {
+  border: 2px solid white;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-top: 5vw;
+  padding-bottom: 2vw;
+}
+
