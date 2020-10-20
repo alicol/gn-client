@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import './sidebar.css'
 import './NewGameSetup.css'
 import UserTable from '../Admin/UserTable';
+import {Button} from '@material-ui/core'
 
 
 
@@ -280,7 +281,7 @@ displayScores = () => {
                     <p>{`Difficulty: ${difficulty}`}</p>
                     <p>{`Game Notes: ${ifGameNotes()}`}</p>
                 </div>
-                <button onClick={(e)=>{this.getMyPlayerScores(gameId)}}>View Player Scores</button>
+                <Button variant="contained" color="primary" onClick={(e)=>{this.getMyPlayerScores(gameId)}}>View Player Scores</Button>
             </div>
         )
     })

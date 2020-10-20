@@ -1,4 +1,5 @@
 import * as React from 'react';
+import '../Home/sidebar.css';
 
 export interface GameEditProps {
     token: string
