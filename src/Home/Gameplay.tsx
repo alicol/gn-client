@@ -28,11 +28,14 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
     classes : any
     constructor(props: GameplayProps) {
         super(props);
-        this.state = { questionResults: [], currentQuestionNumber: 0, numberOfQuestions: 50, questionEditor: "Off", category: 11, difficulty: "medium", winner: null };
+        this.state = { questionResults: [], currentQuestionNumber: 0, numberOfQuestions: 50, questionEditor: "On", category: 11, difficulty: "medium", winner: null };
         this.classes = this.props.classes;
+        
+
     }
     componentDidMount(){
         this.fetchQuestions();
+        // this.thisOneQuestion();
     }
 
 
@@ -49,6 +52,19 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
             )
         }
     }
+    backButton = () => {
+        if (this.state.questionResults.length !== 0 && this.state.currentQuestionNumber > 0){
+            return (<div>
+                <button onClick={() => this.setState({currentQuestionNumber: this.state.currentQuestionNumber - 1})}>Back</button>
+            </div>)
+        }
+    }
+    neutralize = (str: string) => {
+        let updated = str.replace(/&quot;/g, `"`).replace(/&#039;/g, `'`).replace(/&ldquo;/g, `"`).replace(/&rdquo;/g, `"`).replace(/&hellip;/g, `...`).replace(/&amp;/g, `&`);
+        console.log(updated);
+        return (updated);
+        
+    }
 
     fetchQuestions = () => {
         fetch(`https://opentdb.com/api.php?amount=${this.state.numberOfQuestions}&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple`, {
@@ -63,12 +79,54 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
 
     answerQuestionFunction = () => {
                 //ADD WHATEVER VISUAL AFFECT THE CORRECT ANSWER PROVIDES!
-                alert(`The correct answer is: ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`);
+                alert(`The correct answer is: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`);
             }
 
+// componentDidUpdate = (prevState: GameplayState) => {
+//  if (this.state.currentQuestionNumber !== prevState.currentQuestionNumber){
+//      this.thisOneQuestion();
+//  }
+// }
+
    thisOneQuestion = () => {
+    //    if(prevState.currentQuestionNumber !== this.state.currentQuestionNumber){
         if (this.state.questionResults.length !== 0 && this.state.questionResults.length >= this.state.currentQuestionNumber){
-           
+        const randomizedAnswerOrder = () => {
+            let randomNumber = Math.floor(Math.random() * 4) + 1;
+            if (randomNumber == 1){
+                return (<div>     
+                <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>               
+                <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
+                <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
+                </div>)
+            } else if (randomNumber == 2){
+                return (<div>     
+                    <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
+                    <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>  
+                    <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                    <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
+                    </div>)
+            } else if (randomNumber == 3){
+                return (
+                    <div>
+                    <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
+                    <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                    <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>
+                    <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
+                    </div>
+                )
+            } else if (randomNumber == 4){
+                return (<div>     
+                    <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p> 
+                    <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                    <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
+                    <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p> 
+                    </div>)
+            }
+         
+        }   
+
         return(
                 <div>
                     <div>
@@ -86,6 +144,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                     <Button variant="contained" color="secondary" onClick={() => this.answerQuestionFunction()} className={this.classes.showAnswer}>Show Answer</Button>
                     <br /> 
                     
+
                     
                 </div>
             )
@@ -98,6 +157,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
 
         if (this.state.questionEditor == "On"){
         return( <div>
+
         {/* <h5 className="editQuestionsHeading">CHOOSE QUESTIONS</h5> */}
         <form className="gameOptionForm">
             <p className="choose">HOW MANY QUESTIONS?</p>
@@ -118,6 +178,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         <label className="gameOption">Sports</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 21}); this.props.setPostTriviaTopic("Sports")}} />
         
         <label className="gameOption">Television</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 14}); this.props.setPostTriviaTopic("Television")}} />
+
         
         <label className="gameOption">Politics</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 24}); this.props.setPostTriviaTopic("Politics")}} />
         
@@ -141,7 +202,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         </div>
 
         </form>
-        
+
         </div>
         )
         } 
@@ -153,6 +214,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         return ( <div>
         {this.triviaSelector()}
         {this.thisOneQuestion()}
+        {this.backButton()}
        {this.nextButton()}
         </div> );
     }

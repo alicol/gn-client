@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 // import { tokenToString } from 'typescript';
 import './sidebar.css'
 import './NewGameSetup.css'
+import UserTable from '../Admin/UserTable';
 
 
 
@@ -288,15 +289,12 @@ displayScores = () => {
  }
 }
 
-
-
-
     render() { 
         return ( 
             <div>
                 {this.detailedView()}
                 {this.displayScores()}
-                
+
             </div>
          );
     }
