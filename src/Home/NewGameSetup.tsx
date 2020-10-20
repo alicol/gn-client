@@ -4,25 +4,6 @@ import { TypeVariable } from 'typescript';
 import Gameplay from './Gameplay';
 import {Button, Theme, withStyles} from '@material-ui/core'
 
-// const useStyles = (theme: Theme) => ({
-//     root: {
-//         fontFamily: "Roboto",
-//     },
-
-//     addPoint: {
-//         fontWeight: 'bold',
-//         margin: '1vw',
-//         color: '#3f51b5',
-//     },
-
-//     subtractPoint: {
-//         fontWeight: 'bold',
-//         margin: '1vw',
-//         color: 'f44336',
-//     }
-// })
-
-
 export interface NewGameSetupProps {
     token: string,
     postTriviaTopic: string,
