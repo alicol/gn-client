@@ -29,6 +29,9 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
                 this.props.updateToken(data.sessionToken);
                 localStorage.setItem("permission", data.permission)
             })
+            .catch(err => {
+                console.log(err, "login not working")
+            })
         }         
     
 

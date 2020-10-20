@@ -2,12 +2,14 @@ import { stringify } from 'querystring';
 // import { S_IFSOCK } from 'constants';
 // import { readFileSync } from 'fs';
 import React, {useEffect, useState} from 'react';
+import {Button, withStyles, Theme} from '@material-ui/core'
 
 export interface GameplayProps {
     // postDifficulty: string,
     // postTriviaTopic: string,
     setPostTriviaTopic: any,
-    setPostDifficulty: any
+    setPostDifficulty: any,
+    classes: any
 }
  
 export interface GameplayState {
@@ -23,9 +25,13 @@ export interface GameplayState {
 }
  
 class Gameplay extends React.Component<GameplayProps, GameplayState> {
+    classes : any
     constructor(props: GameplayProps) {
         super(props);
         this.state = { questionResults: [], currentQuestionNumber: 0, numberOfQuestions: 50, questionEditor: "On", category: 11, difficulty: "medium", winner: null };
+        this.classes = this.props.classes;
+        
+
     }
     componentDidMount(){
         this.fetchQuestions();
@@ -36,7 +42,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
      nextButton = () => {
         if (this.state.questionResults.length !== 0 && this.state.questionResults.length >= this.state.currentQuestionNumber + 2){
             return (<div>
-                <button onClick={() => this.setState({currentQuestionNumber: this.state.currentQuestionNumber + 1})}>Next Question</button>
+                <Button className={this.classes.nextQuestion} variant="contained" color="secondary" onClick={() => this.setState({currentQuestionNumber: this.state.currentQuestionNumber + 1})}>🢂 Next Question 🢂</Button>
             </div>)
         } else if(this.state.questionResults.length !== 0 ) {
             return(<div>LAST QUESTION!</div>)
@@ -123,12 +129,22 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
 
         return(
                 <div>
-                    <h5>{`Question #${this.state.currentQuestionNumber + 1}`}</h5>
-                    <p>{this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].question)}</p>
-                    <p>Choose from the following:</p>
-                    {randomizedAnswerOrder()}
-                    <button onClick={() => this.answerQuestionFunction()}>Show Answer</button>
-                    <button onClick={() => this.setState({questionEditor: "On"})}>Edit Questions</button>
+                    <div>
+                    <Button className={this.classes.changeQuestions} variant="contained" color="primary" onClick={() => this.setState({questionEditor: "On"})} >🢁 Change Questions 🢁</Button>
+                    </div>
+                    <br />
+                    <h5 className="questionNumberHeading"><u>{`QUESTION #${this.state.currentQuestionNumber + 1}`}</u></h5>
+                    <br />
+                    <h5 className="questionNumberHeading">{`${this.state.questionResults[this.state.currentQuestionNumber].question}`}</h5>
+                    {/* <p>Choose from the following:</p> */}
+                    <p className="options"><b>A: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p>
+                    <p className="options"><b>B: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1]}`}</p>
+                    <p className="options"><b>C: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p>
+                    <p className="options"><b>D: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>                    
+                    <Button variant="contained" color="secondary" onClick={() => this.answerQuestionFunction()} className={this.classes.showAnswer}>Show Answer</Button>
+                    <br /> 
+                    
+
                     
                 </div>
             )
@@ -141,44 +157,52 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
 
         if (this.state.questionEditor == "On"){
         return( <div>
-        <h5>Edit Questions</h5>
-        <form>
-            <p>Number of Questions</p>
-        <label>10</label><input type="radio" name="numberqs" onChange={(e) => this.setState({numberOfQuestions: 10})} />
-        <br />
-        <label>25</label><input type="radio" name="numberqs" onChange={(e) => this.setState({numberOfQuestions: 25})} />
-        <br />
-        <label>50</label><input type="radio" name="numberqs" onChange={(e) => this.setState({numberOfQuestions: 50})} />
-        <p>Difficulty</p>
-        <label>Easy</label><input type="radio" name="diff" onChange={(e) => {this.setState({difficulty: "easy"}); this.props.setPostDifficulty("Easy")}}/>
-        <br />
-        <label>Medium</label><input type="radio" name="diff" onChange={(e) => {this.setState({difficulty: "medium"}); this.props.setPostDifficulty("Medium")}} />
-        <br />
-        <label>Hard</label><input type="radio" name="diff" onChange={(e) => {this.setState({difficulty: "hard"}); this.props.setPostDifficulty("Hard")}} />
-            <p>Category</p>
-        <label>Sports</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 21}); this.props.setPostTriviaTopic("Sports")}} />
-        <br />
-        <label>Television</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 14}); this.props.setPostTriviaTopic("Television")}} />
-        <br />
-        {/* <label>Politics</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 24}); this.props.setPostTriviaTopic("Politics")}} /> //NOT WORKING
-        <br /> */}
-        <label>History</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 23}); this.props.setPostTriviaTopic("History")}} />
-        <br />
-        <label>Movies</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 11}); this.props.setPostTriviaTopic("Movies")}} />
-        <br />
-        <label>Geography</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 22}); this.props.setPostTriviaTopic("Geography")}} />
-        <br />
-        {/* <label>Celebrities</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 26}); this.props.setPostTriviaTopic("Celebrities")}} /> //NOT WORKING
-        <br /> */}
-        <label>Music</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 12}); this.props.setPostTriviaTopic("Music")}} />
-        <br />
-        <label>Natural Science</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 17}); this.props.setPostTriviaTopic("Natural Science")}} />
-        <br />
-        {/* <label>Animals</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 27}); this.props.setPostTriviaTopic("Animals")}} /> //NOT WORKING */}
+
+        {/* <h5 className="editQuestionsHeading">CHOOSE QUESTIONS</h5> */}
+        <form className="gameOptionForm">
+            <p className="choose">HOW MANY QUESTIONS?</p>
+        <label className="gameOption">10</label><input type="radio" name="numberqs" onChange={(e) => this.setState({numberOfQuestions: 10})} />
+    
+        <label className="gameOption">25</label><input type="radio" name="numberqs" onChange={(e) => this.setState({numberOfQuestions: 25})} />
+    
+        <label className="gameOption">50</label><input type="radio" name="numberqs" onChange={(e) => this.setState({numberOfQuestions: 50})} />
+        < br />
+        <p className="choose">HOW DIFFICULT?</p>
+        <label className="gameOption">Easy</label><input type="radio" name="diff" onChange={(e) => {this.setState({difficulty: "easy"}); this.props.setPostDifficulty("Easy")}}/>
         
+        <label className="gameOption">Medium</label><input type="radio" name="diff" onChange={(e) => {this.setState({difficulty: "medium"}); this.props.setPostDifficulty("Medium")}} />
+        
+        <label className="gameOption">Hard</label><input type="radio" name="diff" onChange={(e) => {this.setState({difficulty: "hard"}); this.props.setPostDifficulty("Hard")}} />
+        <br />
+            <p className="choose">WHAT CATEGORY?</p>
+        <label className="gameOption">Sports</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 21}); this.props.setPostTriviaTopic("Sports")}} />
+        
+        <label className="gameOption">Television</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 14}); this.props.setPostTriviaTopic("Television")}} />
+
+        
+        <label className="gameOption">Politics</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 24}); this.props.setPostTriviaTopic("Politics")}} />
+        
+        <label className="gameOption">History</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 23}); this.props.setPostTriviaTopic("History")}} />
+        
+        <label className="gameOption">Movies</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 11}); this.props.setPostTriviaTopic("Movies")}} />
+        
+        <label className="gameOption">Geography</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 22}); this.props.setPostTriviaTopic("Geography")}} />
+        
+        <label className="gameOption">Celebrities</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 26}); this.props.setPostTriviaTopic("Celebrities")}} />
+        
+        <label className="gameOption">Music</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 12}); this.props.setPostTriviaTopic("Music")}} />
+        
+        <label className="gameOption">Natural Science</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 17}); this.props.setPostTriviaTopic("Natural Science")}} />
+        
+        <label className="gameOption">Animals</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 27}); this.props.setPostTriviaTopic("Animals")}} />
+        
+        <div className="editorButtons">
+        <Button className={this.classes.applyChanges} variant="contained" onClick={(e) => this.fetchQuestions()}>Apply Changes</Button>
+        <Button className={this.classes.exitEditor} variant="contained" onClick={(e) => this.setState({questionEditor: "Off"})}>Exit Editor</Button>
+        </div>
+
         </form>
-        <button onClick={(e) => {this.fetchQuestions(); this.setState({questionEditor: "Off"})}}>Apply Criteria</button>
-        <button onClick={(e) => this.setState({questionEditor: "Off"})}>Exit Editor</button>
+
         </div>
         )
         } 
@@ -186,6 +210,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
 
 
     render() { 
+        // const { classes }: any = this.props;
         return ( <div>
         {this.triviaSelector()}
         {this.thisOneQuestion()}
@@ -194,8 +219,38 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         </div> );
     }
 }
+
+// export default Gameplay;
  
-export default Gameplay;
+export default withStyles((theme) => ({
+    root: {
+        fontFamily: "Roboto",
+    },
+
+    showAnswer: {
+        fontWeight: 'bold',
+        marginBottom: '2vw',
+    },
+
+    changeQuestions: {
+        fontWeight: 'bold',
+    },
+
+    nextQuestion: {
+        fontWeight: 'bold',
+        marginBottom: '2vw'
+    },
+
+    applyChanges: {
+        fontWeight: 'bold',
+        marginRight: '1vw',
+    },
+
+    exitEditor: {
+        fontWeight:'bold',
+        marginLeft: '1vw',
+    },
+}))(Gameplay);
 
 
 // export interface GamePlayProps {
