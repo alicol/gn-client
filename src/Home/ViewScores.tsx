@@ -273,13 +273,13 @@ displayScores = () => {
               }
           }  
         return (
-            <div>
+            <div className="pastGames">
                 <h3>{`${winner} won this game on ${specificMonth(score)} ${specificDay(score)}, ${specificYear(score)}`}</h3>
-                <ul>
-                    <li>{`Category: ${topic}`}</li>
-                    <li>{`Difficulty: ${difficulty}`}</li>
-                    <li>{`Game Notes: ${ifGameNotes()}`}</li>
-                </ul>
+                <div>
+                    <p>{`Category: ${topic}`}</p>
+                    <p>{`Difficulty: ${difficulty}`}</p>
+                    <p>{`Game Notes: ${ifGameNotes()}`}</p>
+                </div>
                 <button onClick={(e)=>{this.getMyPlayerScores(gameId)}}>View Player Scores</button>
             </div>
         )
