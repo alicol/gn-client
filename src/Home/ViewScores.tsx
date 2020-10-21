@@ -112,7 +112,8 @@ correctPlayerScores = () => {
             <ul>
                 <li>{`${this.state.playerData.player1}: ${this.state.playerData.score1}`}</li>
                 <li>{`${this.state.playerData.player2}: ${this.state.playerData.score2}`}</li>
-                <li>{`${this.state.playerData.player3}: ${this.state.playerData.score3}`}</li>   <li>{`${this.state.playerData.player4}: ${this.state.playerData.score4}`}</li>
+                <li>{`${this.state.playerData.player3}: ${this.state.playerData.score3}`}</li>   
+                <li>{`${this.state.playerData.player4}: ${this.state.playerData.score4}`}</li>
                 <li>{`${this.state.playerData.player4}: ${this.state.playerData.score4}`}</li>
             </ul>
         </div>)
@@ -275,10 +276,8 @@ displayScores = () => {
           }  
         return (
             <div className="pastGames">
-                <h3>{`${winner} won this game on ${specificMonth(score)} ${specificDay(score)}, ${specificYear(score)}`}</h3>
+                <h3>{`${winner} won ${difficulty} ${topic} trivia on ${specificMonth(score)} ${specificDay(score)}, ${specificYear(score)}`}</h3>
                 <div>
-                    <p>{`Category: ${topic}`}</p>
-                    <p>{`Difficulty: ${difficulty}`}</p>
                     <p>{`Game Notes: ${ifGameNotes()}`}</p>
                 </div>
                 <Button variant="contained" color="primary" onClick={(e)=>{this.getMyPlayerScores(gameId); this.setState({gameId: gameId})}}>View Player Scores</Button>

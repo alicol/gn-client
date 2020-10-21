@@ -17,7 +17,7 @@ h1 {
 }
 
 .startButton {
-  font-size: 50pt;
+  font-size: 5vw;
   text-decoration: none;
   -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
@@ -42,27 +42,27 @@ h1 {
   font-family: "Permanent Marker", "Lucida Grande", sans-serif;
   color: black;
   text-shadow: 0 1px 1px white;
-  margin-right: 3rem;
-  margin-left: 3rem;
-  margin-bottom: 3rem;
+  margin-right: 3vw;
+  margin-left: 3vw;
+  margin-bottom: 6vw;
   text-align: center;
   outline: 0;
 }
 
 .startButtonCircle {
-  -webkit-border-radius: 50rem;
-  -moz-border-radius: 50rem;
-  -ms-border-radius: 50rem;
-  -o-border-radius: 50rem;
-  border-radius: 50rem;
+  -webkit-border-radius: 50vw;
+  -moz-border-radius: 50vw;
+  -ms-border-radius: 50vw;
+  -o-border-radius: 50vw;
+  border-radius: 50vw;
   -webkit-box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
-  width: 25rem;
-  line-height: 4rem;
-  height: 25rem;
-  padding: 2rem;
-  border-width: 1rem;
+  width: 25vw;
+  line-height: 5vw;
+  height: 25vw;
+  padding: 2vw;
+  border-width: 2vw;
   outline: 0;
 }
 
@@ -128,7 +128,7 @@ h1 {
 .radioLabel {
   font-family: 'Roboto';
   font-weight: bold;
-  font-size: 1.5vw;
+  font-size: 2vw;
   margin-left: 3vw;
   margin-bottom: 0;
 }
