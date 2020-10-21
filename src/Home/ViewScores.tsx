@@ -3,13 +3,16 @@ import React, {useState, useEffect} from 'react';
 import './sidebar.css'
 import './NewGameSetup.css'
 import UserTable from '../Admin/UserTable';
-import {Button} from '@material-ui/core'
+import {Button, withStyles} from '@material-ui/core'
 
 
 
 export interface ViewScoresProps {
     token: string,
-    setRedirect: any
+    setRedirect: any,
+    classes: {
+        root: any;
+    },
 }
  
 export interface ViewScoresState {
@@ -38,9 +41,11 @@ export interface ViewScoresState {
 }
  
 class ViewScores extends React.Component<ViewScoresProps, ViewScoresState> {
+    classes : any
     constructor(props: ViewScoresProps) {
         super(props);
         this.state = {player1: null, player2: null, player3: null, player4: null, player5: null, player6: null, player7: null, player8: null, player9: null, score1: 0, score2: 0, score3: 0, score4: 0, score5: 0, score6: 0, score7: 0, score8: 0, score9: 0, scores: [], playerData: {}, viewDetails: false, gameId: 0};
+        this.classes = this.props.classes;
     }
 
     URL = "http://localhost:3000";
@@ -271,16 +276,16 @@ displayScores = () => {
               if (gameNotes !== null){
                   return gameNotes
               } else {
-                  return ("N/A")
+                  return ("--")
               }
           }  
         return (
             <div className="pastGames">
-                <h3>{`${winner} won ${difficulty} ${topic} trivia on ${specificMonth(score)} ${specificDay(score)}, ${specificYear(score)}`}</h3>
+                <h3 className="pastGameSentence">{`${winner} won ${difficulty} ${topic} trivia on ${specificMonth(score)} ${specificDay(score)}, ${specificYear(score)}`}</h3>
                 <div>
-                    <p>{`Game Notes: ${ifGameNotes()}`}</p>
+                    <p className="pastGameNotes">{`Game Notes: ${ifGameNotes()}`}</p>
                 </div>
-                <Button variant="contained" color="primary" onClick={(e)=>{this.getMyPlayerScores(gameId); this.setState({gameId: gameId})}}>View Player Scores</Button>
+                <Button className={this.classes.root} variant="contained" color="primary" onClick={(e)=>{this.getMyPlayerScores(gameId); this.setState({gameId: gameId})}}>View Player Scores</Button>
 
                 {detailedView()}
             </div>
@@ -294,7 +299,8 @@ displayScores = () => {
     render() { 
         return ( 
             <div>
-                <h2>Your Game Scores</h2>
+                <hr />
+                <h2 className="yourGameScores">Your Game Scores</h2>
                 {this.props.setRedirect(null)}
                 {this.displayScores()}
 
@@ -303,4 +309,10 @@ displayScores = () => {
     }
 }
  
-export default ViewScores;
+export default withStyles((theme) => ({
+    root: {
+        fontFamily: "Roboto",
+        fontWeight: 'bold',
+        fontSize: '1.5vw',
+    },
+}))(ViewScores);

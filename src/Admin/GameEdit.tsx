@@ -154,7 +154,7 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
                     <p className="sentence">{`User ${ownerId} | Game #${gameId} | ${specificMonth(date)} ${specificDay(date)}, ${specificYear(date)}`}</p>
                     
                         <p className="sentence">{`${winner} won ${difficulty} ${topic}`} trivia!</p>
-                        <p>{`Game Notes: ${ifGameNotes()}`}</p>
+                        <p className="adminGameNotes">{`Game Notes: ${ifGameNotes()}`}</p>
 
                     {showEdits(gameId)}
             <Button className={this.classes.warning} onClick={(e) => {this.setState({showEditGame: true}); this.setState({editGameId: gameId})}}>Edit</Button>
@@ -207,7 +207,9 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
         })
     }
     render() { 
-        return ( <div><h3 className="editGameHeading">Game Edit</h3>
+        return ( <div>
+          <hr />
+          <h3 className="editGameHeading">Game Edit</h3>
         {this.displayUserHistory()}</div> );
     }
 }
