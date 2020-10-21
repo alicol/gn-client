@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Montez&family=Roboto&display=swap');;
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+body {
+    background-color: black;
+}
+
+h3 {
+    font-family: "Montez", sans-serif;
+    font-size: 4vw;
+    margin-bottom: 0;
+    margin-top: 1vw;
+}
+
+h4 {
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 5vw;
+    margin: 0;
+}
+
+.presents {
+    font-family: 'Roboto';
+    letter-spacing: .3em;
+    font-style: italic;
+    color: gray;
+    font-size: 1.5vw;
+    margin-bottom: 1vw; 
+}
+
+.copyright {
+    font-family: 'Roboto';
+    font-size: 10pt;  
+}
+
+form {
+    border: 2px solid white;
+    border-radius: .2rem;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
+    padding: 1vw;
+}
+
+input {
+    font-family: 'Roboto';
+    font-weight: bold;
+    letter-spacing: .1em;
+    margin-bottom: 2vw;
+    width: 40vw;
+    padding-left: 1vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+}
+
+.submitSignUp {
+    font-family: 'Roboto';
+    font-size: 20pt;
+    font-weight: bold;
+    background: #29B6F6;
+    padding: 1vw;
+    border-radius: .2em;
+    border: 2px solid white;
+    margin-bottom: 1vw;
+    color: black;
+}
+
+.submitSignUp:hover {
+    background: #008DEB;
+}
+
+.submitLogIn {
+    font-family: 'Roboto';
+    font-size: 20pt;
+    font-weight: bold;
+    background: #C6FF00;
+    padding: 1vw;
+    border-radius: .2em;
+    border: 2px solid white;
+    /* color: white; */
+    margin-bottom: 1vw;
+    color: black;
+}
+
+.submitLogIn:hover {
+    background: #A0CC00;
+}
