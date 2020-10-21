@@ -471,7 +471,10 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
         .then(() => {
             this.setState({showGameplay: true});
       
-        });  
+        })
+        .catch(err => {
+            console.log(err, "Fetch failed");
+        })  
     };
 
     //posts final score and then also posts user history (still working user-history post)
@@ -517,6 +520,9 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
         .then(() => {
             this.setState({showGameplay: false});
             console.log('gameplay set true');
+        })
+        .catch(err => {
+            console.log(err, "Fetch failed");
         });
         //user-history post
         fetch(`${this.URL}/user-history/post`, {
@@ -546,7 +552,10 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
         })
         .then(() => {
            console.log('nothing yet')
-        });
+        })
+        .catch(err => {
+            console.log(err, "Fetched failed");
+        })
         
     };
 

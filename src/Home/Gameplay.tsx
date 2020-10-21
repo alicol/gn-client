@@ -75,6 +75,9 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
             console.log(json);
             this.setState({questionResults: json.results})
         })
+        .catch(err => {
+            console.log(err, "Fetch not working");
+        })
     }
 
     answerQuestionFunction = () => {

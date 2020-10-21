@@ -21,13 +21,23 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
         const body: SignUpRequest = { user: { userName: this.state.username, password: this.state.password } }
         const requestOptions = { method: "POST", headers: headers, body: JSON.stringify(body) }
         fetch(url, requestOptions)
-            .then(response => response.json())
-            .then((json: SignUpResponse) => {
-                console.log(json.sessionToken);
-                this.props.updateToken(json.sessionToken);
-                localStorage.setItem("permission", "basic")
-            })
-    }
+        .then(response => response.json())
+        .then((json: SignUpResponse) => {
+            console.log(json);
+            if(json.message === "USER SUCCESSFULLY INITIALIZED"){
+            alert("New User Created")}
+                else{
+                    alert("Invalid Username or Password. Username must be a valid email address and password must be at least eight characters.")
+                
+            }
+            console.log(json.sessionToken)
+            this.props.updateToken(json.sessionToken);
+            localStorage.setItem("permission", "basic")
+        })
+        .catch(err => {
+            console.log(err, "Signup not working");
+        })
+}
     render() {
         return (<div>
             

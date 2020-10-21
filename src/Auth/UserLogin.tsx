@@ -23,16 +23,23 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
         const requestOptions = { method: "POST", headers: headers, body: JSON.stringify(body) }
 
         fetch(url, requestOptions)
-            .then(response => response.json())
-            .then((data: LoginResponse) => {
-                console.log(data.sessionToken);
-                this.props.updateToken(data.sessionToken);
-                localStorage.setItem("permission", data.permission)
-            })
-            .catch(err => {
-                console.log(err, "login not working")
-            })
-        }         
+        .then(response => response.json())
+        .then((json: LoginResponse) => {
+            console.log(json);
+            if(json.message === "COMMENCE TRIVIA!"){
+            alert("Login Successful! Commence Trivia!")}
+                else{
+                    alert("Invalid Login Credentials. Please try again.")
+                
+            }
+            console.log(json.sessionToken);
+            this.props.updateToken(json.sessionToken);
+            localStorage.setItem("permission", json.permission)
+        })
+        .catch(err => {
+            console.log(err, "login not working");
+        })
+    }  
     
 
                 // set the token
