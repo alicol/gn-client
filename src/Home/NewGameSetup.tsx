@@ -9,8 +9,8 @@ export interface NewGameSetupProps {
     postTriviaTopic: string,
     postDifficulty: string,
     setPostTriviaTopic: any,
-    setPostDifficulty: any
-
+    setPostDifficulty: any,
+    setRedirect: any,
     classes: {
         root: any;
         addPoint: any;
@@ -43,7 +43,7 @@ export interface NewGameSetupState {
     currentGame: number,
     gameNotes: string | null,
     currentWinner: any | null,
-  
+   
 }
 
 class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState> {
@@ -546,6 +546,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
         })
         .then(() => {
            console.log('nothing yet')
+           this.props.setRedirect('/ViewScores')
         });
         
     };
