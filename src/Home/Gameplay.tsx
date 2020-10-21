@@ -135,12 +135,14 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                     <br />
                     <h5 className="questionNumberHeading"><u>{`QUESTION #${this.state.currentQuestionNumber + 1}`}</u></h5>
                     <br />
-                    <h5 className="questionNumberHeading">{`${this.state.questionResults[this.state.currentQuestionNumber].question}`}</h5>
+                    <h5 className="questionNumberHeading">{`${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].question)}`}</h5>
+                    <br />
+                    {randomizedAnswerOrder()}
                     {/* <p>Choose from the following:</p> */}
-                    <p className="options"><b>A: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p>
+                    {/* <p className="options"><b>A: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0]}`}</p>
                     <p className="options"><b>B: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1]}`}</p>
                     <p className="options"><b>C: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p>
-                    <p className="options"><b>D: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>                    
+                    <p className="options"><b>D: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>                     */}
                     <Button variant="contained" color="secondary" onClick={() => this.answerQuestionFunction()} className={this.classes.showAnswer}>Show Answer</Button>
                     <br /> 
                     
@@ -180,7 +182,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         <label className="gameOption">Television</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 14}); this.props.setPostTriviaTopic("Television")}} />
 
 {/*         
-        <label className="gameOption">Politics</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 24}); this.props.setPostTriviaTopic("Politics")}} /> */} //NOT WORKING
+        <label className="gameOption">Politics</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 24}); this.props.setPostTriviaTopic("Politics")}} /> */} 
         
         <label className="gameOption">History</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 23}); this.props.setPostTriviaTopic("History")}} />
         
@@ -188,13 +190,13 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         
         <label className="gameOption">Geography</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 22}); this.props.setPostTriviaTopic("Geography")}} />
         
-        {/* <label className="gameOption">Celebrities</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 26}); this.props.setPostTriviaTopic("Celebrities")}} /> */} //NOT WORKING
+        {/* <label className="gameOption">Celebrities</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 26}); this.props.setPostTriviaTopic("Celebrities")}} /> */} 
         
         <label className="gameOption">Music</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 12}); this.props.setPostTriviaTopic("Music")}} />
         
         <label className="gameOption">Natural Science</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 17}); this.props.setPostTriviaTopic("Natural Science")}} />
         
-        {/* <label className="gameOption">Animals</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 27}); this.props.setPostTriviaTopic("Animals")}} /> */} //NOT WORKING
+        {/* <label className="gameOption">Animals</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 27}); this.props.setPostTriviaTopic("Animals")}} /> */} 
         
         <div className="editorButtons">
         <Button className={this.classes.applyChanges} variant="contained" onClick={(e) => {this.fetchQuestions(); this.setState({questionEditor: "Off"})}}>Apply Changes</Button>
