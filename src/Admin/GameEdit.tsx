@@ -1,8 +1,16 @@
 import * as React from 'react';
-import '../Home/sidebar.css';
+// import '../Home/sidebar.css';
+import './Admin.css';
+import {Button, withStyles} from '@material-ui/core'
 
 export interface GameEditProps {
     token: string
+    classes: {
+      root: any;
+      warning: any;
+      danger: any;
+      editForm: any;
+    };
 }
  
 export interface GameEditState {
@@ -15,9 +23,11 @@ export interface GameEditState {
 }
  
 class GameEdit extends React.Component<GameEditProps, GameEditState> {
+  classes : any
     constructor(props: GameEditProps) {
         super(props);
         this.state = { userHistory: [], updatedWinner: "", updatedGameNotes: "", editGameId: null, showEditGame: false};
+        this.classes = this.props.classes;
     }
     URL = "http://localhost:3000";
 
@@ -57,16 +67,16 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
             const showEdits = (gameId: number) => {
               if (this.state.showEditGame == true && this.state.editGameId == gameId){
                 return(
-                  <div>
-                      <p>Edit Game</p>
-                      <label>Winner</label>
-                  <input placeholder="Enter updated winner..." defaultValue={winner} type="text" onChange={(e) => this.setState({updatedWinner: e.target.value})}/>
+                  <div className="gameEditForm">
+                      <h3 className="editFormTitle">Corrections</h3>
+                      <label className="editFormLabels">Winner: </label>
+                  <input className="editWinnerInput" placeholder="Enter updated winner..." defaultValue={winner} type="text" onChange={(e) => this.setState({updatedWinner: e.target.value})}/>
                   <br />
-                  <label>Game Notes</label>
-                  <input placeholder="Enter updated notes..." defaultValue={gameNotes} type="text" onChange={(e) => this.setState({updatedGameNotes: e.target.value})}/>
+                  <label className="editFormLabels">Game Notes: </label>
+                  <input className="editNotesInput" placeholder="Enter updated notes..." defaultValue={gameNotes} type="text" onChange={(e) => this.setState({updatedGameNotes: e.target.value})}/>
                   <br />
-                    <button onClick={(e) => {this.setState({editGameId: null}); this.setState({showEditGame: false})}}>Cancel</button>
-                    <button type="submit" onClick={(e) => {this.updateGame(gameId); this.setState({showEditGame: false})}}> Submit Change</button> 
+                    <Button className={this.classes.editForm} variant="contained" color="secondary" onClick={(e) => {this.setState({editGameId: null}); this.setState({showEditGame: false})}}>Cancel</Button>
+                    <Button className={this.classes.editForm} variant="contained" color="primary" type="submit" onClick={(e) => {this.updateGame(gameId); this.setState({showEditGame: false})}}> Submit Change</Button> 
                   </div>
                 )
               }
@@ -140,18 +150,15 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
                   }
               }  
             return (
-                <div>
-                    <h3>{`Game #${gameId} - ${specificMonth(date)} ${specificDay(date)}, ${specificYear(date)}`}</h3>
-                    <ul>
-                        <li>{`Owner ID: ${ownerId}`}</li>
-                        <li>{`Winner: ${winner}`}</li>
-                        <li>{`Category: ${topic}`}</li>
-                        <li>{`Difficulty: ${difficulty}`}</li>
-                        <li>{`Game Notes: ${ifGameNotes()}`}</li>
-                    </ul>
+                <div className="gameEdits">
+                    <p className="sentence">{`User ${ownerId} | Game #${gameId} | ${specificMonth(date)} ${specificDay(date)}, ${specificYear(date)}`}</p>
+                    
+                        <p className="sentence">{`${winner} won ${difficulty} ${topic}`} trivia!</p>
+                        <p className="adminGameNotes">{`Game Notes: ${ifGameNotes()}`}</p>
+
                     {showEdits(gameId)}
-            <button onClick={(e) => {this.setState({showEditGame: true}); this.setState({editGameId: gameId})}}>Edit</button>
-            <button onClick={(e)=>{this.deleteGame(gameId)}}>Delete</button>
+            <Button className={this.classes.warning} onClick={(e) => {this.setState({showEditGame: true}); this.setState({editGameId: gameId})}}>Edit</Button>
+            <Button className={this.classes.danger} onClick={(e)=>{this.deleteGame(gameId)}}>Delete</Button>
                 </div>
             )
         })
@@ -206,9 +213,41 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
       })  
     }
     render() { 
-        return ( <div><h3>Game Edit</h3>
+        return ( <div>
+          <hr />
+          <h3 className="editGameHeading">Game Edit</h3>
         {this.displayUserHistory()}</div> );
     }
 }
  
-export default GameEdit;
+export default withStyles((theme) => ({
+  root: {
+    fontFamily: 'Roboto',
+  },
+
+  danger: {
+    background: '#ff1744',
+    '&:hover': {
+      backgroundColor: '#ff616f',
+    },
+    fontWeight: 'bold',
+    marginLeft: '1vw',
+    width: '10vw',
+  },
+
+  warning: {
+    background: '#ff8f00',
+    '&:hover': {
+      backgroundColor: '#ffc046',
+    },
+    fontWeight: 'bold',
+    marginRight: '1vw',
+    width: '10vw',
+  },
+
+  editForm: {
+    marginLeft: '.5vw',
+    marginRight: '.5vw',
+    fontWeight: 'bold',
+  },
+}))(GameEdit);
