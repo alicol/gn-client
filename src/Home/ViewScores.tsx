@@ -70,6 +70,9 @@ class ViewScores extends React.Component<ViewScoresProps, ViewScoresState> {
         console.log(logData[0]);
     
     })
+    .catch(err => {
+        console.log(err, "fetch failed");
+    })
 }
 
     getMyPlayerScores = (gameId: any) => {
@@ -88,6 +91,9 @@ class ViewScores extends React.Component<ViewScoresProps, ViewScoresState> {
         this.setState({viewDetails: true})
        
     }) 
+    .catch(err => {
+        console.log(err, "fetch failed");
+    })
     
 }
 correctPlayerScores = () => {

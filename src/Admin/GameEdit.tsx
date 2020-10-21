@@ -181,6 +181,9 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
           this.getUserHistory();
     
         })
+        .catch(err => {
+          console.log(err, "Delete failed");
+      })  
     }
     
     updateGame = (gameId: number) => {
@@ -205,6 +208,9 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
           this.getUserHistory();
     
         })
+        .catch(err => {
+          console.log(err, "Edit failed");
+      })  
     }
     render() { 
         return ( <div>
