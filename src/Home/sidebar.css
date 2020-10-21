@@ -235,5 +235,20 @@ b {
   margin-right: 10vw;
   margin-top: 5vw;
   padding-bottom: 2vw;
+  
 }
 
+.yourGameScores {
+  font-family: 'Permanent Marker';
+  font-size: 4vw;
+}
+
+.pastGameSentence {
+  font-size: 3.5vw;
+  font-weight: lighter;
+}
+
+.pastGameNotes {
+  font-size: 1.5vw;
+  font-family: 'Roboto';
+}

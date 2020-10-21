@@ -139,6 +139,7 @@ editUser = (userId:number) => {
   render() {
     return (
       <div>
+        <hr />
         <h4><u>Edit Users</u></h4>
         {this.displayUsers()}
 
