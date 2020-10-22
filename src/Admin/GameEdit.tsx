@@ -193,7 +193,7 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
       })
         .then((res) => res.json())
         .then((logData) => {
-          alert("This user has been edited.")
+          alert("This game has been edited.")
           console.log(logData);
           this.getUserHistory();
     
