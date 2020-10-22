@@ -134,6 +134,14 @@ h1 {
 }
 
 /* __________Player Names____________ */
+.players{
+  display: flex;
+  flex-direction: column;
+}
+
+.numberPlayers {
+  justify-content: center;
+}
 
 .nameDirection {
   font-family: 'Roboto';
@@ -150,6 +158,12 @@ h1 {
 .playerInputs {
   font-family: "Roboto";
   font-size: 1.5vw;
+}
+
+.radioLabel {
+  border: 2px solid white;
+  padding: 1vw;
+  border-radius: 2vw;
 }
 
 /* ________________Questions____________________ */

@@ -44,15 +44,16 @@ export interface NewGameSetupState {
     currentGame: number,
     gameNotes: string | null,
     currentWinner: any | null,
+    selectedValue: any,
 
 }
 
 class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState> {
     classes: any
-    selectedValue: any
+    
     constructor(props: NewGameSetupProps) {
         super(props);
-        this.state = { showGameplay: false, player1: null, player2: null, player3: null, player4: null, player5: null, player6: null, player7: null, player8: null, player9: null, score1: 0, score2: 0, score3: 0, score4: 0, score5: 0, score6: 0, score7: 0, score8: 0, score9: 0, numberOfPlayers: 1, currentGame: 0, gameNotes: null, currentWinner: null };
+        this.state = { showGameplay: false, player1: null, player2: null, player3: null, player4: null, player5: null, player6: null, player7: null, player8: null, player9: null, score1: 0, score2: 0, score3: 0, score4: 0, score5: 0, score6: 0, score7: 0, score8: 0, score9: 0, numberOfPlayers: 1, currentGame: 0, gameNotes: null, currentWinner: null, selectedValue: "0" };
         this.classes = this.props.classes;
 
     }
@@ -89,18 +90,31 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
             )
         } else {
             return (
-                <div>
+                <div className="players">
                     <hr />
                     <h5 className="createFormHeading">Create a New Game</h5>
                     <p className="selectDirection">Select # of players:</p>
                     <form className="numberPlayers">
 
-                        <Radio checked={this.selectedValue == '1'} onChange={(e) => this.setState({ numberOfPlayers: 1 })} color="default" name="playercount" inputProps={{ 'aria-label': '1'}} />
-                        <label className="radioLabel">1</label>
+                        <label className="radioLabel">1<Radio checked={this.state.selectedValue === '1'} className={this.classes.radio} value="1" onChange={(e) => this.setState({ numberOfPlayers: 1, selectedValue: "1" })}  name="playercount" inputProps={{ 'aria-label': '1'}} /></label>
 
+                        <label className="radioLabel">2<Radio checked={this.state.selectedValue === '2'} className={this.classes.radio} value="2" onChange={(e) => this.setState({ numberOfPlayers: 2, selectedValue: "2" })}  name="playercount" inputProps={{ 'aria-label': '2'}} /></label>
 
-                        <input type="radio" name="playercount" onChange={(e) => this.setState({ numberOfPlayers: 1 })} className="numberRadio" />
-                        <span className="checkmark"></span>
+                        <label className="radioLabel">3<Radio checked={this.state.selectedValue === '3'} className={this.classes.radio} value="3" onChange={(e) => this.setState({ numberOfPlayers: 3, selectedValue: "3" })}  name="playercount" inputProps={{ 'aria-label': '3'}} /></label>
+                        
+                        <label className="radioLabel">4<Radio checked={this.state.selectedValue === '4'} className={this.classes.radio} value="4" onChange={(e) => this.setState({ numberOfPlayers: 4, selectedValue: "4" })}  name="playercount" inputProps={{ 'aria-label': '4'}} /></label>
+                        
+                        <label className="radioLabel">5<Radio checked={this.state.selectedValue === '5'} className={this.classes.radio} value="5" onChange={(e) => this.setState({ numberOfPlayers: 5, selectedValue: "5" })}  name="playercount" inputProps={{ 'aria-label': '5'}} /></label>
+
+                        <label className="radioLabel">6<Radio checked={this.state.selectedValue === '6'} className={this.classes.radio} value="6" onChange={(e) => this.setState({ numberOfPlayers: 6, selectedValue: "6" })}  name="playercount" inputProps={{ 'aria-label': '6'}} /></label>
+
+                        <label className="radioLabel">7<Radio checked={this.state.selectedValue === '7'} className={this.classes.radio} value="7" onChange={(e) => this.setState({ numberOfPlayers: 7, selectedValue: "7" })}  name="playercount" inputProps={{ 'aria-label': '7'}} /></label>
+
+                        <label className="radioLabel">8<Radio checked={this.state.selectedValue === '8'} className={this.classes.radio} value="8" onChange={(e) => this.setState({ numberOfPlayers: 8, selectedValue: "8" })}  name="playercount" inputProps={{ 'aria-label': '8'}} /></label>
+
+                        <label className="radioLabel">9<Radio checked={this.state.selectedValue === '9'} className={this.classes.radio} value="9" onChange={(e) => this.setState({ numberOfPlayers: 9, selectedValue: "9" })}  name="playercount" inputProps={{ 'aria-label': '9'}} /></label>
+
+                        {/* <input type="radio" name="playercount" onChange={(e) => this.setState({ numberOfPlayers: 1 })} className="numberRadio" />
                         <br />
                         <label className="radioLabel">2</label>
                         <input type="radio" name="playercount" onChange={(e) => this.setState({ numberOfPlayers: 2 })} className="numberRadio" />
@@ -124,7 +138,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                         <input type="radio" name="playercount" onChange={(e) => this.setState({ numberOfPlayers: 8 })} className="numberRadio" />
                         <br />
                         <label className="radioLabel"> 9</label>
-                        <input type="radio" name="playercount" onChange={(e) => this.setState({ numberOfPlayers: 9 })} className="numberRadio" />
+                        <input type="radio" name="playercount" onChange={(e) => this.setState({ numberOfPlayers: 9 })} className="numberRadio" /> */}
 
                     </form>
                     {this.formCreator()}
@@ -586,16 +600,21 @@ formCreator = () => {
             break;
         case 2:
             return (
+                <>
+                <h5 className="nameDirection">Input player names:</h5>
                 <form onSubmit={this.handleSubmit} className="playerNameForm">
                     <input placeholder="PLAYER 1" onChange={(e) => this.setState({ player1: e.target.value })} className={this.classes.root}></input>
                     <input placeholder="PLAYER 2" onChange={(e) => this.setState({ player2: e.target.value })} className={this.classes.root}></input>
                     <br />
                     <Button type="submit" className={this.classes.root} variant="contained" color="primary">NEXT 🢂</Button>
                 </form>
+                </>
             );
             break;
         case 3:
             return (
+                <>
+                <h5 className="nameDirection">Input player names:</h5>
                 <form onSubmit={this.handleSubmit} className="playerNameForm">
                     <input placeholder="PLAYER 1" onChange={(e) => this.setState({ player1: e.target.value })} className={this.classes.root}></input>
                     <input placeholder="PLAYER 2" onChange={(e) => this.setState({ player2: e.target.value })} className={this.classes.root}></input>
@@ -603,10 +622,13 @@ formCreator = () => {
                     <br />
                     <Button type="submit" className={this.classes.root} variant="contained" color="primary">NEXT 🢂</Button>
                 </form>
+                </>
             );
             break;
         case 4:
             return (
+                <>
+                <h5 className="nameDirection">Input player names:</h5>
                 <form onSubmit={this.handleSubmit} className="playerNameForm">
                     <input placeholder="PLAYER 1" onChange={(e) => this.setState({ player1: e.target.value })} className={this.classes.root}></input>
                     <input placeholder="PLAYER 2" onChange={(e) => this.setState({ player2: e.target.value })} className={this.classes.root}></input>
@@ -615,10 +637,13 @@ formCreator = () => {
                     <br />
                     <Button type="submit" className={this.classes.root} variant="contained" color="primary">NEXT 🢂</Button>
                 </form>
+                </>
             );
             break;
         case 5:
             return (
+                <>
+                <h5 className="nameDirection">Input player names:</h5>
                 <form onSubmit={this.handleSubmit} className="playerNameForm">
                     <input placeholder="PLAYER 1" onChange={(e) => this.setState({ player1: e.target.value })} className={this.classes.root}></input>
                     <input placeholder="PLAYER 2" onChange={(e) => this.setState({ player2: e.target.value })} className={this.classes.root}></input>
@@ -628,10 +653,13 @@ formCreator = () => {
                     <br />
                     <Button type="submit" className={this.classes.root} variant="contained" color="primary">NEXT 🢂</Button>
                 </form>
+                </>
             );
             break;
         case 6:
             return (
+                <>
+                <h5 className="nameDirection">Input player names:</h5>
                 <form onSubmit={this.handleSubmit} className="playerNameForm">
                     <input placeholder="PLAYER 1" onChange={(e) => this.setState({ player1: e.target.value })} className={this.classes.root}></input>
                     <input placeholder="PLAYER 2" onChange={(e) => this.setState({ player2: e.target.value })} className={this.classes.root}></input>
@@ -642,10 +670,13 @@ formCreator = () => {
                     <br />
                     <Button type="submit" className={this.classes.root} variant="contained" color="primary">NEXT 🢂</Button>
                 </form>
+                </>
             );
             break;
         case 7:
             return (
+                <>
+                <h5 className="nameDirection">Input player names:</h5>
                 <form onSubmit={this.handleSubmit} className="playerNameForm">
                     <input placeholder="PLAYER 1" onChange={(e) => this.setState({ player1: e.target.value })} className={this.classes.root}></input>
                     <input placeholder="PLAYER 2" onChange={(e) => this.setState({ player2: e.target.value })} className={this.classes.root}></input>
@@ -657,10 +688,13 @@ formCreator = () => {
                     <br />
                     <Button type="submit" className={this.classes.root} variant="contained" color="primary">NEXT 🢂</Button>
                 </form>
+                </>
             );
             break;
         case 8:
             return (
+                <>
+                <h5 className="nameDirection">Input player names:</h5>
                 <form onSubmit={this.handleSubmit} className="playerNameForm">
                     <input placeholder="PLAYER 1" onChange={(e) => this.setState({ player1: e.target.value })} className={this.classes.root}></input>
                     <input placeholder="PLAYER 2" onChange={(e) => this.setState({ player2: e.target.value })} className={this.classes.root}></input>
@@ -673,10 +707,13 @@ formCreator = () => {
                     <br />
                     <Button type="submit" className={this.classes.root} variant="contained" color="primary">NEXT 🢂</Button>
                 </form>
+                </>
             );
             break;
         case 9:
             return (
+                <>
+                <h5 className="nameDirection">Input player names:</h5>
                 <form onSubmit={this.handleSubmit} className="playerNameForm">
                     <input placeholder="PLAYER 1" onChange={(e) => this.setState({ player1: e.target.value })} className={this.classes.root}></input>
                     <input placeholder="PLAYER 2" onChange={(e) => this.setState({ player2: e.target.value })} className={this.classes.root}></input>
@@ -690,6 +727,7 @@ formCreator = () => {
                     <br />
                     <Button type="submit" className={this.classes.root} variant="contained" color="primary">NEXT 🢂</Button>
                 </form>
+                </>
             );
             break;
     }
@@ -846,6 +884,10 @@ export default withStyles((theme) => ({
     record: {
         fontWeight: 'bold',
         marginTop: '2vw',
+    },
+
+    radio: {
+        color: 'white',
     }
 
 
