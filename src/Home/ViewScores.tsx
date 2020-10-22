@@ -37,7 +37,7 @@ export interface ViewScoresState {
     scores: any,
     playerData: any,
     viewDetails: boolean,
-    gameId: number
+    gameId: number,
 }
  
 class ViewScores extends React.Component<ViewScoresProps, ViewScoresState> {

@@ -74,7 +74,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                     <h1 className="gameplayHeading">GAMEPLAY</h1>
                     <Gameplay setPostDifficulty={this.props.setPostDifficulty} setPostTriviaTopic={this.props.setPostTriviaTopic} />
 
-                    {this.playerCreator()}
+                    {this.playerCreator(event)}
 
                     <label className="gameNotes">GAME NOTES:</label>
                     <br />
@@ -128,7 +128,8 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
     }
 
     //shows correct # of player... their names & buttons to add or subtract points from them
-    playerCreator = () => {
+    playerCreator = (event) => {
+        event.preventDefault();
         switch (this.state.numberOfPlayers) {
             case 1:
                 return (
