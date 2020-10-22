@@ -16,7 +16,8 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   }
   interface ThemeOptions {
     status: {
-      danger: React.CSSProperties['color']
+      danger: React.CSSProperties['color'],
+      // warning: React.CSSProperties['color']
     }
   }
 }

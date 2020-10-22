@@ -1,0 +1,72 @@
+/* ______________UserTable________________ */
+.userTable {
+    display: grid;
+    grid-template-columns: 9% 40% 1% 40% 9%;
+    grid-template-rows: auto;
+    align-items: center;
+}
+
+.edits {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    font-size: 3vw;
+}
+
+.userEditButtons {
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+/* ______________GameEdit________________ */
+.gameEdits {
+    border: 2px solid white;
+    margin-left: 25vw;
+    margin-right: 25vw;
+    margin-bottom: 2vw;
+    padding-bottom: 1.5vw;
+}
+
+.editGameHeading {
+    font-family: 'Permanent Marker';
+    font-size: 5vw;
+}
+
+.sentence {
+    font-size: 1.5vw;
+    font-family: 'Roboto'
+}
+
+.gameEditForm {
+    border: 2px dashed white;
+    margin: 4vw;
+    padding-bottom: 2vw;
+}
+
+.editWinnerInput {
+    padding: .2vw;
+    font-size: 1vw;
+    width: 10vw;
+    height: 2vw;
+}
+
+.editNotesInput {
+    padding: .2vw;
+    font-size: 1vw;
+    width: 25vw;
+    height: 2vw;
+}
+
+.editFormTitle {
+    margin-bottom: 1.1vw;
+}
+
+.editFormLabels {
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 1.5vw;
+}
+
+.adminGameNotes {
+    font-size: 1vw;
+    font-family: 'Roboto';
+}

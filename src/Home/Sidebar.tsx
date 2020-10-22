@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 //import Home from './Home';
 import NewGameSetup from './NewGameSetup';
 import ViewScores from './ViewScores';
@@ -34,6 +34,7 @@ const Sidebar = (props:SidebarProps) => {
   
     const [postTriviaTopic, setPostTriviaTopic] = useState("Movies");
     const [postDifficulty, setPostDifficulty] = useState("Medium");
+    const [redirect, setRedirect] = useState<null|string>(null);
     const [permission, setPermission] =useState<any>("");
     const classes = useStyles();
     const adminView = () => {
@@ -47,7 +48,14 @@ const Sidebar = (props:SidebarProps) => {
     useEffect(() => {
         if(permission !== localStorage.getItem("permission"))
         {setPermission(localStorage.getItem("permission"))};
+        // redirectPages();
     }, []);
+
+    const redirectPages = () => {
+        if (redirect !== null){
+            return <Redirect to={redirect} />
+        }
+    }
    
     
 
@@ -56,7 +64,7 @@ const Sidebar = (props:SidebarProps) => {
             <h1>Trivia Night</h1>
             <Router>
                 <div>
-
+                    {redirectPages()}
                     {/* <li><Link to="/">Home</Link></li>  */}
                     <button className="startButton startButtonCircle"><Link to="/NewGameSetup" className="link">Start New Game</Link></button>
 
@@ -66,8 +74,8 @@ const Sidebar = (props:SidebarProps) => {
                 <div className="sidebar-route">
                     <Switch>
                         {/* <Route exact path='/'><Home /></Route> */}
-                        <Route exact path='/NewGameSetup'><NewGameSetup token={props.token} postDifficulty={postDifficulty} postTriviaTopic={postTriviaTopic} setPostDifficulty={setPostDifficulty} setPostTriviaTopic={setPostTriviaTopic} /></Route>
-                        <Route exact path='/ViewScores'><ViewScores token={props.token} /></Route>
+                        <Route exact path='/NewGameSetup'><NewGameSetup token={props.token} postDifficulty={postDifficulty} postTriviaTopic={postTriviaTopic} setPostDifficulty={setPostDifficulty} setPostTriviaTopic={setPostTriviaTopic} setRedirect={setRedirect} /></Route>
+                        <Route exact path='/ViewScores'><ViewScores setRedirect={setRedirect} token={props.token} /></Route>
                         {/* <Route exact path='/Gameplay'><GamePlay /></Route> */}
                         <Route exact path='/UserTable'><UserTable token={props.token} /></Route>
                         <Route exact path='/GameEdit'><GameEdit token={props.token} /></Route>
