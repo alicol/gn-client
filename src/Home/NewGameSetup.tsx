@@ -3,6 +3,7 @@ import { Redirect, Link, useHistory } from 'react-router-dom';
 import { TypeVariable } from 'typescript';
 import Gameplay from './Gameplay';
 import { Button, Theme, withStyles } from '@material-ui/core'
+import Radio, {RadioProps} from '@material-ui/core/Radio'
 
 export interface NewGameSetupProps {
     token: string,
@@ -48,10 +49,12 @@ export interface NewGameSetupState {
 
 class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState> {
     classes: any
+    selectedValue: any
     constructor(props: NewGameSetupProps) {
         super(props);
         this.state = { showGameplay: false, player1: null, player2: null, player3: null, player4: null, player5: null, player6: null, player7: null, player8: null, player9: null, score1: 0, score2: 0, score3: 0, score4: 0, score5: 0, score6: 0, score7: 0, score8: 0, score9: 0, numberOfPlayers: 1, currentGame: 0, gameNotes: null, currentWinner: null };
         this.classes = this.props.classes;
+
     }
     URL = "http://localhost:3000";
     token = this.props.token;
@@ -74,7 +77,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                     <h1 className="gameplayHeading">GAMEPLAY</h1>
                     <Gameplay setPostDifficulty={this.props.setPostDifficulty} setPostTriviaTopic={this.props.setPostTriviaTopic} />
 
-                    {this.playerCreator(event)}
+                    {this.playerCreator()}
 
                     <label className="gameNotes">GAME NOTES:</label>
                     <br />
@@ -92,7 +95,10 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                     <p className="selectDirection">Select # of players:</p>
                     <form className="numberPlayers">
 
+                        <Radio checked={this.selectedValue == '1'} onChange={(e) => this.setState({ numberOfPlayers: 1 })} color="default" name="playercount" inputProps={{ 'aria-label': '1'}} />
                         <label className="radioLabel">1</label>
+
+
                         <input type="radio" name="playercount" onChange={(e) => this.setState({ numberOfPlayers: 1 })} className="numberRadio" />
                         <span className="checkmark"></span>
                         <br />
@@ -128,8 +134,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
     }
 
     //shows correct # of player... their names & buttons to add or subtract points from them
-    playerCreator = (event) => {
-        event.preventDefault();
+    playerCreator = () => {
         switch (this.state.numberOfPlayers) {
             case 1:
                 return (
@@ -842,4 +847,6 @@ export default withStyles((theme) => ({
         fontWeight: 'bold',
         marginTop: '2vw',
     }
+
+
 }))(NewGameSetup);
