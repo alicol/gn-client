@@ -204,7 +204,6 @@ displayScores = () => {
 
       const detailedView = () => {
             if (this.state.viewDetails === true && this.state.playerData !== {} && gameId == this.state.gameId){ 
-            console.log(this.state.playerData);
                 return (<div>
                  <h3>Player Scores</h3>
                {this.correctPlayerScores()}
