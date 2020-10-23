@@ -61,7 +61,6 @@ const Sidebar = (props:SidebarProps) => {
 
     return (
         <div>
-
             <h1>Trivia Night</h1>
             <Router>
                 <div>

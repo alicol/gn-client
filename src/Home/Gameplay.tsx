@@ -75,6 +75,9 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
             console.log(json);
             this.setState({questionResults: json.results})
         })
+        .catch(err => {
+            console.log(err, "Fetch not working");
+        })
     }
 
     answerQuestionFunction = () => {
@@ -95,33 +98,33 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
             let randomNumber = Math.floor(Math.random() * 4) + 1;
             if (randomNumber == 1){
                 return (<div>     
-                <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>               
-                <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
-                <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
-                <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
+                <p className="options"><b>A</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>               
+                <p className="options"><b>B</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
+                <p className="options"><b>C</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                <p className="options"><b>D</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
                 </div>)
             } else if (randomNumber == 2){
                 return (<div>     
-                    <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
-                    <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>  
-                    <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
-                    <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
+                    <p className="options"><b>A</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
+                    <p className="options"><b>B</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>  
+                    <p className="options"><b>C</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                    <p className="options"><b>D</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
                     </div>)
             } else if (randomNumber == 3){
                 return (
                     <div>
-                    <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
-                    <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
-                    <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>
-                    <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
+                    <p className="options"><b>A</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p>
+                    <p className="options"><b>B</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                    <p className="options"><b>C</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>
+                    <p className="options"><b>D</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
                     </div>
                 )
             } else if (randomNumber == 4){
                 return (<div>     
-                    <p>{`A: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p> 
-                    <p>{`B: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
-                    <p>{`C: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
-                    <p>{`D: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p> 
+                    <p className="options"><b>A</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[0])}`}</p> 
+                    <p className="options"><b>B</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[1])}`}</p>
+                    <p className="options"><b>C</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2])}`}</p>
+                    <p className="options"><b>D</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p> 
                     </div>)
             }
          
@@ -133,7 +136,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                     <Button className={this.classes.changeQuestions} variant="contained" color="primary" onClick={() => this.setState({questionEditor: "On"})} >🢁 Change Questions 🢁</Button>
                     </div>
                     <br />
-                    <h5 className="questionNumberHeading"><u>{`QUESTION #${this.state.currentQuestionNumber + 1}`}</u></h5>
+                    <h5 className="questionNumberHeading">{`QUESTION #${this.state.currentQuestionNumber + 1}`}</h5>
                     <br />
                     <h5 className="questionNumberHeading">{`${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].question)}`}</h5>
                     <br />
@@ -144,14 +147,11 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                     <p className="options"><b>C: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p>
                     <p className="options"><b>D: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>                     */}
                     <Button variant="contained" color="secondary" onClick={() => this.answerQuestionFunction()} className={this.classes.showAnswer}>Show Answer</Button>
-                    <br /> 
-                    
-
-                    
+                    <br />  
                 </div>
             )
         } else {
-            return (<div>Nothing to return</div>)
+            return (<div>Invalid Question Criteria</div>)
         }
     }
 
@@ -197,7 +197,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         <label className="gameOption">Natural Science</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 17}); this.props.setPostTriviaTopic("Natural Science")}} />
         
         {/* <label className="gameOption">Animals</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 27}); this.props.setPostTriviaTopic("Animals")}} /> */} 
-        
+        <br />
         <div className="editorButtons">
         <Button className={this.classes.applyChanges} variant="contained" onClick={(e) => {this.fetchQuestions(); this.setState({questionEditor: "Off"})}}>Apply Changes</Button>
         <Button className={this.classes.exitEditor} variant="contained" onClick={(e) => this.setState({questionEditor: "Off"})}>Exit Editor</Button>
@@ -212,7 +212,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
 
 
     render() { 
-        // const { classes }: any = this.props;
+        
         return ( <div>
         {this.triviaSelector()}
         {this.thisOneQuestion()}
@@ -222,8 +222,6 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
     }
 }
 
-// export default Gameplay;
- 
 export default withStyles((theme) => ({
     root: {
         fontFamily: "Roboto",
