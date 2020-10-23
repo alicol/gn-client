@@ -136,7 +136,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                     <Button className={this.classes.changeQuestions} variant="contained" color="primary" onClick={() => this.setState({questionEditor: "On"})} >🢁 Change Questions 🢁</Button>
                     </div>
                     <br />
-                    <h5 className="questionNumberHeading"><u>{`QUESTION #${this.state.currentQuestionNumber + 1}`}</u></h5>
+                    <h5 className="questionNumberHeading">{`QUESTION #${this.state.currentQuestionNumber + 1}`}</h5>
                     <br />
                     <h5 className="questionNumberHeading">{`${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].question)}`}</h5>
                     <br />
@@ -147,14 +147,11 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                     <p className="options"><b>C: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].correct_answer}`}</p>
                     <p className="options"><b>D: </b>{` ${this.state.questionResults[this.state.currentQuestionNumber].incorrect_answers[2]}`}</p>                     */}
                     <Button variant="contained" color="secondary" onClick={() => this.answerQuestionFunction()} className={this.classes.showAnswer}>Show Answer</Button>
-                    <br /> 
-                    
-
-                    
+                    <br />  
                 </div>
             )
         } else {
-            return (<div>Nothing to return</div>)
+            return (<div>Invalid Question Criteria</div>)
         }
     }
 
