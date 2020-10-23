@@ -85,11 +85,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                 alert(`The correct answer is: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`);
             }
 
-// componentDidUpdate = (prevState: GameplayState) => {
-//  if (this.state.currentQuestionNumber !== prevState.currentQuestionNumber){
-//      this.thisOneQuestion();
-//  }
-// }
+
 
    thisOneQuestion = () => {
     //    if(prevState.currentQuestionNumber !== this.state.currentQuestionNumber){

@@ -1,7 +1,8 @@
 import { findAllByPlaceholderText } from '@testing-library/react';
 import React, { useState, useEffect } from 'react';
 import {Button, withStyles} from '@material-ui/core'
-import './Admin.css'
+import './Admin.css';
+import APIURL from '../helpers/environment';
 
 export interface UserTableProps {
   token: string
@@ -28,7 +29,7 @@ class UserTable extends React.Component<UserTableProps, UserTableState> {
     this.classes = this.props.classes;
   }
 
-  URL = "http://localhost:3000";
+
 
   componentDidMount = () => {
     this.getUsers()
@@ -36,7 +37,7 @@ class UserTable extends React.Component<UserTableProps, UserTableState> {
 
   getUsers = () => {
 
-    fetch(`${this.URL}/user/seeall`, {
+    fetch(`${APIURL}/user/seeall`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -95,7 +96,7 @@ class UserTable extends React.Component<UserTableProps, UserTableState> {
 
 
 deleteUser = (userId:number) => {
-  fetch(`${this.URL}/user/delete/${userId}`, {
+  fetch(`${APIURL}/user/delete/${userId}`, {
     method: "DELETE",
     headers: new Headers({
       "Content-Type": "application/json",
@@ -112,7 +113,7 @@ deleteUser = (userId:number) => {
 }
 
 editUser = (userId:number) => {
-  fetch(`${this.URL}/user/edit/${userId}`, {
+  fetch(`${APIURL}/user/edit/${userId}`, {
     method: "PUT",
     body: JSON.stringify({
       user: {

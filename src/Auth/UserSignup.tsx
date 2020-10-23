@@ -1,4 +1,5 @@
 import * as React from 'react';
+import APIURL from '../helpers/environment';
 export interface UserSignupProps {
 updateToken: any
 }
@@ -15,12 +16,12 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
     }
 
     handleClick = () => {
-        const url = 'http://localhost:3000/user/signup'
+      
         const headers = new Headers()
         headers.append("Content-Type", "application/json")
         const body: SignUpRequest = { user: { userName: this.state.username, password: this.state.password } }
         const requestOptions = { method: "POST", headers: headers, body: JSON.stringify(body) }
-        fetch(url, requestOptions)
+        fetch(APIURL, requestOptions)
         .then(response => response.json())
         .then((json: SignUpResponse) => {
             console.log(json);

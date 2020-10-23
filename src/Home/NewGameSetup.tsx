@@ -3,7 +3,8 @@ import { Redirect, Link, useHistory } from 'react-router-dom';
 import { TypeVariable } from 'typescript';
 import Gameplay from './Gameplay';
 import { Button, Theme, withStyles } from '@material-ui/core'
-import Radio, {RadioProps} from '@material-ui/core/Radio'
+import Radio, {RadioProps} from '@material-ui/core/Radio';
+import APIURL from '../helpers/environment';
 
 export interface NewGameSetupProps {
     token: string,
@@ -57,7 +58,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
         this.classes = this.props.classes;
 
     }
-    URL = "http://localhost:3000";
+   
     token = this.props.token;
 
     // addPoint = (score: any) => {
@@ -453,8 +454,8 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
     //Posts player names initially
     handleSubmit = (e: any) => {
         e.preventDefault();
-        console.log(`${this.URL}/player-scores/startgame`);
-        fetch(`${this.URL}/player-scores/startgame`, {
+        console.log(`${APIURL}/player-scores/startgame`);
+        fetch(`${APIURL}/player-scores/startgame`, {
             method: 'POST',
             body: JSON.stringify({
                 playerScores: {
@@ -501,8 +502,8 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
     //posts final score and then also posts user history (still working user-history post)
     handlePutSubmit = (e: any) => {
         e.preventDefault();
-        console.log(`${this.URL}/player-scores/update/${this.state.currentGame}`);
-        fetch(`${this.URL}/player-scores/update/${this.state.currentGame}`, {
+        console.log(`${APIURL}/player-scores/update/${this.state.currentGame}`);
+        fetch(`${APIURL}/player-scores/update/${this.state.currentGame}`, {
             method: 'PUT',
             body: JSON.stringify({
                 playerScores: {
@@ -546,7 +547,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                 console.log(err, "Fetch failed");
             });
         //user-history post
-        fetch(`${this.URL}/user-history/post`, {
+        fetch(`${APIURL}/user-history/post`, {
             method: 'POST',
             body: JSON.stringify({
                 userHistory: {

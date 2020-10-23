@@ -1,7 +1,8 @@
 import * as React from 'react';
 // import '../Home/sidebar.css';
 import './Admin.css';
-import {Button, withStyles} from '@material-ui/core'
+import {Button, withStyles} from '@material-ui/core';
+import APIURL from '../helpers/environment';
 
 export interface GameEditProps {
     token: string
@@ -29,7 +30,7 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
         this.state = { userHistory: [], updatedWinner: "", updatedGameNotes: "", editGameId: null, showEditGame: false};
         this.classes = this.props.classes;
     }
-    URL = "http://localhost:3000";
+   
 
     componentDidMount = () => {
         this.getUserHistory()
@@ -37,7 +38,7 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
     
       getUserHistory = () => {
     
-        fetch(`${this.URL}/user-history/getall`, {
+        fetch(`${APIURL}/user-history/getall`, {
           method: "GET",
           headers: new Headers({
             "Content-Type": "application/json",
@@ -167,7 +168,7 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
     
     
     deleteGame = (gameId:number) => {
-      fetch(`${this.URL}/user-history/delete/${gameId}`, {
+      fetch(`${APIURL}/user-history/delete/${gameId}`, {
         method: "DELETE",
         headers: new Headers({
           "Content-Type": "application/json",
@@ -187,7 +188,7 @@ class GameEdit extends React.Component<GameEditProps, GameEditState> {
     }
     
     updateGame = (gameId: number) => {
-      fetch(`${this.URL}/user-history/update/${gameId}`, {
+      fetch(`${APIURL}/user-history/update/${gameId}`, {
         method: "PUT",
         body: JSON.stringify({
           userHistory: {
