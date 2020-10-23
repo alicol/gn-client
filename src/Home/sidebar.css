@@ -134,6 +134,14 @@ h1 {
 }
 
 /* __________Player Names____________ */
+.players{
+  display: flex;
+  flex-direction: column;
+}
+
+.numberPlayers {
+  justify-content: center;
+}
 
 .nameDirection {
   font-family: 'Roboto';
@@ -150,6 +158,12 @@ h1 {
 .playerInputs {
   font-family: "Roboto";
   font-size: 1.5vw;
+}
+
+.radioLabel {
+  border: 2px solid white;
+  padding: 1vw;
+  border-radius: 2vw;
 }
 
 /* ________________Questions____________________ */
@@ -251,4 +265,36 @@ b {
 .pastGameNotes {
   font-size: 1.5vw;
   font-family: 'Roboto';
+}
+
+.scoreTableDiv {
+  display: grid;
+  grid-template-columns: 33% auto 33%;
+  grid-template-rows: auto;
+  font-family: 'Roboto';
+  
+}
+.scoreTable {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  border: 2px solid white; 
+  padding: .5vw;
+  margin-top: 1.5vw;
+  margin-bottom: 1.5vw;
+}
+
+.scoreth, .scoretd {
+  padding-top: .5vw;
+  padding-bottom: .5vw;
+  font-size: 1vw;
+  border-bottom: 2px solid white;
+}
+
+.scoretdlast {
+  padding: .5vw;
+  font-size: 1vw;
+}  
+
+.scoretr:hover {
+  background-color:#263238;
 }

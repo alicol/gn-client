@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 // import { tokenToString } from 'typescript';
 import './sidebar.css'
-import './NewGameSetup.css'
 import UserTable from '../Admin/UserTable';
 import {Button, withStyles} from '@material-ui/core'
 
@@ -98,95 +97,265 @@ class ViewScores extends React.Component<ViewScoresProps, ViewScoresState> {
 }
 correctPlayerScores = () => {
     if (this.state.playerData.player2 == null){
-        return (<div>
-            <ul>
-                <li>{`${this.state.playerData.player1}: ${this.state.playerData.score1}`}</li>
-            </ul>
+        return (<div className="scoreTableDiv">
+            <table className="scoreTable">
+                <tr className="scoretrhead">
+                    <th className="scoreth">Player</th>
+                    <th className="scoreth">Score</th>
+                </tr>
+                <tr className="scoretr">
+                    <td className="scoretdlast">{`${this.state.playerData.player1}`}</td>
+                    <td className="scoretdlast">{`${this.state.playerData.score1}`}</td>
+                </tr>
+                </table>
         </div>)
     } else if (this.state.playerData.player3 == null){
-        return (<div>
-            <ul>
-                <li>{`${this.state.playerData.player1}: ${this.state.playerData.score1}`}</li>
-                <li>{`${this.state.playerData.player2}: ${this.state.playerData.score2}`}</li>
-            </ul>
+        return (<div className="scoreTableDiv">
+        <table className="scoreTable">
+            <tr>
+                <th className="scoreth">Player</th>
+                <th className="scoreth">Score</th>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player1}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score1}`}</td>
+                </tr>
+                <tr className="scoretr">
+                    <td className="scoretdlast">{`${this.state.playerData.player2}`}</td>
+                    <td className="scoretdlast">{`${this.state.playerData.score2}`}</td>
+                </tr>
+                </table>
         </div>)
     } else if (this.state.playerData.player4 == null){
-        return (<div>
-            <ul>
-                <li>{`${this.state.playerData.player1}: ${this.state.playerData.score1}`}</li>
-                <li>{`${this.state.playerData.player2}: ${this.state.playerData.score2}`}</li>
-                <li>{`${this.state.playerData.player3}: ${this.state.playerData.score3}`}</li>
-            </ul>
+        return (<div className="scoreTableDiv">
+        <table className="scoreTable">
+            <tr>
+                <th className="scoreth">Player</th>
+                <th className="scoreth">Score</th>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player1}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score1}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player2}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score2}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretdlast">{`${this.state.playerData.player3}`}</td>
+                <td className="scoretdlast">{`${this.state.playerData.score3}`}</td>
+            </tr>
+            </table>
         </div>)
     } else if (this.state.playerData.player5 == null){
-        return (<div>
-            <ul>
-                <li>{`${this.state.playerData.player1}: ${this.state.playerData.score1}`}</li>
-                <li>{`${this.state.playerData.player2}: ${this.state.playerData.score2}`}</li>
-                <li>{`${this.state.playerData.player3}: ${this.state.playerData.score3}`}</li>   
-                <li>{`${this.state.playerData.player4}: ${this.state.playerData.score4}`}</li>
-                <li>{`${this.state.playerData.player4}: ${this.state.playerData.score4}`}</li>
-            </ul>
+        return (<div className="scoreTableDiv">
+        <table className="scoreTable">
+            <tr>
+                <th className="scoreth">Player</th>
+                <th className="scoreth">Score</th>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player1}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score1}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player2}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score2}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player3}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score3}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretdlast">{`${this.state.playerData.player4}`}</td>
+                <td className="scoretdlast">{`${this.state.playerData.score4}`}</td>
+            </tr>
+            </table>
         </div>)
     } else if (this.state.playerData.player6 == null){
-        return (<div>
-            <ul>
-                <li>{`${this.state.playerData.player1}: ${this.state.playerData.score1}`}</li>
-                <li>{`${this.state.playerData.player2}: ${this.state.playerData.score2}`}</li>
-                <li>{`${this.state.playerData.player3}: ${this.state.playerData.score3}`}</li>
-                <li>{`${this.state.playerData.player4}: ${this.state.playerData.score4}`}</li>
-                <li>{`${this.state.playerData.player5}: ${this.state.playerData.score5}`}</li>
-            </ul>
+        return (<div className="scoreTableDiv">
+        <table className="scoreTable">
+            <tr>
+                <th className="scoreth">Player</th>
+                <th className="scoreth">Score</th>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player1}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score1}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player2}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score2}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player3}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score3}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player4}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score4}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretdlast">{`${this.state.playerData.player5}`}</td>
+                <td className="scoretdlast">{`${this.state.playerData.score5}`}</td>
+            </tr>
+            </table>
         </div>)
     } else if (this.state.playerData.player7 == null){
-        return (<div>
-            <ul>
-                <li>{`${this.state.playerData.player1}: ${this.state.playerData.score1}`}</li>
-                <li>{`${this.state.playerData.player2}: ${this.state.playerData.score2}`}</li>
-                <li>{`${this.state.playerData.player3}: ${this.state.playerData.score3}`}</li>
-                <li>{`${this.state.playerData.player4}: ${this.state.playerData.score4}`}</li>
-                <li>{`${this.state.playerData.player5}: ${this.state.playerData.score5}`}</li>
-                <li>{`${this.state.playerData.player6}: ${this.state.playerData.score6}`}</li>
-            </ul>
+        return (<div className="scoreTableDiv">
+        <table className="scoreTable">
+            <tr>
+                <th className="scoreth">Player</th>
+                <th className="scoreth">Score</th>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player1}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score1}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player2}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score2}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player3}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score3}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player4}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score4}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player5}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score5}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretdlast">{`${this.state.playerData.player6}`}</td>
+                <td className="scoretdlast">{`${this.state.playerData.score6}`}</td>
+            </tr>
+            </table>
         </div>)
     } else if (this.state.playerData.player8 == null){
-        return (<div>
-            <ul>
-                <li>{`${this.state.playerData.player1}: ${this.state.playerData.score1}`}</li>
-                <li>{`${this.state.playerData.player2}: ${this.state.playerData.score2}`}</li>
-                <li>{`${this.state.playerData.player3}: ${this.state.playerData.score3}`}</li>
-                <li>{`${this.state.playerData.player4}: ${this.state.playerData.score4}`}</li>
-                <li>{`${this.state.playerData.player5}: ${this.state.playerData.score5}`}</li>
-                <li>{`${this.state.playerData.player6}: ${this.state.playerData.score6}`}</li>
-                <li>{`${this.state.playerData.player7}: ${this.state.playerData.score7}`}</li>
-            </ul>
+        return (<div className="scoreTableDiv">
+        <table className="scoreTable">
+            <tr>
+                <th className="scoreth">Player</th>
+                <th className="scoreth">Score</th>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player1}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score1}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player2}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score2}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player3}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score3}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player4}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score4}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player5}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score5}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player6}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score6}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretdlast">{`${this.state.playerData.player7}`}</td>
+                <td className="scoretdlast">{`${this.state.playerData.score7}`}</td>
+            </tr>
+            </table>
         </div>)
     } else if (this.state.playerData.player9 == null){
-        return (<div>
-            <ul>
-                <li>{`${this.state.playerData.player1}: ${this.state.playerData.score1}`}</li>
-                <li>{`${this.state.playerData.player2}: ${this.state.playerData.score2}`}</li>
-                <li>{`${this.state.playerData.player3}: ${this.state.playerData.score3}`}</li>
-                <li>{`${this.state.playerData.player4}: ${this.state.playerData.score4}`}</li>
-                <li>{`${this.state.playerData.player5}: ${this.state.playerData.score5}`}</li>
-                <li>{`${this.state.playerData.player6}: ${this.state.playerData.score6}`}</li>
-                <li>{`${this.state.playerData.player7}: ${this.state.playerData.score7}`}</li>
-                <li>{`${this.state.playerData.player8}: ${this.state.playerData.score8}`}</li>
-            </ul>
+        return (<div className="scoreTableDiv">
+        <table className="scoreTable">
+            <tr>
+                <th className="scoreth">Player</th>
+                <th className="scoreth">Score</th>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player1}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score1}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player2}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score2}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player3}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score3}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player4}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score4}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player5}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score5}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player6}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score6}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player7}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score7}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretdlast">{`${this.state.playerData.player8}`}</td>
+                <td className="scoretdlast">{`${this.state.playerData.score8}`}</td>
+            </tr>
+            </table>
         </div>)
     } else {
-        return (<div>
-            <ul>
-                <li>{`${this.state.playerData.player1}: ${this.state.playerData.score1}`}</li>
-                <li>{`${this.state.playerData.player2}: ${this.state.playerData.score2}`}</li>
-                <li>{`${this.state.playerData.player3}: ${this.state.playerData.score3}`}</li>
-                <li>{`${this.state.playerData.player4}: ${this.state.playerData.score4}`}</li>
-                <li>{`${this.state.playerData.player5}: ${this.state.playerData.score5}`}</li>
-                <li>{`${this.state.playerData.player6}: ${this.state.playerData.score6}`}</li>
-                <li>{`${this.state.playerData.player7}: ${this.state.playerData.score7}`}</li>
-                <li>{`${this.state.playerData.player8}: ${this.state.playerData.score8}`}</li>
-                <li>{`${this.state.playerData.player9}: ${this.state.playerData.score9}`}</li>
-            </ul>
+        return (<div className="scoreTableDiv">
+        <table className="scoreTable">
+            <tr>
+                <th className="scoreth">Player</th>
+                <th className="scoreth">Score</th>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player1}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score1}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player2}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score2}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player3}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score3}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player4}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score4}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player5}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score5}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player6}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score6}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player7}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score7}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretd">{`${this.state.playerData.player8}`}</td>
+                <td className="scoretd">{`${this.state.playerData.score8}`}</td>
+            </tr>
+            <tr className="scoretr">
+                <td className="scoretdlast">{`${this.state.playerData.player9}`}</td>
+                <td className="scoretdlast">{`${this.state.playerData.score9}`}</td>
+            </tr>
+            </table>
         </div>)
     }
 }
@@ -205,9 +374,9 @@ displayScores = () => {
       const detailedView = () => {
             if (this.state.viewDetails === true && this.state.playerData !== {} && gameId == this.state.gameId){ 
                 return (<div>
-                 <h3>Player Scores</h3>
+                 {/* <h3>Player Scores</h3> */}
                {this.correctPlayerScores()}
-                    <button onClick={(e) => this.setState({viewDetails: false})}>Close Details</button>
+                    <Button className={this.classes.close} variant="contained" color="secondary" size="large" onClick={(e) => this.setState({viewDetails: false})}>Close</Button>
                 </div>)
             } else {return (<></>)}
         }
@@ -319,5 +488,11 @@ export default withStyles((theme) => ({
         fontFamily: "Roboto",
         fontWeight: 'bold',
         fontSize: '1.5vw',
+        marginBottom: '1.5vw',
     },
+
+    close: {
+        fontWeight: 'bold',
+        marginTop: '-.2vw',
+    }
 }))(ViewScores);
