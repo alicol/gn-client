@@ -23,7 +23,7 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
         const body: LoginRequest = { user: { userName: this.state.username, password: this.state.password } }
         const requestOptions = { method: "POST", headers: headers, body: JSON.stringify(body) }
 
-        fetch(APIURL, requestOptions)
+        fetch(`${APIURL}/user/login`, requestOptions)
         .then(response => response.json())
         .then((json: LoginResponse) => {
             console.log(json);
