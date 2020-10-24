@@ -5,6 +5,11 @@ body {
   color: white;
 }
 
+hr{
+  width: 96%;
+  color: white;
+}
+
 h1 {
   font-family: 'Permanent Marker', 'Arial';
   color: white;
@@ -141,13 +146,16 @@ h1 {
 
 .numberPlayers {
   justify-content: center;
+  flex-wrap: wrap;
+  font-size: 1.5vw;
+
 }
 
 .nameDirection {
   font-family: 'Roboto';
-  font-size: 2vw;
   margin-bottom: 1vw;
   font-weight: lighter;
+  font-size: 2vw;
 }
 
 .playerNameForm {
@@ -164,6 +172,7 @@ h1 {
   border: 2px solid white;
   padding: 1vw;
   border-radius: 2vw;
+  margin: .5vw;
 }
 
 /* ________________Questions____________________ */

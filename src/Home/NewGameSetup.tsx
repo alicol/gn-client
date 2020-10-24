@@ -3,7 +3,7 @@ import { Redirect, Link, useHistory } from 'react-router-dom';
 import { TypeVariable } from 'typescript';
 import Gameplay from './Gameplay';
 import { Button, Theme, withStyles } from '@material-ui/core'
-import Radio, {RadioProps} from '@material-ui/core/Radio';
+import Radio from '@material-ui/core/Radio';
 import APIURL from '../helpers/environment';
 
 export interface NewGameSetupProps {
@@ -94,7 +94,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                 <div className="players">
                     <hr />
                     <h5 className="createFormHeading">Create a New Game</h5>
-                    <p className="selectDirection">Select # of players:</p>
+                    <p className="selectDirection">How many players?</p>
                     <form className="numberPlayers">
 
                         <label className="radioLabel">1<Radio checked={this.state.selectedValue === '1'} className={this.classes.radio} value="1" onChange={(e) => this.setState({ numberOfPlayers: 1, selectedValue: "1" })}  name="playercount" inputProps={{ 'aria-label': '1'}} /></label>
@@ -157,9 +157,9 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                         <ul className="namePointsUL">
                             <li className="namePoints"><h2>{`${this.state.player1}:`}</h2>
 
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score1}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
                         </ul>
                     </div>
                 )
@@ -169,10 +169,11 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                     <div>
                         <ul className="namePointsUL">
                             <li className="namePoints"><h2>{`${this.state.player1}:`}</h2>
+
                                 <br />
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score1}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player2}:`}</h2>
                                 <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.addPoint}>+1</Button>
@@ -188,19 +189,19 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                         <ul className="namePointsUL">
                             <li className="namePoints"><h2>{`${this.state.player1}:`}</h2>
                                 <br />
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score1}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player2}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score2}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player3}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score3}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
                         </ul>
                     </div>
                 )
@@ -211,24 +212,24 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                         <ul className="namePointsUL">
                             <li className="namePoints"><h2>{`${this.state.player1}:`}</h2>
                                 <br />
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score1}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player2}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score2}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player3}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score3}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player4}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score4}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
                         </ul>
                     </div>
                 )
@@ -239,29 +240,29 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                         <ul className="namePointsUL">
                             <li className="namePoints"><h2>{`${this.state.player1}:`}</h2>
                                 <br />
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score1}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player2}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score2}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player3}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score3}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player4}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score4}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player5}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score5}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
                         </ul>
                     </div>
                 )
@@ -272,34 +273,34 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                         <ul className="namePointsUL">
                             <li className="namePoints"><h2>{`${this.state.player1}:`}</h2>
                                 <br />
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score1}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player2}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score2}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player3}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score3}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player4}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score4}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player5}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score5}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player6}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score6}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
                         </ul>
                     </div>
                 )
@@ -310,39 +311,39 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                         <ul className="namePointsUL">
                             <li className="namePoints"><h2>{`${this.state.player1}:`}</h2>
                                 <br />
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score1}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player2}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score2}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player3}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score3}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player4}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score4}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player5}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score5}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player6}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score6}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player7}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score7}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
                         </ul>
                     </div>
                 )
@@ -353,44 +354,44 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                         <ul className="namePointsUL">
                             <li className="namePoints"><h2>{`${this.state.player1}:`}</h2>
                                 <br />
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score1}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player2}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score2}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player3}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score3}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player4}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score4}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player5}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score5}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player6}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score6}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player7}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score7}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player8}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score8: this.state.score8 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score8: this.state.score8 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score8}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score8: this.state.score8 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score8: this.state.score8 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
                         </ul>
                     </div>
                 )
@@ -401,49 +402,49 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                         <ul className="namePointsUL">
                             <li className="namePoints"><h2>{`${this.state.player1}:`}</h2>
                                 <br />
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score1}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player2}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score2}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player3}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score3}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score3: this.state.score3 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player4}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score4}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score4: this.state.score4 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player5}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score5}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score5: this.state.score5 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player6}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score6}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score6: this.state.score6 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player7}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score7}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score7: this.state.score7 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player8}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score8: this.state.score8 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score8: this.state.score8 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score8}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score8: this.state.score8 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score8: this.state.score8 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player9}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score9: this.state.score8 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score9: this.state.score8 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score9}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score9: this.state.score9 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score9: this.state.score9 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
                         </ul>
                     </div>
                 )
@@ -456,6 +457,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
         e.preventDefault();
         console.log(`${APIURL}/player-scores/startgame`);
         fetch(`${APIURL}/player-scores/startgame`, {
+        // fetch(`http://localhost:3000/player-scores/startgame`, {
             method: 'POST',
             body: JSON.stringify({
                 playerScores: {
@@ -504,6 +506,8 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
         e.preventDefault();
         console.log(`${APIURL}/player-scores/update/${this.state.currentGame}`);
         fetch(`${APIURL}/player-scores/update/${this.state.currentGame}`, {
+        // fetch(`http://localhost:3000/player-scores/update/${this.state.currentGame}`, {
+
             method: 'PUT',
             body: JSON.stringify({
                 playerScores: {
@@ -590,7 +594,7 @@ formCreator = () => {
         case 1:
             return (
                 <>
-                    <h5 className="nameDirection">Input player names:</h5>
+                    <p className="nameDirection">Enter player names:</p>
                     <form onSubmit={this.handleSubmit} className="playerNameForm">
                         <input placeholder="PLAYER 1" onChange={(e) => this.setState({ player1: e.target.value })} className={this.classes.root}></input>
                         <br />
