@@ -19,8 +19,9 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
       
         const headers = new Headers()
         headers.append("Content-Type", "application/json")
+        headers.append("mode", "no-cors")
         const body: SignUpRequest = { user: { userName: this.state.username, password: this.state.password } }
-        const requestOptions = { method: "POST", mode: "no-cors", headers: headers, body: JSON.stringify(body) }
+        const requestOptions = { method: "POST", headers: headers, body: JSON.stringify(body) }
         fetch(`${APIURL}/user/signup`, requestOptions)
         .then(response => response.json())
         .then((json: SignUpResponse) => {
