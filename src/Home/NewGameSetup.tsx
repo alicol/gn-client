@@ -456,8 +456,8 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
     handleSubmit = (e: any) => {
         e.preventDefault();
         console.log(`${APIURL}/player-scores/startgame`);
-        // fetch(`${APIURL}/player-scores/startgame`, {
-        fetch(`http://localhost:3000/player-scores/startgame`, {
+        fetch(`${APIURL}/player-scores/startgame`, {
+        // fetch(`http://localhost:3000/player-scores/startgame`, {
             method: 'POST',
             body: JSON.stringify({
                 playerScores: {
