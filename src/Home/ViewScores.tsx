@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 // import { tokenToString } from 'typescript';
 import './sidebar.css'
 import UserTable from '../Admin/UserTable';
-import {Button, withStyles} from '@material-ui/core'
+import {Button, withStyles} from '@material-ui/core';
+import APIURL from '../helpers/environment';
 
 
 
@@ -47,7 +48,7 @@ class ViewScores extends React.Component<ViewScoresProps, ViewScoresState> {
         this.classes = this.props.classes;
     }
 
-    URL = "http://localhost:3000";
+
 
     componentDidMount = () => {
         this.getMyScores();
@@ -56,7 +57,7 @@ class ViewScores extends React.Component<ViewScoresProps, ViewScoresState> {
 
     getMyScores = () => {
 
-    fetch(`${this.URL}/user-history/get/mygames`, {
+    fetch(`${APIURL}/user-history/get/mygames`, {
         method: "GET",
         headers: new Headers({
             "Content-Type": "application/json",
@@ -76,7 +77,7 @@ class ViewScores extends React.Component<ViewScoresProps, ViewScoresState> {
 
     getMyPlayerScores = (gameId: any) => {
 
-    fetch(`${this.URL}/player-scores/seegame/${gameId}`, {
+    fetch(`${APIURL}/player-scores/seegame/${gameId}`, {
         method: "GET",
         headers: new Headers({
             "Content-Type": "application/json",
