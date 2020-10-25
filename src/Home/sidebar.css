@@ -217,7 +217,14 @@ b {
 
 .gameNotes {
   font-weight: bold;
-  font-size: 3vw;
+  font-size: 1.5vw;
+  font-family: 'Roboto'
+}
+
+.lastQuestion {
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: .75vw;
 }
 
 /* _________________Change Questions____________ */

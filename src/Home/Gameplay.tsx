@@ -45,7 +45,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                 <Button className={this.classes.nextQuestion} variant="contained" color="secondary" onClick={() => this.setState({currentQuestionNumber: this.state.currentQuestionNumber + 1})}>🢂 Next Question 🢂</Button>
             </div>)
         } else if(this.state.questionResults.length !== 0 ) {
-            return(<div>LAST QUESTION!</div>)
+            return(<div className="lastQuestion">LAST QUESTION!</div>)
         } else {
             return (<div><p>Questions loading...</p></div>
                 
@@ -55,7 +55,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
     backButton = () => {
         if (this.state.questionResults.length !== 0 && this.state.currentQuestionNumber > 0){
             return (<div>
-                <button onClick={() => this.setState({currentQuestionNumber: this.state.currentQuestionNumber - 1})}>Back</button>
+                <Button className={this.classes.previousQuestion} color="secondary" variant="contained" onClick={() => this.setState({currentQuestionNumber: this.state.currentQuestionNumber - 1})}>🢀 Previous Question 🢀</Button>
             </div>)
         }
     }
@@ -235,6 +235,11 @@ export default withStyles((theme) => ({
     nextQuestion: {
         fontWeight: 'bold',
         marginBottom: '2vw'
+    },
+
+    previousQuestion: {
+        fontWeight: 'bold',
+        marginBottom: '.5vw',
     },
 
     applyChanges: {

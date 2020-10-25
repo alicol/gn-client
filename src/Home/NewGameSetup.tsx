@@ -176,9 +176,9 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                                 <Button variant="contained" onClick={() => this.setState({ score1: this.state.score1 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
 
                             <li className="namePoints"><h2>{`${this.state.player2}:`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.addPoint}>+1</Button>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.addPoint}>-1</Button>
                                 <h2>{`${this.state.score2}`}</h2>
-                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 - 1 })} className={this.classes.subtractPoint}>-1</Button></li>
+                                <Button variant="contained" onClick={() => this.setState({ score2: this.state.score2 + 1 })} className={this.classes.subtractPoint}>+1</Button></li>
                         </ul>
                     </div>
                 )
@@ -456,8 +456,8 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
     handleSubmit = (e: any) => {
         e.preventDefault();
         console.log(`${APIURL}/player-scores/startgame`);
-        fetch(`${APIURL}/player-scores/startgame`, {
-        // fetch(`http://localhost:3000/player-scores/startgame`, {
+        // fetch(`${APIURL}/player-scores/startgame`, {
+        fetch(`http://localhost:3000/player-scores/startgame`, {
             method: 'POST',
             body: JSON.stringify({
                 playerScores: {
