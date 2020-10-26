@@ -323,3 +323,7 @@ b {
 .scoretr:hover {
   background-color:#263238;
 }
+
+.winner {
+  font-family: 'Roboto';
+}

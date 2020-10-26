@@ -162,6 +162,7 @@ export default withStyles((theme) => ({
     fontWeight: 'bold',
     marginLeft: '1vw',
     fontSize: '2vw',
+    border: '3px solid white',
   },
 
   warning: {
@@ -172,6 +173,7 @@ export default withStyles((theme) => ({
     fontWeight: 'bold',
     marginRight: '1vw',
     fontSize: '2vw',
+    border: '3px solid white',
   }
 }))
 (UserTable);
