@@ -489,10 +489,13 @@ export default withStyles((theme) => ({
         fontWeight: 'bold',
         fontSize: '1.5vw',
         marginBottom: '1.5vw',
+        border: '3px solid white',
     },
 
     close: {
         fontWeight: 'bold',
         marginTop: '-.2vw',
+        border: '3px solid white',
+        fontSize: '1vw',
     }
 }))(ViewScores);

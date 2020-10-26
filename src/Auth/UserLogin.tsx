@@ -1,8 +1,10 @@
 import React from 'react';
 import APIURL from '../helpers/environment';
-export interface UserLoginProps {
-updateToken: any
+import {withStyles, Button} from '@material-ui/core'
 
+export interface UserLoginProps {
+updateToken: any,
+classes: any
 }
 
 export interface UserLoginState {
@@ -12,9 +14,11 @@ export interface UserLoginState {
 }
 
 class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
+    classes: any
     constructor(props: UserLoginProps) {
         super(props);
         this.state = { username: "", password: "" };
+        this.classes = this.props.classes;
     }
     handleClick = () => {
      
@@ -62,7 +66,7 @@ class UserLogin extends React.Component<UserLoginProps, UserLoginState> {
                 <br />
                 <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="PASSWORD" />
                 <br />
-                <button onClick={this.handleClick} className="submitLogIn">LOG IN!</button>
+                <Button color="secondary" variant="contained" onClick={this.handleClick} className={this.classes.root}>LOG IN!</Button>
                 {/* </form> */}
             </div>            
         );
@@ -87,5 +91,11 @@ export interface LoginResponse {
 
 }
 
-export default UserLogin;
+export default withStyles((theme) => ({
+    root: {
+        fontFamily: 'Roboto',
+        fontWeight: "bold",
+        border: '3px solid white',
+    },
+}))(UserLogin);
 

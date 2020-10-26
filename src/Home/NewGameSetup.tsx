@@ -85,7 +85,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
                     <br />
                     <textarea placeholder="Player 1 cheated! Player 2 slayed!!" onChange={(e) => this.setState({ gameNotes: e.target.value })} />
                     <br />
-                    <Button variant="contained" color="primary" className={this.classes.record} onClick={this.handlePutSubmit}>Record Final Scores</Button>
+                    <Button variant="contained" color="primary" className={this.classes.record} onClick={this.handlePutSubmit}>END GAME</Button>
 
                 </div>
             )
@@ -862,6 +862,7 @@ export default withStyles((theme) => ({
         fontFamily: "Roboto",
         fontWeight: 'bold',
         fontSize: '2.5vw',
+        border: '3px solid white',
     },
 
     addPoint: {
@@ -871,8 +872,10 @@ export default withStyles((theme) => ({
         '&:hover': {
             backgroundColor: '#757de8',
         },
-        height: '2vw',
-        width: '1.2vw',
+        height: '2.5vw',
+        width: '.5vw',
+        borderTop: '3px solid #3f51b5',
+        borderBottom: '3px solid #3f51b5',
     },
 
     subtractPoint: {
@@ -882,13 +885,16 @@ export default withStyles((theme) => ({
         '&:hover': {
             backgroundColor: '#ff7961',
         },
-        height: '2vw',
-        width: '1.2vw',
+        height: '2.5vw',
+        width: '.5vw',
+        borderTop: '3px solid #f44336',
+        borderBottom: '3px solid #f44336',
     },
 
     record: {
-        fontWeight: 'bold',
+        fontWeight: 'bolder',
         marginTop: '2vw',
+        border: '3px solid white',
     },
 
     radio: {
