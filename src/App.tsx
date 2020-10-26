@@ -28,10 +28,12 @@ let theme = createMuiTheme({
     },
     palette: {
       primary: {
-        main: '#29b6f6'
-  
+        main: '#29b6f6'  
       },
       secondary: lime,
+      action: {
+        disabled: '#C6FF00',
+      }
     },
   });
   theme = responsiveFontSizes(theme);

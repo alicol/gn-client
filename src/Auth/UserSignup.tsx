@@ -1,7 +1,10 @@
 import * as React from 'react';
 import APIURL from '../helpers/environment';
+import {Button, withStyles} from '@material-ui/core'
+
 export interface UserSignupProps {
 updateToken: any
+classes: any,
 }
 
 export interface UserSignupState {
@@ -10,9 +13,11 @@ export interface UserSignupState {
 }
 
 class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
+    classes : any
     constructor(props: UserSignupProps) {
         super(props);
         this.state = { username: "", password: "" };
+        this.classes = this.props.classes;
     }
 
     handleClick = () => {
@@ -48,12 +53,18 @@ class UserSignup extends React.Component<UserSignupProps, UserSignupState> {
             <br />
             <input onChange={(e) => this.setState({ password: e.target.value })} type="password" name="password" id="password" placeholder="PASSWORD" />
             <br />
-            <button onClick={this.handleClick} className="submitSignUp">SIGN UP!</button>
+            <Button variant="contained" color="primary" onClick={this.handleClick} className={this.classes.root}>SIGN UP!</Button>
         </div>);
     }
 }
 
-export default UserSignup;
+export default withStyles((theme) => ({
+    root: {
+        fontFamily: 'Roboto',
+        fontWeight: "bold",
+        border: '3px solid white',
+    },
+}))(UserSignup);
 
 export interface User {
     userName: string;

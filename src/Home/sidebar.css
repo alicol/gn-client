@@ -224,7 +224,11 @@ b {
 .lastQuestion {
   font-family: "Roboto";
   font-weight: bold;
-  font-size: .75vw;
+  font-size: 1.5vw;
+  margin-left: .5vw;
+  padding-top: .5vw;
+  padding-bottom: .5vw;
+
 }
 
 /* _________________Change Questions____________ */
@@ -244,7 +248,7 @@ b {
 
 .choose {
   font-family: 'Roboto';
-  font-size: 2vw;
+  font-size: 2.5vw;
   font-weight: bold;
 }
 
@@ -256,6 +260,11 @@ b {
 
 .editorButtons {
   display: flex;
+}
+
+.backNext {
+  display: flex;
+  justify-content: center;
 }
 
 /* ____________PAST GAMES_____________ */
@@ -302,13 +311,13 @@ b {
 .scoreth, .scoretd {
   padding-top: .5vw;
   padding-bottom: .5vw;
-  font-size: 1vw;
+  font-size: 1.5vw;
   border-bottom: 2px solid white;
 }
 
 .scoretdlast {
   padding: .5vw;
-  font-size: 1vw;
+  font-size: 1.5vw;
 }  
 
 .scoretr:hover {
