@@ -234,6 +234,7 @@ export default withStyles((theme) => ({
     fontWeight: 'bold',
     marginLeft: '1vw',
     width: '10vw',
+    border: '3px solid white',
   },
 
   warning: {
@@ -244,6 +245,7 @@ export default withStyles((theme) => ({
     fontWeight: 'bold',
     marginRight: '1vw',
     width: '10vw',
+    border: '3px solid white',
   },
 
   editForm: {

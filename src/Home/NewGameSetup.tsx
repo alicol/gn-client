@@ -798,39 +798,39 @@ displayWinner = () => {
     let winnerKey = this.findWinner(scoreboard);
     if (winnerKey == "p1" && this.state.player1 !== "" && this.state.score1 !== 0) {
         return (
-            <div><h5>{`Currently in head place is ${this.state.player1} with ${this.state.score1} points!`}</h5></div>
+            <div><h5 className="winner">{`${this.state.player1} is in first place with ${this.state.score1} points!`}</h5></div>
         )
     } else if (winnerKey == "p2" && this.state.player2 !== "" && this.state.score2 !== 0) {
         return (
-            <div><h5>{`Currently in head place is ${this.state.player2} with ${this.state.score2} points!`}</h5></div>
+            <div><h5 className="winner">{`${this.state.player2} is in first place with ${this.state.score2} points!`}</h5></div>
         )
     } else if (winnerKey == "p3" && this.state.player3 !== "" && this.state.score3 !== 0) {
         return (
-            <div><h5>{`Currently in head place is ${this.state.player3} with ${this.state.score3} points!`}</h5></div>
+            <div><h5 className="winner">{`${this.state.player3} is in first place with ${this.state.score3} points!`}</h5></div>
         )
     } else if (winnerKey == "p4" && this.state.player4 !== "" && this.state.score4 !== 0) {
         return (
-            <div><h5>{`Currently in head place is ${this.state.player4} with ${this.state.score4} points!`}</h5></div>
+            <div><h5 className="winner">{`${this.state.player4} is in first place with ${this.state.score4} points!`}</h5></div>
         )
     } else if (winnerKey == "p5" && this.state.player5 !== "" && this.state.score5 !== 0) {
         return (
-            <div><h5>{`Currently in head place is ${this.state.player5} with ${this.state.score5} points!`}</h5></div>
+            <div><h5 className="winner">{`${this.state.player5} is in first place with ${this.state.score5} points!`}</h5></div>
         )
     } else if (winnerKey == "p6" && this.state.player6 !== "" && this.state.score6 !== 0) {
         return (
-            <div><h5>{`Currently in head place is ${this.state.player6} with ${this.state.score6} points!`}</h5></div>
+            <div><h5 className="winner">{`${this.state.player6} is in first place with ${this.state.score6} points!`}</h5></div>
         )
     } else if (winnerKey == "p7" && this.state.player7 !== "" && this.state.score7 !== 0) {
         return (
-            <div><h5>{`Currently in head place is ${this.state.player7} with ${this.state.score7} points!`}</h5></div>
+            <div><h5 className="winner">{`${this.state.player7} is in first place with ${this.state.score7} points!`}</h5></div>
         )
     } else if (winnerKey == "p8" && this.state.player8 !== "" && this.state.score8 !== 0) {
         return (
-            <div><h5>{`Currently in head place is ${this.state.player8} with ${this.state.score8} points!`}</h5></div>
+            <div><h5 className="winner">{`${this.state.player8} is in first place with ${this.state.score8} points!`}</h5></div>
         )
     } else if (winnerKey == "p9" && this.state.player9 !== "" && this.state.score9 !== 0) {
         return (
-            <div><h5>{`Currently in head place is ${this.state.player9} with ${this.state.score9} points!`}</h5></div>
+            <div><h5 className="winner">{`${this.state.player9} is in first place with ${this.state.score9} points!`}</h5></div>
         )
     }
 
