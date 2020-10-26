@@ -2,7 +2,7 @@ let APIURL = "";
 
 switch (window.location.hostname){
     case 'localhost' || '127.0.0.1':
-        APIURL = 'http://localhost:<3000>';
+        APIURL = 'http://localhost:3000';
         break;
     case 'ss-gn-client.herokuapp.com':
         APIURL = 'https://ss-gn-server.herokuapp.com'

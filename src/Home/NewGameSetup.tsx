@@ -558,7 +558,7 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
 
                     triviaTopic: this.props.postTriviaTopic,
                     difficulty: this.props.postDifficulty,
-                    winner: this.submitWinner(),
+                    winner: this.takeOutNull(this.submitWinner()),
                     gameNotes: this.state.gameNotes,
                     gameId: this.state.currentGame,
 
@@ -586,6 +586,13 @@ class NewGameSetup extends React.Component<NewGameSetupProps, NewGameSetupState>
             
             
     };
+takeOutNull = (value: any) => {
+    if (value == null){
+        return "Nobody";
+    } else {
+        return value;
+    }
+}
 
 //creates input fields for users to enter name... switch statement so that it only shows correct # of users
 formCreator = () => {
@@ -770,8 +777,7 @@ submitWinner = () => {
         return (this.state.player8)
     } else if (winnerKey == "p9" && this.state.player9 !== "" && this.state.score9 !== 0) {
         return (this.state.player9)
-    }
-
+    } 
 
 }
 
