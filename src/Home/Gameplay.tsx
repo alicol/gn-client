@@ -22,7 +22,8 @@ export interface GameplayState {
     difficulty: string, 
     winner: any,
     selectedValue: any,
-
+    nextQuestion: number,
+    randomNumber: number
 
 }
  
@@ -30,7 +31,7 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
     classes : any
     constructor(props: GameplayProps) {
         super(props);
-        this.state = { questionResults: [], currentQuestionNumber: 0, numberOfQuestions: 50, questionEditor: "On", category: 11, difficulty: "medium", winner: null, selectedValue: "0" };
+        this.state = { questionResults: [], currentQuestionNumber: 0, numberOfQuestions: 50, questionEditor: "On", category: 11, difficulty: "medium", winner: null, selectedValue: "0", nextQuestion: 1, randomNumber: 3 };
         this.classes = this.props.classes;
         
 
@@ -40,7 +41,11 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
         // this.thisOneQuestion();
     }
 
-   
+//    componentDidUpdate(prevState: any){
+//        if (prevState.currentQuestionNumber !== this.state.currentQuestionNumber){
+//            this.thisOneQuestion();
+//        }
+//    }
 
 
      nextButton = () => {
@@ -90,14 +95,21 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
                 //ADD WHATEVER VISUAL AFFECT THE CORRECT ANSWER PROVIDES!
                 alert(`The correct answer is: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`);
             }
-
-
-
+   
+   callQuestionRandomizer = () => {
+       if (this.state.currentQuestionNumber == this.state.nextQuestion){
+           this.setState({nextQuestion: this.state.nextQuestion + 1})
+           this.setState({randomNumber: Math.floor(Math.random() * 4) + 1})
+       } 
+   }
+            
    thisOneQuestion = () => {
-    //    if(prevState.currentQuestionNumber !== this.state.currentQuestionNumber){
+    // if (prevState.currentQuestionNumber !== this.state.currentQuestionNumber){
         if (this.state.questionResults.length !== 0 && this.state.questionResults.length >= this.state.currentQuestionNumber){
         const randomizedAnswerOrder = () => {
-            let randomNumber = Math.floor(Math.random() * 4) + 1;
+            // let randomNumber = Math.floor(Math.random() * 4) + 1;
+            this.callQuestionRandomizer();
+            let randomNumber = this.state.randomNumber;
             if (randomNumber == 1){
                 return (<div>     
                 <p className="options"><b>A</b>{`: ${this.neutralize(this.state.questionResults[this.state.currentQuestionNumber].correct_answer)}`}</p>               
@@ -194,29 +206,6 @@ class Gameplay extends React.Component<GameplayProps, GameplayState> {
 
             <label className="gameOption">Natural Science<Radio checked={this.state.selectedValue === '17'} className={this.classes.radio} name="cat" onChange={(e) => {this.setState({category: 17, selectedValue: '17'}); this.props.setPostTriviaTopic("Natural Science")}} inputProps={{ 'aria-label': 'Natural Science'}}/></label>
 
-
-        {/* <label className="gameOption">Sports</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 21}); this.props.setPostTriviaTopic("Sports")}} />
-        
-        <label className="gameOption">Television</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 14}); this.props.setPostTriviaTopic("Television")}} />
-        
-        <label className="gameOption">History</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 23}); this.props.setPostTriviaTopic("History")}} />
-        
-        <label className="gameOption">Movies</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 11}); this.props.setPostTriviaTopic("Movies")}} />
-        
-        <label className="gameOption">Geography</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 22}); this.props.setPostTriviaTopic("Geography")}} />
-                
-        <label className="gameOption">Music</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 12}); this.props.setPostTriviaTopic("Music")}} />
-        
-        <label className="gameOption">Natural Science</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 17}); this.props.setPostTriviaTopic("Natural Science")}} /> */}
-
-
-        {/* MALFUNCTIONING TOPICS */}
-        {/* <label className="gameOption">Animals</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 27}); this.props.setPostTriviaTopic("Animals")}} /> */} 
-
-        {/*         
-        <label className="gameOption">Politics</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 24}); this.props.setPostTriviaTopic("Politics")}} /> */} 
-
-        {/* <label className="gameOption">Celebrities</label><input type="radio" name="cat" onChange={(e) => {this.setState({category: 26}); this.props.setPostTriviaTopic("Celebrities")}} /> */}
 
 
 
